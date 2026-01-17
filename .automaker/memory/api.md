@@ -5,9 +5,9 @@ relevantTo: [api]
 importance: 0.7
 relatedFiles: []
 usageStats:
-  loaded: 67
-  referenced: 8
-  successfulFeatures: 8
+  loaded: 68
+  referenced: 9
+  successfulFeatures: 9
 ---
 # api
 
@@ -576,3 +576,10 @@ usageStats:
 - **Rejected:** Server-side WebRTC with server-sent events/WebSocket would require session state management on server; client-side SIP.js without server config would hardcode credentials
 - **Trade-offs:** Credentials briefly in browser memory vs easier auth/multi-device handling; client controls call lifecycle vs potential device-specific issues harder to debug remotely
 - **Breaking if changed:** Moving session state to server requires session persistence layer and cleanup; removing server function validation breaks credential refresh logic
+
+### Added approverId parameter requirement to approveWorkflowApproval() and rejectWorkflowApproval() functions with explicit access validation (2026-01-17)
+- **Context:** Workflow approval functions lacked user identity context, creating security vulnerability where any caller could approve/reject without authorization
+- **Why:** Explicit parameter forces callers to provide and validate user context before making decisions. Prevents accidental privilege escalation and audit trail issues
+- **Rejected:** Could infer from session/context, but explicit parameter makes authorization intention visible at call site and easier to test
+- **Trade-offs:** Slightly more verbose at call sites but dramatically improves security auditability. Makes auth failures explicit rather than silent
+- **Breaking if changed:** Any code calling these functions without approverId parameter will fail at compile time, forcing migration of calling code

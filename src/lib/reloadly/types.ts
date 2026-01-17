@@ -182,10 +182,14 @@ export interface ReloadlyBalanceInfo {
 }
 
 // =============================================================================
-// Transaction Types
+// Transaction Types (API Response Types)
 // =============================================================================
 
-export interface ReloadlyTransaction {
+/**
+ * Reloadly API Transaction response
+ * This is the transaction object returned from Reloadly's API
+ */
+export interface ReloadlyApiTransaction {
   transactionId: number;
   operatorTransactionId: string | null;
   customIdentifier: string | null;
@@ -203,10 +207,16 @@ export interface ReloadlyTransaction {
   deliveredAmountCurrencyCode: string;
   transactionDate: string;
   pinDetail: ReloadlyPinDetail | null;
-  status: ReloadlyTransactionStatus;
+  status: ReloadlyApiTransactionStatus;
 }
 
-export type ReloadlyTransactionStatus = 'SUCCESSFUL' | 'PENDING' | 'REFUNDED' | 'FAILED';
+export type ReloadlyApiTransactionStatus = 'SUCCESSFUL' | 'PENDING' | 'REFUNDED' | 'FAILED';
+
+/** @deprecated Use ReloadlyApiTransaction instead */
+export type ReloadlyTransaction = ReloadlyApiTransaction;
+
+/** @deprecated Use ReloadlyApiTransactionStatus instead */
+export type ReloadlyTransactionStatus = ReloadlyApiTransactionStatus;
 
 // =============================================================================
 // Account Types
@@ -300,7 +310,10 @@ export interface ReloadlyOperatorFilters {
   size?: number;
 }
 
-export interface ReloadlyTransactionFilters {
+/**
+ * Query parameters for Reloadly API transaction history endpoint
+ */
+export interface ReloadlyApiTransactionFilters {
   startDate?: string;
   endDate?: string;
   operatorId?: number;
@@ -310,3 +323,6 @@ export interface ReloadlyTransactionFilters {
   page?: number;
   size?: number;
 }
+
+/** @deprecated Use ReloadlyApiTransactionFilters instead */
+export type ReloadlyTransactionFilters = ReloadlyApiTransactionFilters;

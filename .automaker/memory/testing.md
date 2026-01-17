@@ -538,3 +538,10 @@ usageStats:
 - **Situation:** Implementation includes optional WebRTC module that may not load if feature not in use; other minor auth/network errors expected in test environment
 - **Root cause:** Strict zero-error requirement would fail due to environmental setup (missing auth context, external SIP server unavailable). Pragmatic threshold allows test to pass while catching critical runtime errors
 - **How to avoid:** Less strict testing vs realistic test environment; allows 5 errors to slip through vs easier CI/CD integration
+
+### Web Speech API types defined in separate type definition file (web-speech.d.ts) with cross-browser webkit prefix support rather than inline interfaces (2026-01-17)
+- **Context:** SpeechRecognition API not in DOM types, needed custom definitions with browser vendor prefixes
+- **Why:** Separate file keeps browser API extensions organized and reusable. Explicit webkit prefix handling documents cross-browser requirements without polluting main types
+- **Rejected:** Could use any/type assertions or import external types, but custom definitions provide type safety while clearly documenting what API surface exists
+- **Trade-offs:** Requires maintaining custom definitions but provides type safety for browser APIs. Explicitly shows feature compatibility in codebase
+- **Breaking if changed:** Removing definitions reverts to any types for SpeechRecognition, losing type safety on voice input features

@@ -420,3 +420,8 @@ usageStats:
 - **Rejected:** Trusting session alone; only checking tenant existence
 - **Trade-offs:** Additional database query per request. But critical security property - sessions are long-lived but tenant membership can change
 - **Breaking if changed:** If tenant membership check removed, deprovisioned users could continue accessing tenant data for duration of their session
+
+#### [Gotcha] Workflow approval table has multiple timestamp fields (requested_at, decided_at, due_at, notified_at) for different approval lifecycle events, not just single approval timestamp (2026-01-17)
+- **Situation:** Initial implementation might assume single decision timestamp, but real workflow approvals need separate tracking of request, notification, due date, and decision times
+- **Root cause:** Different lifecycle events require separate audit trails. Notifications may happen after request, decisions may come before/after due date. SLA tracking needs distinct due_at
+- **How to avoid:** More fields to manage but vastly simpler queries for business logic like SLA tracking, reminders, and overdue detection

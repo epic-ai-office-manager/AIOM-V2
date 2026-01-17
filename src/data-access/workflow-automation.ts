@@ -294,6 +294,25 @@ export async function findActiveWorkflowsByTrigger(
 }
 
 /**
+ * Find workflow definitions created by a specific user
+ */
+export async function findWorkflowDefinitionsByCreator(
+  userId: string,
+  options?: {
+    status?: WorkflowDefinitionStatus;
+    triggerType?: WorkflowTriggerType;
+    category?: string;
+    limit?: number;
+    offset?: number;
+  }
+): Promise<WorkflowDefinitionWithCreator[]> {
+  return findAllWorkflowDefinitions({
+    ...options,
+    createdBy: userId,
+  });
+}
+
+/**
  * Activate a workflow definition
  */
 export async function activateWorkflowDefinition(
@@ -498,6 +517,41 @@ export async function findInstancesByDefinition(
     .offset(options?.offset ?? 0);
 
   return results;
+}
+
+/**
+ * Alias for findInstancesByDefinition
+ */
+export const findWorkflowInstancesByDefinition = findInstancesByDefinition;
+
+/**
+ * Find recent workflow instances across all definitions
+ */
+export async function findRecentWorkflowInstances(
+  options?: {
+    status?: WorkflowInstanceStatus;
+    limit?: number;
+    offset?: number;
+  }
+): Promise<WorkflowInstance[]> {
+  const conditions = [];
+
+  if (options?.status) {
+    conditions.push(eq(workflowInstance.status, options.status));
+  }
+
+  const query = database
+    .select()
+    .from(workflowInstance)
+    .orderBy(desc(workflowInstance.createdAt))
+    .limit(options?.limit ?? 50)
+    .offset(options?.offset ?? 0);
+
+  if (conditions.length > 0) {
+    return await query.where(and(...conditions));
+  }
+
+  return await query;
 }
 
 /**
@@ -951,7 +1005,11 @@ export async function updateApproval(
  * Find pending approvals for a user
  */
 export async function findPendingApprovalsForUser(
-  userId: string
+  userId: string,
+  options?: {
+    limit?: number;
+    offset?: number;
+  }
 ): Promise<WorkflowApproval[]> {
   const results = await database
     .select()
@@ -962,10 +1020,17 @@ export async function findPendingApprovalsForUser(
         eq(workflowApproval.status, "pending")
       )
     )
-    .orderBy(workflowApproval.dueAt);
+    .orderBy(workflowApproval.dueAt)
+    .limit(options?.limit ?? 50)
+    .offset(options?.offset ?? 0);
 
   return results;
 }
+
+/**
+ * Alias for findPendingApprovalsForUser
+ */
+export const findPendingApprovals = findPendingApprovalsForUser;
 
 /**
  * Find approvals for an instance
@@ -987,8 +1052,15 @@ export async function findApprovalsByInstance(
  */
 export async function approveWorkflowApproval(
   id: string,
+  approverId: string,
   comments?: string
 ): Promise<WorkflowApproval | null> {
+  // Verify the approval belongs to the approver
+  const approval = await findApprovalById(id);
+  if (!approval || approval.approverId !== approverId) {
+    throw new Error("Approval not found or access denied");
+  }
+
   return updateApproval(id, {
     status: "approved",
     decision: "approved",
@@ -1002,8 +1074,15 @@ export async function approveWorkflowApproval(
  */
 export async function rejectWorkflowApproval(
   id: string,
+  approverId: string,
   comments?: string
 ): Promise<WorkflowApproval | null> {
+  // Verify the approval belongs to the approver
+  const approval = await findApprovalById(id);
+  if (!approval || approval.approverId !== approverId) {
+    throw new Error("Approval not found or access denied");
+  }
+
   return updateApproval(id, {
     status: "rejected",
     decision: "rejected",
@@ -1065,6 +1144,77 @@ export async function getWorkflowStatistics(): Promise<WorkflowStatistics> {
     if (row.status === "running") stats.runningInstances = row.count;
     if (row.status === "completed") stats.completedInstances = row.count;
     if (row.status === "failed") stats.failedInstances = row.count;
+  }
+
+  return stats;
+}
+
+/**
+ * Get statistics for a specific workflow definition
+ */
+export async function getWorkflowStatisticsByDefinition(
+  definitionId: string
+): Promise<{
+  totalInstances: number;
+  runningInstances: number;
+  completedInstances: number;
+  failedInstances: number;
+  averageExecutionTime: number | null;
+  successRate: number;
+}> {
+  // Count instances by status
+  const instancesCount = await database
+    .select({
+      status: workflowInstance.status,
+      count: count(),
+    })
+    .from(workflowInstance)
+    .where(eq(workflowInstance.definitionId, definitionId))
+    .groupBy(workflowInstance.status);
+
+  const stats = {
+    totalInstances: 0,
+    runningInstances: 0,
+    completedInstances: 0,
+    failedInstances: 0,
+    averageExecutionTime: null as number | null,
+    successRate: 0,
+  };
+
+  for (const row of instancesCount) {
+    stats.totalInstances += row.count;
+    if (row.status === "running") stats.runningInstances = row.count;
+    if (row.status === "completed") stats.completedInstances = row.count;
+    if (row.status === "failed") stats.failedInstances = row.count;
+  }
+
+  // Calculate success rate
+  if (stats.totalInstances > 0) {
+    stats.successRate = (stats.completedInstances / stats.totalInstances) * 100;
+  }
+
+  // Calculate average execution time for completed instances
+  const completedInstances = await database
+    .select({
+      startedAt: workflowInstance.startedAt,
+      completedAt: workflowInstance.completedAt,
+    })
+    .from(workflowInstance)
+    .where(
+      and(
+        eq(workflowInstance.definitionId, definitionId),
+        eq(workflowInstance.status, "completed")
+      )
+    );
+
+  if (completedInstances.length > 0) {
+    const totalTime = completedInstances.reduce((sum, instance) => {
+      if (instance.startedAt && instance.completedAt) {
+        return sum + (instance.completedAt.getTime() - instance.startedAt.getTime());
+      }
+      return sum;
+    }, 0);
+    stats.averageExecutionTime = totalTime / completedInstances.length;
   }
 
   return stats;

@@ -1,0 +1,31 @@
+{
+  "category": "Uncategorized",
+  "description": "Fix Drizzle schema mismatches + migrate\n\nFix workflow automation API compile errors\n\nFix TanStack router type errors\n\nFix Topup + Reloadly type inconsistencies\n\nFix VoiceInput types (SpeechRecognition / AudioContext)",
+  "title": "“TypeScript Stabilization Phase 1”",
+  "images": [],
+  "imagePaths": [],
+  "textFilePaths": [],
+  "skipTests": true,
+  "model": "sonnet",
+  "thinkingLevel": "ultrathink",
+  "reasoningEffort": "none",
+  "priority": 2,
+  "planningMode": "skip",
+  "requirePlanApproval": false,
+  "dependencies": [],
+  "workMode": "current",
+  "titleGenerating": false,
+  "status": "waiting_approval",
+  "id": "feature-1768638334457-7zmkcn00f",
+  "descriptionHistory": [
+    {
+      "description": "Fix Drizzle schema mismatches + migrate\n\nFix workflow automation API compile errors\n\nFix TanStack router type errors\n\nFix Topup + Reloadly type inconsistencies\n\nFix VoiceInput types (SpeechRecognition / AudioContext)",
+      "timestamp": "2026-01-17T08:25:34.686Z",
+      "source": "initial"
+    }
+  ],
+  "branchName": "master",
+  "startedAt": "2026-01-17T08:25:39.305Z",
+  "updatedAt": "2026-01-17T08:35:09.543Z",
+  "justFinishedAt": "2026-01-17T08:35:09.543Z"
+}

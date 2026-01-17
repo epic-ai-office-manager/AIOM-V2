@@ -1598,3 +1598,13 @@ usageStats:
 - **Problem solved:** Components need call state for rendering and methods for actions; singleton service owns actual state
 - **Why this works:** Clear separation: read-only hook for display logic, action hook for mutations. Prevents accidental state modifications in render; hooks can be called conditionally without breaking dependencies
 - **Trade-offs:** Developers must know to use both hooks vs simpler API; better composability and tree-shaking vs slight API complexity
+
+#### [Pattern] Created wrapper/alias functions in data-access layer (findWorkflowDefinitionsByCreator, findRecentWorkflowInstances) that compose existing queries with domain-specific filters (2026-01-17)
+- **Problem solved:** Needed specialized queries for common use cases without duplicating core query logic
+- **Why this works:** Composition pattern reduces code duplication while creating semantic, domain-specific query names. Easier to maintain filter logic in one place
+- **Trade-offs:** Adds thin wrapper functions but improves semantic clarity and prevents filter logic from leaking into application code. Single source of truth for each query pattern
+
+#### [Gotcha] Workflow tables include event_log table for audit trail separate from execution tracking, plus scheduled_run table for deferred execution timing (2026-01-17)
+- **Situation:** Workflow system needs both real-time execution tracking AND async event history AND future execution scheduling - three distinct concerns
+- **Root cause:** Separating audit log (event_log) from execution state (step_execution) allows audit data to be immutable while execution state updates. Scheduled_run table handles cron-like delayed workflows
+- **How to avoid:** More tables but cleaner semantics. Queries are simpler because each table has single responsibility. Audit trail guaranteed immutable

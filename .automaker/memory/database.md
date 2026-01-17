@@ -758,3 +758,13 @@ usageStats:
 - **Problem solved:** Two different database operations need different tenant handling: CREATE (must inject) vs READ (must validate)
 - **Why this works:** Separates concerns cleanly. withTenantScope is fool-proof - impossible to forget tenant_id on insert. validateAndGetTenant ensures retrieved data matches expected tenant. Different error conditions (missing tenant_id vs wrong tenant)
 - **Trade-offs:** Requires two different utilities but each has clear purpose. More type-safe than alternatives
+
+#### [Gotcha] Migration order matters critically - workflow tables must be created before multi-tenant schema attempts to modify them with tenant_id columns (2026-01-17)
+- **Situation:** Initial migration numbering had 0016_multi_tenant_schema before 0017_workflow_automation_tables, causing schema dependency violations
+- **Root cause:** Multi-tenant migration alters existing tables to add tenant_id; those tables must exist first. Foreign key constraints and CASCADE operations depend on table creation order
+- **How to avoid:** Stricter ordering reduces flexibility but eliminates silent failures and data corruption risks. Requires discipline in naming/numbering
+
+#### [Pattern] Workflow approval status uses text enum with documented values (pending, approved, rejected, cancelled) plus separate decision field rather than single composite status (2026-01-17)
+- **Problem solved:** Approval lifecycle has multiple terminal and interim states, needs to track which user made decision
+- **Why this works:** Separating status (workflow state machine) from decision (user choice) allows: tracking approval cycles that get restarted, distinguishing cancelled by system vs rejected by user, easier state machine queries
+- **Trade-offs:** Two fields instead of one, but semantic clarity on what each field means. Queries for 'approvals awaiting decision' become explicit rather than status wildcards
