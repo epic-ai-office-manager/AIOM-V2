@@ -5,7 +5,7 @@
  * key points extraction, action items identification, and sentiment analysis.
  */
 
-import { getClaudeClient } from "~/lib/claude/client";
+import { getClaudeClient } from "~/lib/claude/migration-wrapper";
 import { findCallRecordById } from "~/data-access/call-records";
 import { findCallDispositionByCallRecordId } from "~/data-access/call-dispositions";
 import {

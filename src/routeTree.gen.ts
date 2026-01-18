@@ -28,6 +28,7 @@ import { Route as DashboardSettingsRouteImport } from './routes/dashboard/settin
 import { Route as DashboardSearchRouteImport } from './routes/dashboard/search'
 import { Route as DashboardQueryRouteImport } from './routes/dashboard/query'
 import { Route as DashboardInboxRouteImport } from './routes/dashboard/inbox'
+import { Route as AdminClaudeUsageRouteImport } from './routes/admin/claude-usage'
 import { Route as ProfileUserIdIndexRouteImport } from './routes/profile/$userId/index'
 import { Route as MobileVouchersIndexRouteImport } from './routes/mobile/vouchers/index'
 import { Route as MobileTopupIndexRouteImport } from './routes/mobile/topup/index'
@@ -107,6 +108,8 @@ import { Route as ApiBriefingScheduleRouteImport } from './routes/api/briefing/s
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
 import { Route as ApiAnomalyDetectionAnalyzeRouteImport } from './routes/api/anomaly-detection/analyze'
 import { Route as ApiAnomalyDetectionAlertsRouteImport } from './routes/api/anomaly-detection/alerts'
+import { Route as ApiAnalyticsClaudeUsageExportRouteImport } from './routes/api/analytics/claude-usage-export'
+import { Route as ApiAnalyticsClaudeUsageRouteImport } from './routes/api/analytics/claude-usage'
 
 const UnauthenticatedRoute = UnauthenticatedRouteImport.update({
   id: '/unauthenticated',
@@ -202,6 +205,11 @@ const DashboardInboxRoute = DashboardInboxRouteImport.update({
   id: '/inbox',
   path: '/inbox',
   getParentRoute: () => DashboardRoute,
+} as any)
+const AdminClaudeUsageRoute = AdminClaudeUsageRouteImport.update({
+  id: '/admin/claude-usage',
+  path: '/admin/claude-usage',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ProfileUserIdIndexRoute = ProfileUserIdIndexRouteImport.update({
   id: '/profile/$userId/',
@@ -612,6 +620,17 @@ const ApiAnomalyDetectionAlertsRoute =
     path: '/api/anomaly-detection/alerts',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ApiAnalyticsClaudeUsageExportRoute =
+  ApiAnalyticsClaudeUsageExportRouteImport.update({
+    id: '/api/analytics/claude-usage-export',
+    path: '/api/analytics/claude-usage-export',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiAnalyticsClaudeUsageRoute = ApiAnalyticsClaudeUsageRouteImport.update({
+  id: '/api/analytics/claude-usage',
+  path: '/api/analytics/claude-usage',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -620,6 +639,7 @@ export interface FileRoutesByFullPath {
   '/sign-in': typeof SignInRoute
   '/sign-up': typeof SignUpRoute
   '/unauthenticated': typeof UnauthenticatedRoute
+  '/admin/claude-usage': typeof AdminClaudeUsageRoute
   '/dashboard/inbox': typeof DashboardInboxRoute
   '/dashboard/query': typeof DashboardQueryRoute
   '/dashboard/search': typeof DashboardSearchRoute
@@ -633,6 +653,8 @@ export interface FileRoutesByFullPath {
   '/dashboard/': typeof DashboardIndexRoute
   '/demo': typeof DemoIndexRoute
   '/mobile': typeof MobileIndexRoute
+  '/api/analytics/claude-usage': typeof ApiAnalyticsClaudeUsageRoute
+  '/api/analytics/claude-usage-export': typeof ApiAnalyticsClaudeUsageExportRoute
   '/api/anomaly-detection/alerts': typeof ApiAnomalyDetectionAlertsRoute
   '/api/anomaly-detection/analyze': typeof ApiAnomalyDetectionAnalyzeRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
@@ -719,6 +741,7 @@ export interface FileRoutesByTo {
   '/sign-in': typeof SignInRoute
   '/sign-up': typeof SignUpRoute
   '/unauthenticated': typeof UnauthenticatedRoute
+  '/admin/claude-usage': typeof AdminClaudeUsageRoute
   '/dashboard/inbox': typeof DashboardInboxRoute
   '/dashboard/query': typeof DashboardQueryRoute
   '/dashboard/search': typeof DashboardSearchRoute
@@ -732,6 +755,8 @@ export interface FileRoutesByTo {
   '/dashboard': typeof DashboardIndexRoute
   '/demo': typeof DemoIndexRoute
   '/mobile': typeof MobileIndexRoute
+  '/api/analytics/claude-usage': typeof ApiAnalyticsClaudeUsageRoute
+  '/api/analytics/claude-usage-export': typeof ApiAnalyticsClaudeUsageExportRoute
   '/api/anomaly-detection/alerts': typeof ApiAnomalyDetectionAlertsRoute
   '/api/anomaly-detection/analyze': typeof ApiAnomalyDetectionAnalyzeRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
@@ -820,6 +845,7 @@ export interface FileRoutesById {
   '/sign-in': typeof SignInRoute
   '/sign-up': typeof SignUpRoute
   '/unauthenticated': typeof UnauthenticatedRoute
+  '/admin/claude-usage': typeof AdminClaudeUsageRoute
   '/dashboard/inbox': typeof DashboardInboxRoute
   '/dashboard/query': typeof DashboardQueryRoute
   '/dashboard/search': typeof DashboardSearchRoute
@@ -833,6 +859,8 @@ export interface FileRoutesById {
   '/dashboard/': typeof DashboardIndexRoute
   '/demo/': typeof DemoIndexRoute
   '/mobile/': typeof MobileIndexRoute
+  '/api/analytics/claude-usage': typeof ApiAnalyticsClaudeUsageRoute
+  '/api/analytics/claude-usage-export': typeof ApiAnalyticsClaudeUsageExportRoute
   '/api/anomaly-detection/alerts': typeof ApiAnomalyDetectionAlertsRoute
   '/api/anomaly-detection/analyze': typeof ApiAnomalyDetectionAnalyzeRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
@@ -922,6 +950,7 @@ export interface FileRouteTypes {
     | '/sign-in'
     | '/sign-up'
     | '/unauthenticated'
+    | '/admin/claude-usage'
     | '/dashboard/inbox'
     | '/dashboard/query'
     | '/dashboard/search'
@@ -935,6 +964,8 @@ export interface FileRouteTypes {
     | '/dashboard/'
     | '/demo'
     | '/mobile'
+    | '/api/analytics/claude-usage'
+    | '/api/analytics/claude-usage-export'
     | '/api/anomaly-detection/alerts'
     | '/api/anomaly-detection/analyze'
     | '/api/auth/$'
@@ -1021,6 +1052,7 @@ export interface FileRouteTypes {
     | '/sign-in'
     | '/sign-up'
     | '/unauthenticated'
+    | '/admin/claude-usage'
     | '/dashboard/inbox'
     | '/dashboard/query'
     | '/dashboard/search'
@@ -1034,6 +1066,8 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/demo'
     | '/mobile'
+    | '/api/analytics/claude-usage'
+    | '/api/analytics/claude-usage-export'
     | '/api/anomaly-detection/alerts'
     | '/api/anomaly-detection/analyze'
     | '/api/auth/$'
@@ -1121,6 +1155,7 @@ export interface FileRouteTypes {
     | '/sign-in'
     | '/sign-up'
     | '/unauthenticated'
+    | '/admin/claude-usage'
     | '/dashboard/inbox'
     | '/dashboard/query'
     | '/dashboard/search'
@@ -1134,6 +1169,8 @@ export interface FileRouteTypes {
     | '/dashboard/'
     | '/demo/'
     | '/mobile/'
+    | '/api/analytics/claude-usage'
+    | '/api/analytics/claude-usage-export'
     | '/api/anomaly-detection/alerts'
     | '/api/anomaly-detection/analyze'
     | '/api/auth/$'
@@ -1222,12 +1259,15 @@ export interface RootRouteChildren {
   SignInRoute: typeof SignInRoute
   SignUpRoute: typeof SignUpRoute
   UnauthenticatedRoute: typeof UnauthenticatedRoute
+  AdminClaudeUsageRoute: typeof AdminClaudeUsageRoute
   DemoDashboardRoute: typeof DemoDashboardRoute
   DemoOcrReceiptRoute: typeof DemoOcrReceiptRoute
   DemoReceiptCaptureRoute: typeof DemoReceiptCaptureRoute
   DemoVoiceInputRoute: typeof DemoVoiceInputRoute
   DemoIndexRoute: typeof DemoIndexRoute
   MobileIndexRoute: typeof MobileIndexRoute
+  ApiAnalyticsClaudeUsageRoute: typeof ApiAnalyticsClaudeUsageRoute
+  ApiAnalyticsClaudeUsageExportRoute: typeof ApiAnalyticsClaudeUsageExportRoute
   ApiAnomalyDetectionAlertsRoute: typeof ApiAnomalyDetectionAlertsRoute
   ApiAnomalyDetectionAnalyzeRoute: typeof ApiAnomalyDetectionAnalyzeRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
@@ -1430,6 +1470,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/dashboard/inbox'
       preLoaderRoute: typeof DashboardInboxRouteImport
       parentRoute: typeof DashboardRoute
+    }
+    '/admin/claude-usage': {
+      id: '/admin/claude-usage'
+      path: '/admin/claude-usage'
+      fullPath: '/admin/claude-usage'
+      preLoaderRoute: typeof AdminClaudeUsageRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/profile/$userId/': {
       id: '/profile/$userId/'
@@ -1984,6 +2031,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAnomalyDetectionAlertsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/analytics/claude-usage-export': {
+      id: '/api/analytics/claude-usage-export'
+      path: '/api/analytics/claude-usage-export'
+      fullPath: '/api/analytics/claude-usage-export'
+      preLoaderRoute: typeof ApiAnalyticsClaudeUsageExportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/analytics/claude-usage': {
+      id: '/api/analytics/claude-usage'
+      path: '/api/analytics/claude-usage'
+      fullPath: '/api/analytics/claude-usage'
+      preLoaderRoute: typeof ApiAnalyticsClaudeUsageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -2044,12 +2105,15 @@ const rootRouteChildren: RootRouteChildren = {
   SignInRoute: SignInRoute,
   SignUpRoute: SignUpRoute,
   UnauthenticatedRoute: UnauthenticatedRoute,
+  AdminClaudeUsageRoute: AdminClaudeUsageRoute,
   DemoDashboardRoute: DemoDashboardRoute,
   DemoOcrReceiptRoute: DemoOcrReceiptRoute,
   DemoReceiptCaptureRoute: DemoReceiptCaptureRoute,
   DemoVoiceInputRoute: DemoVoiceInputRoute,
   DemoIndexRoute: DemoIndexRoute,
   MobileIndexRoute: MobileIndexRoute,
+  ApiAnalyticsClaudeUsageRoute: ApiAnalyticsClaudeUsageRoute,
+  ApiAnalyticsClaudeUsageExportRoute: ApiAnalyticsClaudeUsageExportRoute,
   ApiAnomalyDetectionAlertsRoute: ApiAnomalyDetectionAlertsRoute,
   ApiAnomalyDetectionAnalyzeRoute: ApiAnomalyDetectionAnalyzeRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,

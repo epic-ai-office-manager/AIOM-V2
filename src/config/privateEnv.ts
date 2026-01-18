@@ -17,6 +17,7 @@ export const privateEnv = {
 
   // Anthropic Claude API
   ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY || '',
+  USE_SDK_CLIENT: process.env.USE_SDK_CLIENT === 'true',
 
   // Odoo ERP Connection
   ODOO_URL: process.env.ODOO_URL || '',

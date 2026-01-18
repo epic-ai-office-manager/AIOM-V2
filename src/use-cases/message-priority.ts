@@ -8,7 +8,7 @@
  * - Temporal factors (time sensitivity, response expectations)
  */
 
-import { getClaudeClient } from "~/lib/claude/client";
+import { getClaudeClient } from "~/lib/claude/migration-wrapper";
 import {
   updateThreadPriorityScore,
   getThreadsNeedingScoring,

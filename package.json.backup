@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "test:sdk": "tsx test-sdk-migration.ts"
+  }
+}

@@ -5,7 +5,7 @@
  * risk assessment, escalation prediction, and satisfaction analysis.
  */
 
-import { getClaudeClient } from "~/lib/claude/client";
+import { getClaudeClient } from "~/lib/claude/migration-wrapper";
 import {
   getOpenCustomerIssues,
   getCustomerIssueStats,
