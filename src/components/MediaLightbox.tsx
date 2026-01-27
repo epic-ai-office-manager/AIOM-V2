@@ -32,7 +32,10 @@ function MediaItem({
     );
   }
 
-  if (attachment.type === "video") {
+  // Derive video type from MIME type
+  const isVideo = attachment.fileType?.startsWith("video/");
+
+  if (isVideo) {
     return (
       <div className="relative max-h-[90vh] max-w-[90vw]">
         <video
@@ -75,18 +78,18 @@ function MediaItemWithUrl({
   urlMap?: Record<string, string>;
 }) {
   // If URL is provided in map, use it directly
-  if (urlMap && urlMap[attachment.fileKey]) {
+  if (urlMap && urlMap[attachment.fileUrl]) {
     return (
       <MediaItem
         attachment={attachment}
-        url={urlMap[attachment.fileKey]}
+        url={urlMap[attachment.fileUrl]}
         isActive={isActive}
       />
     );
   }
 
   // Otherwise fetch it
-  const { data: url, isLoading } = useAttachmentUrl(attachment.fileKey);
+  const { data: url, isLoading } = useAttachmentUrl(attachment.fileUrl);
 
   if (isLoading) {
     return (
@@ -237,7 +240,7 @@ export function MediaLightbox({
       {showNavigation && attachments.length <= 10 && (
         <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex gap-2">
           {attachments.map((att, idx) => {
-            const thumbUrl = urlMap?.[att.fileKey];
+            const thumbUrl = urlMap?.[att.fileUrl];
             return (
               <button
                 key={att.id}
@@ -253,7 +256,7 @@ export function MediaLightbox({
                 }}
               >
                 {thumbUrl ? (
-                  att.type === "video" ? (
+                  att.fileType?.startsWith("video/") ? (
                     <div className="w-full h-full bg-muted flex items-center justify-center">
                       <Play className="h-4 w-4 text-white" />
                     </div>

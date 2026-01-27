@@ -81,7 +81,7 @@ export function AttachmentPreviewGrid({
           <AttachmentThumbnail
             key={attachment.id}
             attachment={attachment}
-            url={existingUrlMap[attachment.fileKey]}
+            url={existingUrlMap[attachment.fileUrl]}
             size={size}
             showDelete={showDelete}
             onDelete={() => onDeleteExisting?.(attachment.id)}

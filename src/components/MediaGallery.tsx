@@ -39,7 +39,10 @@ function MediaThumbnail({
     );
   }
 
-  if (attachment.type === "video") {
+  // Derive video type from MIME type
+  const isVideo = attachment.fileType?.startsWith("video/");
+
+  if (isVideo) {
     return (
       <button
         className={cn(
@@ -136,7 +139,7 @@ export function MediaGallery({
             <div key={attachment.id} className="relative">
               <MediaThumbnail
                 attachment={attachment}
-                url={urlMap?.[attachment.fileKey]}
+                url={urlMap?.[attachment.fileUrl]}
                 onClick={() => handleOpenLightbox(index)}
                 className={cn("rounded-lg", thumbnailSizeClasses[size])}
               />
@@ -172,7 +175,7 @@ export function MediaGallery({
         <div className={cn("rounded-lg overflow-hidden", className)}>
           <MediaThumbnail
             attachment={attachments[0]}
-            url={urlMap?.[attachments[0].fileKey]}
+            url={urlMap?.[attachments[0].fileUrl]}
             onClick={() => handleOpenLightbox(0)}
             className={cn("w-full", sizeClasses[size])}
           />
@@ -197,7 +200,7 @@ export function MediaGallery({
             <MediaThumbnail
               key={attachment.id}
               attachment={attachment}
-              url={urlMap?.[attachment.fileKey]}
+              url={urlMap?.[attachment.fileUrl]}
               onClick={() => handleOpenLightbox(index)}
               className={sizeClasses[size]}
             />
@@ -221,19 +224,19 @@ export function MediaGallery({
         <div className={cn("grid grid-cols-2 gap-1 rounded-lg overflow-hidden", className)}>
           <MediaThumbnail
             attachment={attachments[0]}
-            url={urlMap?.[attachments[0].fileKey]}
+            url={urlMap?.[attachments[0].fileUrl]}
             onClick={() => handleOpenLightbox(0)}
             className={cn("row-span-2", size === "sm" ? "h-48" : size === "md" ? "h-64" : "h-96")}
           />
           <MediaThumbnail
             attachment={attachments[1]}
-            url={urlMap?.[attachments[1].fileKey]}
+            url={urlMap?.[attachments[1].fileUrl]}
             onClick={() => handleOpenLightbox(1)}
             className={sizeClasses[size]}
           />
           <MediaThumbnail
             attachment={attachments[2]}
-            url={urlMap?.[attachments[2].fileKey]}
+            url={urlMap?.[attachments[2].fileUrl]}
             onClick={() => handleOpenLightbox(2)}
             className={sizeClasses[size]}
           />
@@ -257,7 +260,7 @@ export function MediaGallery({
           <div key={attachment.id} className="relative">
             <MediaThumbnail
               attachment={attachment}
-              url={urlMap?.[attachment.fileKey]}
+              url={urlMap?.[attachment.fileUrl]}
               onClick={() => handleOpenLightbox(index)}
               className={sizeClasses[size]}
             />

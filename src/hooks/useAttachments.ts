@@ -54,7 +54,7 @@ export function useAttachmentUrl(fileKey: string | null | undefined) {
 
 // Multiple attachment URLs hook
 export function useAttachmentUrls(attachments: PostAttachment[]) {
-  const fileKeys = attachments.map((a) => a.fileKey);
+  const fileKeys = attachments.map((a) => a.fileUrl);
 
   return useQuery({
     queryKey: ["attachment-urls", fileKeys],

@@ -144,11 +144,10 @@ export const savePostAttachmentsFn = createServerFn({ method: "POST" })
       id: att.id,
       postId,
       commentId: null,
-      type: att.type,
-      fileKey: att.fileKey,
+      fileUrl: att.fileKey, // Store storage key in DB fileUrl column
+      fileType: att.mimeType, // Store MIME type in DB fileType column
       fileName: att.fileName,
       fileSize: att.fileSize,
-      mimeType: att.mimeType,
       position: att.position,
     }));
 
@@ -190,11 +189,10 @@ export const saveCommentAttachmentsFn = createServerFn({ method: "POST" })
       id: att.id,
       postId: null,
       commentId,
-      type: att.type,
-      fileKey: att.fileKey,
+      fileUrl: att.fileKey, // Store storage key in DB fileUrl column
+      fileType: att.mimeType, // Store MIME type in DB fileType column
       fileName: att.fileName,
       fileSize: att.fileSize,
-      mimeType: att.mimeType,
       position: att.position,
     }));
 
@@ -239,7 +237,7 @@ export const deleteAttachmentFn = createServerFn({ method: "POST" })
     // Delete from storage
     const { storage } = getStorage();
     try {
-      await storage.delete(attachment.fileKey);
+      await storage.delete(attachment.fileUrl);
     } catch {
       // Continue even if storage deletion fails
     }
