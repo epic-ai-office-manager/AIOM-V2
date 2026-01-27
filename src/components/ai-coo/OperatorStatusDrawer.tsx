@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { X } from 'lucide-react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { StatusPill } from './StatusPill';
 import { ActivityFeedRow } from './ActivityFeedRow';
+import { EmergencyStopModal } from './EmergencyStopModal';
 
 interface OperatorStatusDrawerProps {
   open: boolean;
@@ -9,6 +11,7 @@ interface OperatorStatusDrawerProps {
 }
 
 export function OperatorStatusDrawer({ open, onClose }: OperatorStatusDrawerProps) {
+  const [showEmergencyStop, setShowEmergencyStop] = useState(false);
   // Mock data - will be replaced with real data
   const currentlyExecuting = [
     {
@@ -87,7 +90,10 @@ export function OperatorStatusDrawer({ open, onClose }: OperatorStatusDrawerProp
 
               {/* Controls */}
               <div className="space-y-2">
-                <button className="w-full rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700">
+                <button
+                  onClick={() => setShowEmergencyStop(true)}
+                  className="w-full rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700"
+                >
                   Emergency Stop
                 </button>
                 <button className="w-full rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">
@@ -104,6 +110,17 @@ export function OperatorStatusDrawer({ open, onClose }: OperatorStatusDrawerProp
           </div>
         </Dialog.Content>
       </Dialog.Portal>
+
+      {/* Emergency Stop Modal */}
+      <EmergencyStopModal
+        open={showEmergencyStop}
+        onClose={() => setShowEmergencyStop(false)}
+        onConfirm={() => {
+          // Operations stopped, close both modals
+          setShowEmergencyStop(false);
+          onClose();
+        }}
+      />
     </Dialog.Root>
   );
 }

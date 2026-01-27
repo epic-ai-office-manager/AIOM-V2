@@ -1,19 +1,27 @@
+import { useState } from 'react';
 import { Bell, Pause, Settings, Clock } from 'lucide-react';
 import { StatusPill } from './StatusPill';
+import { OperatorStatusDrawer } from './OperatorStatusDrawer';
 
 export function TopBar() {
-  return (
-    <div className="sticky top-0 z-50 border-b border-gray-200 bg-white px-6 py-3">
-      <div className="flex items-center justify-between">
-        {/* Left: Logo & Status */}
-        <div className="flex items-center gap-4">
-          <h1 className="text-xl font-medium text-gray-900">AI Operator</h1>
+  const [showDrawer, setShowDrawer] = useState(false);
 
-          <div className="flex items-center gap-2 rounded-full bg-emerald-100 px-3 py-1.5">
-            <StatusPill status="active" />
-            <span className="text-sm font-medium text-emerald-700">Active</span>
+  return (
+    <>
+      <div className="sticky top-0 z-50 border-b border-gray-200 bg-white px-6 py-3">
+        <div className="flex items-center justify-between">
+          {/* Left: Logo & Status */}
+          <div className="flex items-center gap-4">
+            <h1 className="text-xl font-medium text-gray-900">AI Operator</h1>
+
+            <button
+              onClick={() => setShowDrawer(true)}
+              className="flex items-center gap-2 rounded-full bg-emerald-100 px-3 py-1.5 hover:bg-emerald-200 transition-colors cursor-pointer"
+            >
+              <StatusPill status="active" />
+              <span className="text-sm font-medium text-emerald-700">Active</span>
+            </button>
           </div>
-        </div>
 
         {/* Center: Search Bar */}
         <div className="relative flex-1 max-w-[576px] mx-8">
@@ -62,5 +70,9 @@ export function TopBar() {
         </div>
       </div>
     </div>
+
+      {/* Operator Status Drawer */}
+      <OperatorStatusDrawer open={showDrawer} onClose={() => setShowDrawer(false)} />
+    </>
   );
 }

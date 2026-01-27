@@ -1,7 +1,10 @@
+import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { AIDecisionCard } from './AIDecisionCard';
+import { ApprovalReviewModal } from './ApprovalReviewModal';
 
 export function AIConversationColumn() {
+  const [showApprovalModal, setShowApprovalModal] = useState(false);
   // Fetch real AI COO decision cards from API
   const { data, isLoading, error } = useQuery({
     queryKey: ['ai-coo-action-recommendations'],
@@ -19,13 +22,26 @@ export function AIConversationColumn() {
     <div className="flex flex-col gap-4">
       {/* Header */}
       <div className="rounded-lg border border-gray-200 bg-white p-6">
-        <h2 className="mb-1 text-lg font-medium text-gray-900">AI COO Conversation</h2>
-        <p className="text-sm text-gray-500">
-          {isLoading ? 'Loading...' :
-           error ? 'Error loading recommendations' :
-           decisionCards.length > 0 ? `I need your input on ${decisionCards.length} situation${decisionCards.length > 1 ? 's' : ''}` :
-           'No pending actions right now'}
-        </p>
+        <div className="flex items-start justify-between">
+          <div>
+            <h2 className="mb-1 text-lg font-medium text-gray-900">AI COO Conversation</h2>
+            <p className="text-sm text-gray-500">
+              {isLoading ? 'Loading...' :
+               error ? 'Error loading recommendations' :
+               decisionCards.length > 0 ? `I need your input on ${decisionCards.length} situation${decisionCards.length > 1 ? 's' : ''}` :
+               'No pending actions right now'}
+            </p>
+          </div>
+
+          {decisionCards.length > 0 && (
+            <button
+              onClick={() => setShowApprovalModal(true)}
+              className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+            >
+              Review All ({decisionCards.length})
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Loading State */}
@@ -71,6 +87,24 @@ export function AIConversationColumn() {
           </button>
         </div>
       </div>
+
+      {/* Approval Review Modal */}
+      <ApprovalReviewModal
+        open={showApprovalModal}
+        onClose={() => setShowApprovalModal(false)}
+        actions={decisionCards.map((card: any) => ({
+          id: card.id,
+          title: card.title,
+          description: card.body || card.description,
+          risk: card.priority === 'critical' ? 'high' : card.priority === 'high' ? 'medium' : 'low',
+          estimatedImpact: card.estimatedImpact || 'Impact assessment pending',
+        }))}
+        onApprove={(actionIds) => {
+          console.log('Approved actions:', actionIds);
+          // Refresh the recommendations list
+          // TODO: Call invalidateQueries when queryClient is available
+        }}
+      />
     </div>
   );
 }
