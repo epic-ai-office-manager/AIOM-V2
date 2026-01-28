@@ -40,6 +40,12 @@ async function testOdooTaskCreation() {
     },
     variables: {},
     metadata: {},
+    // Required fields
+    triggerData: {},
+    stepResults: {},
+    startedAt: new Date(),
+    instanceId: 'test-instance-1',
+    definitionId: 'test-definition-1',
   };
 
   try {
@@ -83,6 +89,12 @@ async function testOdooSearch() {
     },
     variables: {},
     metadata: {},
+    // Required fields
+    triggerData: {},
+    stepResults: {},
+    startedAt: new Date(),
+    instanceId: 'test-instance-2',
+    definitionId: 'test-definition-2',
   };
 
   try {
@@ -125,6 +137,12 @@ async function testEmailSend() {
     },
     variables: {},
     metadata: {},
+    // Required fields
+    triggerData: {},
+    stepResults: {},
+    startedAt: new Date(),
+    instanceId: 'test-instance-3',
+    definitionId: 'test-definition-3',
   };
 
   try {
