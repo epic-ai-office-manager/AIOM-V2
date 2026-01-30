@@ -19,4 +19,11 @@ export const auth = betterAuth({
     },
   },
   secret: privateEnv.BETTER_AUTH_SECRET,
+  trustedOrigins: [
+    "https://ops.epic.dm",
+    "https://staging.ops.epic.dm",
+    "https://stg.ops.epic.dm",
+    "http://localhost:3000",
+    "http://localhost:3001",
+  ],
 });
