@@ -54,7 +54,7 @@ echo "https://staging.ops.epic.dm" | vercel env add BETTER_AUTH_URL production
 echo "https://epic-communications-inc818.odoo.com" | vercel env add ODOO_URL production
 echo "epic-communications-inc818" | vercel env add ODOO_DATABASE production
 echo "eric.giraud@epic.dm" | vercel env add ODOO_USERNAME production
-echo "2e0f2f7b62ca0d876495114fec1bbbe1ae9810d9" | vercel env add ODOO_PASSWORD production
+echo "<your-odoo-password>" | vercel env add ODOO_PASSWORD production
 
 # 6. Deploy to production!
 vercel --prod
@@ -79,7 +79,7 @@ vercel --prod
    ODOO_URL = https://epic-communications-inc818.odoo.com
    ODOO_DATABASE = epic-communications-inc818
    ODOO_USERNAME = eric.giraud@epic.dm
-   ODOO_PASSWORD = 2e0f2f7b62ca0d876495114fec1bbbe1ae9810d9
+   ODOO_PASSWORD = <your-odoo-password>
    ```
 
 6. **Custom Domain** (in Project Settings → Domains):

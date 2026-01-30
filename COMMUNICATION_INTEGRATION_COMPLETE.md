@@ -17,7 +17,7 @@ Both integrations are production-ready and configured with your actual credentia
 
 ### 1. SMTP2GO Email Integration ✅
 **Service**: SMTP2GO API
-**API Key**: `api-5FD33A7F321B4449A650F2FB47E36A8C` (configured in .env)
+**API Key**: `SMTP2GO_API_KEY` (configured in .env - contact admin for access)
 **Sender Email**: `noreply@epic.dm`
 **Status**: ✅ Ready to send
 
@@ -35,8 +35,8 @@ Both integrations are production-ready and configured with your actual credentia
 **Service**: Your custom SMS server
 **Endpoint**: `https://818.epic.dm/app/sms/api.php`
 **Authentication**: HTTP Basic Auth
-**Username**: `smsapi_19905e5b` (configured in .env)
-**Password**: `a3Q9VOE0eoT4YAQ6pckg` (configured in .env)
+**Username**: `EPIC_SMS_USERNAME` (configured in .env - contact admin for access)
+**Password**: `EPIC_SMS_PASSWORD` (configured in .env - contact admin for access)
 **Status**: ✅ Ready to send
 
 **Capabilities**:
@@ -58,16 +58,16 @@ Both integrations are production-ready and configured with your actual credentia
 
 ```env
 # SMTP2GO Configuration (Email Only)
-SMTP2GO_API_KEY="api-5FD33A7F321B4449A650F2FB47E36A8C"
+SMTP2GO_API_KEY="<your-smtp2go-api-key>"
 SMTP2GO_SENDER_EMAIL="noreply@epic.dm"
 
 # Epic SMS Gateway Configuration (Your Custom Server)
 EPIC_SMS_API_URL="https://818.epic.dm/app/sms/api.php"
-EPIC_SMS_USERNAME="smsapi_19905e5b"
-EPIC_SMS_PASSWORD="a3Q9VOE0eoT4YAQ6pckg"
+EPIC_SMS_USERNAME="<your-epic-sms-username>"
+EPIC_SMS_PASSWORD="<your-epic-sms-password>"
 ```
 
-All credentials are configured and stored securely in `.env` (which is gitignored).
+All credentials are configured and stored securely in `.env` (which is gitignored). Contact your system administrator for actual credential values.
 
 ---
 
