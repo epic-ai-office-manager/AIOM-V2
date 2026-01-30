@@ -16,13 +16,11 @@ export default defineConfig(({ mode }) => {
         'X-XSS-Protection': '1; mode=block',
       },
     },
-    resolve: {
-      alias: {
-        'decimal.js-light': 'decimal.js-light/decimal.js',
-      },
+    optimizeDeps: {
+      include: ['decimal.js-light'],
     },
     ssr: {
-      noExternal: ['decimal.js-light'],
+      noExternal: ['recharts', 'decimal.js-light'],
     },
     plugins: [
       tsConfigPaths(),
