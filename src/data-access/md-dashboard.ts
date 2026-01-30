@@ -137,7 +137,14 @@ async function getPendingApprovals() {
       purpose: expenseRequest.purpose,
       amount: expenseRequest.amount,
       createdAt: expenseRequest.createdAt,
-      priority: expenseRequest.priority,
+      priority: sql<string>`
+        CASE
+          WHEN CAST(${expenseRequest.amount} AS NUMERIC) >= 10000 THEN 'urgent'
+          WHEN CAST(${expenseRequest.amount} AS NUMERIC) >= 5000 THEN 'high'
+          WHEN CAST(${expenseRequest.amount} AS NUMERIC) >= 1000 THEN 'normal'
+          ELSE 'low'
+        END
+      `,
     })
     .from(expenseRequest)
     .where(eq(expenseRequest.status, "pending"))
@@ -145,14 +152,23 @@ async function getPendingApprovals() {
     .limit(5);
 
   // Get counts by priority
+  const priorityColumn = sql<string>`
+    CASE
+      WHEN CAST(${expenseRequest.amount} AS NUMERIC) >= 10000 THEN 'urgent'
+      WHEN CAST(${expenseRequest.amount} AS NUMERIC) >= 5000 THEN 'high'
+      WHEN CAST(${expenseRequest.amount} AS NUMERIC) >= 1000 THEN 'normal'
+      ELSE 'low'
+    END
+  `;
+
   const priorityCounts = await database
     .select({
-      priority: expenseRequest.priority,
+      priority: priorityColumn,
       count: count(),
     })
     .from(expenseRequest)
     .where(eq(expenseRequest.status, "pending"))
-    .groupBy(expenseRequest.priority);
+    .groupBy(priorityColumn);
 
   const highPriority = priorityCounts.find(p => p.priority === "high")?.count ?? 0;
   const normalPriority = priorityCounts.find(p => p.priority === "normal")?.count ?? 0;

@@ -887,7 +887,7 @@ export type ConversationStatus = "active" | "archived" | "deleted";
 export type MessageRole = "user" | "assistant" | "system" | "tool";
 
 // Tool call status types
-export type ToolCallStatus = "pending" | "running" | "completed" | "failed";
+export type ToolCallStatus = "proposed" | "pending" | "running" | "completed" | "failed";
 
 // AI Conversation Session table - Main table for conversation sessions
 export const aiConversation = pgTable(

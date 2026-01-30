@@ -5,8 +5,8 @@
  * to the General Ledger in Odoo with proper account coding and journal entries.
  */
 
+import type { OdooClient } from "./client";
 import type {
-  OdooClient,
   AccountMove,
   AccountMoveLine,
   AccountJournal,
@@ -172,7 +172,7 @@ export class OdooGLPostingService {
     try {
       const accounts = await this.client.searchRead<AccountAccount>(
         "account.account",
-        [["code", "=like", `${prefix}%`]],
+        [["code", "like", `${prefix}%`]],
         {
           fields: ["id", "code", "name", "account_type", "reconcile"],
           order: "code asc",

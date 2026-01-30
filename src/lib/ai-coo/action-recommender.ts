@@ -25,7 +25,7 @@ import {
   ACTION_TYPE_DEFAULT_RISK,
 } from './action-protocol.v1_1';
 import { createAutonomousAction } from '~/data-access/ai-coo';
-import type { AnalysisResult } from '~/db/ai-coo-schema';
+import { analysisResults } from '~/db/ai-coo-schema';
 
 // ============================================================================
 // TYPES
@@ -407,7 +407,7 @@ async function generateProposedChanges(aiRec: AIRecommendation): Promise<any[]> 
       const records = await odoo.read(
         aiRec.affected_records.odoo_model,
         aiRec.affected_records.odoo_ids,
-        ['name', 'stage_id', 'activity_date_deadline']
+        { fields: ['name', 'stage_id', 'activity_date_deadline'] }
       );
 
       if (records.length > 0) {

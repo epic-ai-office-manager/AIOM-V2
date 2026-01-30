@@ -322,7 +322,7 @@ ${formattedMessages}`,
           temperature: 0.3, // Lower temperature for more consistent scoring
         });
 
-        const responseText = client.extractTextFromResponse(response);
+        const responseText = client.extractTextFromResponse(response as any);
 
         // Parse the JSON response
         const parsed = JSON.parse(responseText);

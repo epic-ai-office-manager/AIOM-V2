@@ -43,7 +43,7 @@ const contentBlockSchema = z.union([
     type: z.literal("tool_use"),
     id: z.string(),
     name: z.string(),
-    input: z.record(z.unknown()),
+    input: z.record(z.string(), z.unknown()),
   }),
   z.object({
     type: z.literal("tool_result"),
@@ -60,11 +60,11 @@ const messageSchema = z.object({
 
 const toolInputSchemaSchema = z.object({
   type: z.literal("object"),
-  properties: z.record(z.object({
+  properties: z.record(z.string(), z.object({
     type: z.string(),
     description: z.string().optional(),
     enum: z.array(z.string()).optional(),
-    items: z.record(z.unknown()).optional(),
+    items: z.record(z.string(), z.unknown()).optional(),
     required: z.boolean().optional(),
   })),
   required: z.array(z.string()).optional(),
@@ -161,7 +161,7 @@ export const sendClaudeMessageFn = createServerFn({
     })
   )
   .middleware([authenticatedMiddleware])
-  .handler(async ({ data, context }): Promise<SendClaudeMessageResult> => {
+  .handler(async ({ data, context }) => {
     try {
       const client = getClaudeClient(privateEnv.ANTHROPIC_API_KEY);
 
@@ -192,11 +192,11 @@ export const sendClaudeMessageFn = createServerFn({
         cacheStats = calculateCacheStats(response.usage);
       }
 
-      const result: SendClaudeMessageResult = {
-        success: true,
+      const result = {
+        success: true as const,
         response: {
           id: response.id,
-          content: response.content,
+          content: response.content as any,
           model: response.model,
           stopReason: response.stop_reason,
           usage: response.usage,
@@ -205,8 +205,8 @@ export const sendClaudeMessageFn = createServerFn({
       };
       return result;
     } catch (error) {
-      const result: SendClaudeMessageResult = {
-        success: false,
+      const result = {
+        success: false as const,
         error: formatClaudeError(error),
       };
       return result;
@@ -231,7 +231,7 @@ export const sendClaudeMessageWithToolsFn = createServerFn({
     })
   )
   .middleware([authenticatedMiddleware])
-  .handler(async ({ data, context }): Promise<SendClaudeMessageWithToolsResult> => {
+  .handler(async ({ data, context }) => {
     try {
       const client = getClaudeClient(privateEnv.ANTHROPIC_API_KEY);
 
@@ -246,11 +246,11 @@ export const sendClaudeMessageWithToolsFn = createServerFn({
         userId: context.userId,
       });
 
-      const result: SendClaudeMessageWithToolsResult = {
-        success: true,
+      const result = {
+        success: true as const,
         response: {
           id: response.id,
-          content: response.content,
+          content: response.content as any,
           model: response.model,
           stopReason: response.stop_reason,
           usage: response.usage,
@@ -258,8 +258,8 @@ export const sendClaudeMessageWithToolsFn = createServerFn({
       };
       return result;
     } catch (error) {
-      const result: SendClaudeMessageWithToolsResult = {
-        success: false,
+      const result = {
+        success: false as const,
         error: formatClaudeError(error),
       };
       return result;
@@ -282,7 +282,7 @@ export const completeWithClaudeFn = createServerFn({
     })
   )
   .middleware([authenticatedMiddleware])
-  .handler(async ({ data }): Promise<CompleteWithClaudeResult> => {
+  .handler(async ({ data }) => {
     try {
       const client = getClaudeClient(privateEnv.ANTHROPIC_API_KEY);
 

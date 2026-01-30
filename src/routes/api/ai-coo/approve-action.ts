@@ -18,6 +18,7 @@ import type {
   WorkflowStepDefinition,
   WorkflowContext,
 } from '~/lib/workflow-automation-engine/types';
+import type { WorkflowActionType } from '~/db/schema';
 
 export const Route = createFileRoute('/api/ai-coo/approve-action')({
   server: {
@@ -68,7 +69,7 @@ export const Route = createFileRoute('/api/ai-coo/approve-action')({
             type: 'action',
             name: `Execute ${action.actionType}`,
             config: {
-              actionType: action.actionType,
+              actionType: action.actionType as WorkflowActionType,
               params: action.parameters as Record<string, unknown>,
             },
           };
@@ -77,6 +78,11 @@ export const Route = createFileRoute('/api/ai-coo/approve-action')({
           const context: WorkflowContext = {
             workflowId: `ai-coo-action-${actionId}`,
             workflowRunId: `run-${Date.now()}`,
+            instanceId: `ai-coo-action-${actionId}`,
+            definitionId: `ai-coo-action-${actionId}`,
+            startedAt: new Date(),
+            triggerData: {},
+            stepResults: {},
             trigger: {
               type: 'manual',
               payload: { approvedBy: userId },

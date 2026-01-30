@@ -192,7 +192,7 @@ export function useClaudeConversation(
           enableCaching: options.enableCaching,
         });
 
-        if (result.success && result.response) {
+        if (result.success) {
           // Add assistant message
           const assistantMessage: ConversationMessage = {
             id: generateMessageId(),
@@ -208,7 +208,7 @@ export function useClaudeConversation(
             setCacheStats(result.cacheStats);
             options.onCacheStats?.(result.cacheStats);
           }
-        } else if (result.error) {
+        } else {
           setError(result.error);
           options.onError?.(result.error);
           // Remove the user message on error

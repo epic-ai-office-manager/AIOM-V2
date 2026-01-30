@@ -356,7 +356,7 @@ export const checkUserTransactionLimitsFn = createServerFn({
   .inputValidator(transactionLimitCheckSchema)
   .middleware([assertAdminMiddleware])
   .handler(async ({ data }) => {
-    const result = await checkTransactionLimits(data.userId, data.amount);
+    const result = await checkTransactionLimits(data.userId, String(data.amount));
     return result;
   });
 

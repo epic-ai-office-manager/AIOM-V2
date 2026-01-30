@@ -18,7 +18,7 @@ import {
   getUnifiedInboxThreadWithMessages,
   getMessagesForThread,
 } from "~/data-access/unified-inbox";
-import type { UnifiedInboxSourceType, UnifiedInboxThreadStatus } from "~/db/schema";
+import type { UnifiedInboxSourceType, UnifiedInboxThreadStatus, UnifiedInboxThread } from "~/db/schema";
 
 // =============================================================================
 // Thread List Operations
@@ -51,7 +51,7 @@ export const getUnifiedInboxThreadsFn = createServerFn({
     })
   )
   .middleware([authenticatedMiddleware])
-  .handler(async ({ data, context }) => {
+  .handler(async ({ data, context }): Promise<UnifiedInboxThread[]> => {
     return await findUserUnifiedInboxThreads(context.userId, {
       sourceTypes: data.sourceTypes as UnifiedInboxSourceType[],
       status: data.status as UnifiedInboxThreadStatus[],

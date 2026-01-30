@@ -91,7 +91,7 @@ const auditLogFiltersSchema = z.object({
 export const getAuditLogByIdFn = createServerFn({ method: "GET" })
   .inputValidator(z.object({ id: z.string().min(1, "Audit log ID is required") }))
   .middleware([authenticatedMiddleware])
-  .handler(async ({ data }: { data: { id: string } }) => {
+  .handler(async ({ data }) => {
     const log = await getAuditLogWithActor(data.id);
     if (!log) {
       throw new Error("Audit log entry not found");
@@ -128,13 +128,12 @@ export const getMyAuditLogsFn = createServerFn({ method: "GET" })
   )
   .middleware([authenticatedMiddleware])
   .handler(async ({ data, context }) => {
-    const filters = data || {};
     const logs = await getActorAuditLogs(context.userId, {
-      limit: filters.limit || 50,
-      offset: filters.offset || 0,
-      startDate: filters.startDate,
-      endDate: filters.endDate,
-      category: filters.category,
+      limit: data?.limit ?? 50,
+      offset: data?.offset ?? 0,
+      startDate: data?.startDate,
+      endDate: data?.endDate,
+      category: data?.category,
     });
     return logs;
   });
@@ -242,13 +241,12 @@ export const getSecurityAuditLogsFn = createServerFn({ method: "GET" })
   )
   .middleware([assertAdminMiddleware])
   .handler(async ({ data }) => {
-    const filters = data || {};
     const logs = await getSecurityAuditLogs({
-      limit: filters.limit || 50,
-      offset: filters.offset || 0,
-      startDate: filters.startDate,
-      endDate: filters.endDate,
-      ipAddress: filters.ipAddress,
+      limit: data?.limit ?? 50,
+      offset: data?.offset ?? 0,
+      startDate: data?.startDate,
+      endDate: data?.endDate,
+      ipAddress: data?.ipAddress,
     });
     return logs;
   });
@@ -279,13 +277,12 @@ export const getFailedActionsFn = createServerFn({ method: "GET" })
   )
   .middleware([assertAdminMiddleware])
   .handler(async ({ data }) => {
-    const filters = data || {};
     const logs = await getFailedActions({
-      limit: filters.limit || 50,
-      offset: filters.offset || 0,
-      startDate: filters.startDate,
-      endDate: filters.endDate,
-      category: filters.category,
+      limit: data?.limit ?? 50,
+      offset: data?.offset ?? 0,
+      startDate: data?.startDate,
+      endDate: data?.endDate,
+      category: data?.category,
     });
     return logs;
   });

@@ -71,6 +71,8 @@ function OcrReceiptDemo() {
     },
   });
 
+  const isSubmitting = status === 'submitting';
+
   // Handle file selection
   const handleFileSelect = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -201,7 +203,7 @@ function OcrReceiptDemo() {
                 imageUrl={state.imagePreviewUrl || undefined}
                 onConfirm={handleConfirm}
                 onCancel={reset}
-                isSubmitting={status === 'submitting'}
+                isSubmitting={isSubmitting}
               />
             </CardContent>
           </Card>

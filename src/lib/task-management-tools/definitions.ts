@@ -24,6 +24,7 @@ import {
   type TaskQueryResult,
 } from "~/data-access/odoo-tasks";
 import { getOdooClient } from "~/data-access/odoo";
+import type { OdooRecord, XmlRpcValue } from "~/lib/odoo/types";
 
 // =============================================================================
 // Type Definitions for Tool Inputs/Outputs
@@ -331,7 +332,7 @@ export const getTaskByIdTool: ToolDefinition<
   handler: async (input, context): Promise<ToolResult<{ task: DashboardTaskSummary | null }>> => {
     try {
       const client = await getOdooClient();
-      const tasks = await client.searchRead<Record<string, unknown>>("project.task", [["id", "=", input.taskId]], {
+      const tasks = await client.searchRead<OdooRecord>("project.task", [["id", "=", input.taskId]], {
         fields: [
           "id", "name", "active", "project_id", "partner_id", "user_ids",
           "date_deadline", "date_assign", "date_end", "priority", "sequence",
@@ -966,7 +967,7 @@ export const createTaskTool: ToolDefinition<
     try {
       const client = await getOdooClient();
 
-      const taskData: Record<string, unknown> = {
+      const taskData: Record<string, XmlRpcValue> = {
         name: input.name,
         project_id: input.projectId,
       };
@@ -1078,7 +1079,7 @@ export const updateTaskTool: ToolDefinition<
   handler: async (input, context): Promise<ToolResult<{ taskId: number; updated: string[] }>> => {
     try {
       const client = await getOdooClient();
-      const updateData: Record<string, unknown> = {};
+      const updateData: Record<string, XmlRpcValue> = {};
       const updatedFields: string[] = [];
 
       if (input.name !== undefined) {
@@ -1458,7 +1459,7 @@ export const addSubtaskTool: ToolDefinition<
       const client = await getOdooClient();
 
       // First, get the parent task to inherit project
-      const parentTasks = await client.read<{ project_id: [number, string] }>("project.task", [input.parentTaskId], {
+      const parentTasks = await client.read<OdooRecord & { project_id: [number, string] }>("project.task", [input.parentTaskId], {
         fields: ["project_id"],
       });
 
@@ -1475,7 +1476,7 @@ export const addSubtaskTool: ToolDefinition<
 
       const projectId = parentTasks[0].project_id[0];
 
-      const subtaskData: Record<string, unknown> = {
+      const subtaskData: Record<string, XmlRpcValue> = {
         name: input.name,
         project_id: projectId,
         parent_id: input.parentTaskId,
@@ -1561,7 +1562,7 @@ export const scheduleTaskTool: ToolDefinition<
       const client = await getOdooClient();
       const parsedDeadline = parseNaturalDate(input.deadline);
 
-      const updateData: Record<string, unknown> = {
+      const updateData: Record<string, XmlRpcValue> = {
         date_deadline: parsedDeadline,
       };
 

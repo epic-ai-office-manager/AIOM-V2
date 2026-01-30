@@ -55,10 +55,9 @@ export const Route = createFileRoute("/api/workflows/webhook")({
 
           // Verify webhook secret
           const providedSecret = request.headers.get("X-Webhook-Secret");
-          const triggerConfig = definition.triggerConfig as {
-            type: string;
-            webhookSecret?: string;
-          };
+          const triggerConfig = definition.triggerConfig
+            ? JSON.parse(definition.triggerConfig)
+            : { type: "" };
 
           if (triggerConfig.type !== "webhook") {
             return Response.json(
@@ -93,10 +92,8 @@ export const Route = createFileRoute("/api/workflows/webhook")({
           }
 
           // Trigger the workflow
-          const result = await workflowEngine.triggerWorkflow({
-            type: "webhook",
-            definitionId,
-            data: triggerData,
+          const result = await workflowEngine.triggerWorkflow(definitionId, {
+            triggerData,
           });
 
           console.log(

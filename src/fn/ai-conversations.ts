@@ -428,7 +428,7 @@ export const sendAIMessageFn = createServerFn({
         assistantMessage,
         response: {
           id: response.id,
-          content: response.content,
+          content: response.content as any,
           model: response.model,
           stopReason: response.stop_reason,
           usage: response.usage,

@@ -20,6 +20,7 @@ import { isUserAdmin } from "~/data-access/users";
 import { registerFinancialTools } from "~/lib/financial-tools";
 import { registerExampleTools } from "~/lib/tool-registry/example-tools";
 import { registerTaskManagementTools } from "~/lib/task-management-tools";
+import { registerAssistantTools } from "~/lib/assistant-tools";
 
 // ============================================================================
 // Tool Initialization
@@ -35,6 +36,7 @@ function ensureToolsRegistered(): void {
     registerExampleTools();
     registerFinancialTools();
     registerTaskManagementTools();
+    registerAssistantTools();
     toolsInitialized = true;
   }
 }

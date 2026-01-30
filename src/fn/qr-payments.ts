@@ -955,7 +955,7 @@ export const generateQrCodeImageFn = createServerFn()
       {
         paymentId: qrPayment.id,
         qrCode: qrPayment.qrCode,
-        shortCode: qrPayment.shortCode,
+        shortCode: qrPayment.shortCode ?? "",
         amount: qrPayment.amount,
         currency: qrPayment.currency,
         merchantName,
@@ -1020,7 +1020,7 @@ export const getPublicQrCodeFn = createServerFn()
       {
         paymentId: qrPayment.id,
         qrCode: qrPayment.qrCode,
-        shortCode: qrPayment.shortCode,
+        shortCode: qrPayment.shortCode ?? "",
         amount: qrPayment.amount,
         currency: qrPayment.currency,
         merchantName,

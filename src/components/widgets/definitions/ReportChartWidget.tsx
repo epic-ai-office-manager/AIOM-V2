@@ -300,7 +300,7 @@ function PieChartView({
           paddingAngle={2}
           animationDuration={config.animated ? 1000 : 0}
           label={config.showValues ? ({ name, percent }) =>
-            `${name} (${(percent * 100).toFixed(0)}%)` : false
+            `${name} (${(((percent ?? 0) * 100)).toFixed(0)}%)` : false
           }
           labelLine={config.showValues}
         >

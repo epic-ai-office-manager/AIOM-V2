@@ -53,7 +53,9 @@ export function AttachmentThumbnail({
   // Get the URL - prefer provided url, then uploadResult previewUrl
   const displayUrl = url ?? uploadResult?.previewUrl;
   const fileName = attachmentData.fileName || "";
-  const type = attachmentData.type;
+  const type =
+    uploadResult?.type ??
+    (attachment?.fileType?.startsWith("video/") ? "video" : "image");
 
   const containerClasses = cn(
     "relative group rounded-lg overflow-hidden bg-muted",

@@ -12,7 +12,7 @@
  * IMPORTANT: AI cannot bypass this layer. All actions must go through here.
  */
 
-import { getOdooClient } from '~/lib/odoo/client';
+import { getOdooClient } from '~/data-access/odoo';
 import { recordOutreachAttempt } from '../revalidation-executor';
 import type { OperationWithInputs } from '../action-protocol.v1_1';
 import { sendEmailViaSMTP2GO } from './smtp2go-client';
@@ -114,7 +114,7 @@ async function sendEmail(
     console.log('[Safe Operations] Sending email via SMTP2GO:', {
       to: inputs.to,
       subject: inputs.subject,
-      bodyPreview: inputs.text ? inputs.body_text?.substring(0, 100) : inputs.html_body?.substring(0, 100),
+      bodyPreview: inputs.body_text ? inputs.body_text.substring(0, 100) : inputs.body_html?.substring(0, 100),
     });
 
     // Prepare email recipients

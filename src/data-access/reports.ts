@@ -512,9 +512,10 @@ export async function deleteExpiredSnapshots(): Promise<number> {
   const now = new Date();
   const result = await database
     .delete(reportSnapshot)
-    .where(lte(reportSnapshot.expiresAt, now));
+    .where(lte(reportSnapshot.expiresAt, now))
+    .returning({ id: reportSnapshot.id });
 
-  return result.count ?? 0;
+  return result.length;
 }
 
 // =============================================================================

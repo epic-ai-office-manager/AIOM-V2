@@ -40,21 +40,24 @@ export async function sendEmail(params: SendEmailParams): Promise<SendEmailResul
 
     // Initialize SMTP2GO client
     const api = SMTP2GOApi(process.env.SMTP2GO_API_KEY);
-    const mail = api.mail();
+    const mailService = api.mail() as any;
 
-    // Set email parameters
-    mail.setFrom(fromEmail);
-    toAddresses.forEach((address) => mail.addTo(address));
-    mail.setSubject(params.subject);
+    // Build email using smtp2go-nodejs fluent API
+    toAddresses.forEach((address) => {
+      mailService.to({ email: address });
+    });
+
+    mailService.from({ email: fromEmail });
+    mailService.subject(params.subject);
 
     if (params.html) {
-      mail.setHtmlBody(params.html);
+      mailService.html(params.html);
     } else if (params.body) {
-      mail.setTextBody(params.body);
+      mailService.text(params.body);
     }
 
     // Send the email
-    const response = await mail.send();
+    const response = await api.client().consume(mailService);
 
     console.log(`[Email] Sent to ${toAddresses.join(', ')}: ${params.subject}`);
 

@@ -2268,3 +2268,732 @@ Rate limiter: Redis not connected, using in-memory fallback
 Rate limiter: Redis not connected, using in-memory fallback
 Rate limiter: Redis not connected, using in-memory fallback
 Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+[AI COO API] Fetching daily metrics
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) -- params: ["executed", "2026-01-27T04:00:00.000Z"]
+[AI COO API] Fetching action recommendations: { status: 'pending_approval', limit: 10 }
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where "autonomous_actions"."status" = $1 order by "autonomous_actions"."created_at" desc limit $2 -- params: ["pending_approval", 10]
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+[AI COO API] Fetching activity feed
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) order by "autonomous_actions"."executed_at" desc limit $3 -- params: ["executing", "2026-01-27T15:08:44.655Z", 10]
+[AI COO API] Fetching daily metrics
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) -- params: ["executed", "2026-01-27T04:00:00.000Z"]
+[AI COO API] Fetching action recommendations: { status: 'pending_approval', limit: 10 }
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where "autonomous_actions"."status" = $1 order by "autonomous_actions"."created_at" desc limit $2 -- params: ["pending_approval", 10]
+[AI COO API] Fetching action recommendations: { status: 'pending_approval', limit: 10 }
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where "autonomous_actions"."status" = $1 order by "autonomous_actions"."created_at" desc limit $2 -- params: ["pending_approval", 10]
+[AI COO API] Fetching activity feed
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) order by "autonomous_actions"."executed_at" desc limit $3 -- params: ["executing", "2026-01-27T15:08:44.680Z", 10]
+[AI COO API] Fetching action recommendations: { status: 'pending_approval', limit: 10 }
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where "autonomous_actions"."status" = $1 order by "autonomous_actions"."created_at" desc limit $2 -- params: ["pending_approval", 10]
+[AI COO API] Fetching activity feed
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) order by "autonomous_actions"."executed_at" desc limit $3 -- params: ["executing", "2026-01-27T15:08:44.746Z", 10]
+[AI COO API] Fetching daily metrics
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) -- params: ["executed", "2026-01-27T04:00:00.000Z"]
+[AI COO API] Fetching activity feed
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) order by "autonomous_actions"."executed_at" desc limit $3 -- params: ["executing", "2026-01-27T15:08:44.758Z", 10]
+[AI COO API] Fetching daily metrics
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) -- params: ["executed", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."requires_approval" = $2 and "autonomous_actions"."executed_at" >= $3) -- params: ["executed", false, "2026-01-27T04:00:00.000Z"]
+[AI COO API] Fetching activity feed
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) order by "autonomous_actions"."executed_at" desc limit $3 -- params: ["executing", "2026-01-27T15:08:44.867Z", 10]
+[AI COO API] Fetching action recommendations: { status: 'pending_approval', limit: 10 }
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where "autonomous_actions"."status" = $1 order by "autonomous_actions"."created_at" desc limit $2 -- params: ["pending_approval", 10]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" <= $2) order by "autonomous_actions"."created_at" limit $3 -- params: ["approved", "2026-01-27T19:08:44.758Z", 10]
+[AI COO API] Fetching daily metrics
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) -- params: ["executed", "2026-01-27T04:00:00.000Z"]
+[AI COO API] Fetching action recommendations: { status: 'pending_approval', limit: 10 }
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where "autonomous_actions"."status" = $1 order by "autonomous_actions"."created_at" desc limit $2 -- params: ["pending_approval", 10]
+[AI COO API] Fetching daily metrics
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) -- params: ["executed", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."requires_approval" = $2 and "autonomous_actions"."executed_at" >= $3) -- params: ["executed", false, "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."requires_approval" = $2 and "autonomous_actions"."executed_at" >= $3) -- params: ["executed", false, "2026-01-27T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" <= $2) order by "autonomous_actions"."created_at" limit $3 -- params: ["approved", "2026-01-27T19:08:44.867Z", 10]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" <= $2) order by "autonomous_actions"."created_at" limit $3 -- params: ["approved", "2026-01-27T19:08:44.655Z", 10]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" <= $2) order by "autonomous_actions"."created_at" limit $3 -- params: ["approved", "2026-01-27T19:08:44.746Z", 10]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" <= $2) order by "autonomous_actions"."created_at" limit $3 -- params: ["approved", "2026-01-27T19:08:44.680Z", 10]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."requires_approval" = $2 and "autonomous_actions"."executed_at" >= $3) -- params: ["executed", false, "2026-01-27T04:00:00.000Z"]
+[AI COO API] Found 4 action recommendations
+[AI COO API] Found 4 action recommendations
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."requires_approval" = $2 and "autonomous_actions"."executed_at" >= $3) -- params: ["executed", false, "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."requires_approval" = $1 and "autonomous_actions"."approved_at" >= $2) -- params: [true, "2026-01-27T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" in ($1, $2, $3) and "autonomous_actions"."created_at" >= $4) order by "autonomous_actions"."created_at" desc limit $5 -- params: ["executed", "failed", "pending", "2026-01-27T15:08:44.867Z", 10]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."requires_approval" = $1 and "autonomous_actions"."approved_at" >= $2) -- params: [true, "2026-01-27T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" in ($1, $2, $3) and "autonomous_actions"."created_at" >= $4) order by "autonomous_actions"."created_at" desc limit $5 -- params: ["executed", "failed", "pending", "2026-01-27T15:08:44.746Z", 10]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" in ($1, $2, $3) and "autonomous_actions"."created_at" >= $4) order by "autonomous_actions"."created_at" desc limit $5 -- params: ["executed", "failed", "pending", "2026-01-27T15:08:44.655Z", 10]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."requires_approval" = $1 and "autonomous_actions"."approved_at" >= $2) -- params: [true, "2026-01-27T04:00:00.000Z"]
+[AI COO API] Found 4 action recommendations
+[AI COO API] Found 4 action recommendations
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" in ($1, $2, $3) and "autonomous_actions"."created_at" >= $4) order by "autonomous_actions"."created_at" desc limit $5 -- params: ["executed", "failed", "pending", "2026-01-27T15:08:44.680Z", 10]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."requires_approval" = $1 and "autonomous_actions"."approved_at" >= $2) -- params: [true, "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."requires_approval" = $1 and "autonomous_actions"."approved_at" >= $2) -- params: [true, "2026-01-27T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" in ($1, $2, $3) and "autonomous_actions"."created_at" >= $4) order by "autonomous_actions"."created_at" desc limit $5 -- params: ["executed", "failed", "pending", "2026-01-27T15:08:44.758Z", 10]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."created_at" >= $1 and "autonomous_actions"."action_type" LIKE '%invoice%') -- params: ["2026-01-27T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."created_at" >= $1 and "autonomous_actions"."action_type" LIKE '%invoice%') -- params: ["2026-01-27T04:00:00.000Z"]
+[AI COO API] Activity feed counts: { happeningNow: 0, upcoming: 1, recent: 0 }
+[AI COO API] Activity feed counts: { happeningNow: 0, upcoming: 1, recent: 0 }
+[AI COO API] Activity feed counts: { happeningNow: 0, upcoming: 1, recent: 0 }
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" >= $2) -- params: ["failed", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."requires_approval" = $2 and "autonomous_actions"."executed_at" >= $3) -- params: ["executed", false, "2026-01-27T04:00:00.000Z"]
+[AI COO API] Found 4 action recommendations
+[AI COO API] Found 4 action recommendations
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."created_at" >= $1 and "autonomous_actions"."action_type" LIKE '%invoice%') -- params: ["2026-01-27T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."created_at" >= $1 and "autonomous_actions"."action_type" LIKE '%invoice%') -- params: ["2026-01-27T04:00:00.000Z"]
+[AI COO API] Activity feed counts: { happeningNow: 0, upcoming: 1, recent: 0 }
+[AI COO API] Activity feed counts: { happeningNow: 0, upcoming: 1, recent: 0 }
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."created_at" >= $1 and "autonomous_actions"."action_type" LIKE '%invoice%') -- params: ["2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" >= $2) -- params: ["failed", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-21T04:00:00.000Z", "2026-01-22T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."requires_approval" = $1 and "autonomous_actions"."approved_at" >= $2) -- params: [true, "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" >= $2) -- params: ["failed", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" >= $2) -- params: ["failed", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" >= $2) -- params: ["failed", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-21T04:00:00.000Z", "2026-01-22T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-22T04:00:00.000Z", "2026-01-23T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."created_at" >= $1 and "autonomous_actions"."action_type" LIKE '%invoice%') -- params: ["2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-21T04:00:00.000Z", "2026-01-22T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-21T04:00:00.000Z", "2026-01-22T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-21T04:00:00.000Z", "2026-01-22T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-22T04:00:00.000Z", "2026-01-23T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-23T04:00:00.000Z", "2026-01-24T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" >= $2) -- params: ["failed", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-22T04:00:00.000Z", "2026-01-23T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-22T04:00:00.000Z", "2026-01-23T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-22T04:00:00.000Z", "2026-01-23T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-23T04:00:00.000Z", "2026-01-24T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-24T04:00:00.000Z", "2026-01-25T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-21T04:00:00.000Z", "2026-01-22T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-23T04:00:00.000Z", "2026-01-24T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-23T04:00:00.000Z", "2026-01-24T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-23T04:00:00.000Z", "2026-01-24T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-24T04:00:00.000Z", "2026-01-25T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-25T04:00:00.000Z", "2026-01-26T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-22T04:00:00.000Z", "2026-01-23T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-24T04:00:00.000Z", "2026-01-25T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-24T04:00:00.000Z", "2026-01-25T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-24T04:00:00.000Z", "2026-01-25T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-25T04:00:00.000Z", "2026-01-26T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-26T04:00:00.000Z", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-23T04:00:00.000Z", "2026-01-24T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-25T04:00:00.000Z", "2026-01-26T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-25T04:00:00.000Z", "2026-01-26T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-25T04:00:00.000Z", "2026-01-26T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-26T04:00:00.000Z", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-27T04:00:00.000Z", "2026-01-28T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-24T04:00:00.000Z", "2026-01-25T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-26T04:00:00.000Z", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-26T04:00:00.000Z", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-26T04:00:00.000Z", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-27T04:00:00.000Z", "2026-01-28T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-26T04:00:00.000Z", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-25T04:00:00.000Z", "2026-01-26T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-27T04:00:00.000Z", "2026-01-28T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-27T04:00:00.000Z", "2026-01-28T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-27T04:00:00.000Z", "2026-01-28T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-26T04:00:00.000Z", "2026-01-27T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."requires_approval" = $1 and "autonomous_actions"."approved_at" >= $2) -- params: [true, "2026-01-20T17:08:45.181Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-26T04:00:00.000Z", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-26T04:00:00.000Z", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-26T04:00:00.000Z", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-26T04:00:00.000Z", "2026-01-27T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."requires_approval" = $1 and "autonomous_actions"."approved_at" >= $2) -- params: [true, "2026-01-20T17:08:45.183Z"]
+[AI COO API] Daily metrics calculated: { actionsCompleted: '0', insightsGenerated: 2 }
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-27T04:00:00.000Z", "2026-01-28T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."requires_approval" = $1 and "autonomous_actions"."approved_at" >= $2) -- params: [true, "2026-01-20T17:08:45.184Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."requires_approval" = $1 and "autonomous_actions"."approved_at" >= $2) -- params: [true, "2026-01-20T17:08:45.185Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."requires_approval" = $1 and "autonomous_actions"."approved_at" >= $2) -- params: [true, "2026-01-20T17:08:45.187Z"]
+[AI COO API] Daily metrics calculated: { actionsCompleted: '0', insightsGenerated: 2 }
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-26T04:00:00.000Z", "2026-01-27T04:00:00.000Z"]
+[AI COO API] Daily metrics calculated: { actionsCompleted: '0', insightsGenerated: 2 }
+[AI COO API] Daily metrics calculated: { actionsCompleted: '0', insightsGenerated: 2 }
+[AI COO API] Daily metrics calculated: { actionsCompleted: '0', insightsGenerated: 2 }
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."requires_approval" = $1 and "autonomous_actions"."approved_at" >= $2) -- params: [true, "2026-01-20T17:08:45.194Z"]
+[AI COO API] Daily metrics calculated: { actionsCompleted: '0', insightsGenerated: 2 }
+[AI COO API] Fetching activity feed
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) order by "autonomous_actions"."executed_at" desc limit $3 -- params: ["executing", "2026-01-27T15:08:45.679Z", 10]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" <= $2) order by "autonomous_actions"."created_at" limit $3 -- params: ["approved", "2026-01-27T19:08:45.679Z", 10]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" in ($1, $2, $3) and "autonomous_actions"."created_at" >= $4) order by "autonomous_actions"."created_at" desc limit $5 -- params: ["executed", "failed", "pending", "2026-01-27T15:08:45.679Z", 10]
+[AI COO API] Activity feed counts: { happeningNow: 0, upcoming: 1, recent: 0 }
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+[AI COO API] Fetching action recommendations: { status: 'pending_approval', limit: 10 }
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where "autonomous_actions"."status" = $1 order by "autonomous_actions"."created_at" desc limit $2 -- params: ["pending_approval", 10]
+[AI COO API] Found 4 action recommendations
+[AI COO API] Fetching activity feed
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) order by "autonomous_actions"."executed_at" desc limit $3 -- params: ["executing", "2026-01-27T15:08:49.783Z", 10]
+[AI COO API] Fetching daily metrics
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) -- params: ["executed", "2026-01-27T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" <= $2) order by "autonomous_actions"."created_at" limit $3 -- params: ["approved", "2026-01-27T19:08:49.783Z", 10]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."requires_approval" = $2 and "autonomous_actions"."executed_at" >= $3) -- params: ["executed", false, "2026-01-27T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" in ($1, $2, $3) and "autonomous_actions"."created_at" >= $4) order by "autonomous_actions"."created_at" desc limit $5 -- params: ["executed", "failed", "pending", "2026-01-27T15:08:49.783Z", 10]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."requires_approval" = $1 and "autonomous_actions"."approved_at" >= $2) -- params: [true, "2026-01-27T04:00:00.000Z"]
+[AI COO API] Activity feed counts: { happeningNow: 0, upcoming: 1, recent: 0 }
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."created_at" >= $1 and "autonomous_actions"."action_type" LIKE '%invoice%') -- params: ["2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" >= $2) -- params: ["failed", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-21T04:00:00.000Z", "2026-01-22T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-22T04:00:00.000Z", "2026-01-23T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-23T04:00:00.000Z", "2026-01-24T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-24T04:00:00.000Z", "2026-01-25T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-25T04:00:00.000Z", "2026-01-26T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-26T04:00:00.000Z", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-27T04:00:00.000Z", "2026-01-28T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-26T04:00:00.000Z", "2026-01-27T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."requires_approval" = $1 and "autonomous_actions"."approved_at" >= $2) -- params: [true, "2026-01-20T17:08:49.827Z"]
+[AI COO API] Daily metrics calculated: { actionsCompleted: '0', insightsGenerated: 2 }
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+[AI COO API] Fetching activity feed
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) order by "autonomous_actions"."executed_at" desc limit $3 -- params: ["executing", "2026-01-27T15:08:56.690Z", 10]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" <= $2) order by "autonomous_actions"."created_at" limit $3 -- params: ["approved", "2026-01-27T19:08:56.690Z", 10]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" in ($1, $2, $3) and "autonomous_actions"."created_at" >= $4) order by "autonomous_actions"."created_at" desc limit $5 -- params: ["executed", "failed", "pending", "2026-01-27T15:08:56.690Z", 10]
+[AI COO API] Activity feed counts: { happeningNow: 0, upcoming: 1, recent: 0 }
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Query: SELECT 1 as health_check
+[Health Check] Status: degraded, Response time: 23ms
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+[AI COO API] Fetching action recommendations: { status: 'pending_approval', limit: 10 }
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where "autonomous_actions"."status" = $1 order by "autonomous_actions"."created_at" desc limit $2 -- params: ["pending_approval", 10]
+[AI COO API] Fetching activity feed
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) order by "autonomous_actions"."executed_at" desc limit $3 -- params: ["executing", "2026-01-27T15:09:03.561Z", 10]
+[AI COO API] Fetching daily metrics
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) -- params: ["executed", "2026-01-27T04:00:00.000Z"]
+[AI COO API] Found 4 action recommendations
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" <= $2) order by "autonomous_actions"."created_at" limit $3 -- params: ["approved", "2026-01-27T19:09:03.561Z", 10]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" in ($1, $2, $3) and "autonomous_actions"."created_at" >= $4) order by "autonomous_actions"."created_at" desc limit $5 -- params: ["executed", "failed", "pending", "2026-01-27T15:09:03.561Z", 10]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."requires_approval" = $2 and "autonomous_actions"."executed_at" >= $3) -- params: ["executed", false, "2026-01-27T04:00:00.000Z"]
+[AI COO API] Activity feed counts: { happeningNow: 0, upcoming: 1, recent: 0 }
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."requires_approval" = $1 and "autonomous_actions"."approved_at" >= $2) -- params: [true, "2026-01-27T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."created_at" >= $1 and "autonomous_actions"."action_type" LIKE '%invoice%') -- params: ["2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" >= $2) -- params: ["failed", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-21T04:00:00.000Z", "2026-01-22T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-22T04:00:00.000Z", "2026-01-23T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-23T04:00:00.000Z", "2026-01-24T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-24T04:00:00.000Z", "2026-01-25T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-25T04:00:00.000Z", "2026-01-26T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-26T04:00:00.000Z", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-27T04:00:00.000Z", "2026-01-28T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-26T04:00:00.000Z", "2026-01-27T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."requires_approval" = $1 and "autonomous_actions"."approved_at" >= $2) -- params: [true, "2026-01-20T17:09:03.646Z"]
+[AI COO API] Daily metrics calculated: { actionsCompleted: '0', insightsGenerated: 2 }
+[AI COO API] Fetching action recommendations: { status: 'pending_approval', limit: 10 }
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where "autonomous_actions"."status" = $1 order by "autonomous_actions"."created_at" desc limit $2 -- params: ["pending_approval", 10]
+[AI COO API] Fetching activity feed
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) order by "autonomous_actions"."executed_at" desc limit $3 -- params: ["executing", "2026-01-27T15:09:03.933Z", 10]
+[AI COO API] Found 4 action recommendations
+[AI COO API] Fetching action recommendations: { status: 'pending_approval', limit: 10 }
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where "autonomous_actions"."status" = $1 order by "autonomous_actions"."created_at" desc limit $2 -- params: ["pending_approval", 10]
+[AI COO API] Fetching daily metrics
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) -- params: ["executed", "2026-01-27T04:00:00.000Z"]
+[AI COO API] Fetching daily metrics
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) -- params: ["executed", "2026-01-27T04:00:00.000Z"]
+[AI COO API] Fetching activity feed
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) order by "autonomous_actions"."executed_at" desc limit $3 -- params: ["executing", "2026-01-27T15:09:03.951Z", 10]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" <= $2) order by "autonomous_actions"."created_at" limit $3 -- params: ["approved", "2026-01-27T19:09:03.933Z", 10]
+[AI COO API] Found 4 action recommendations
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."requires_approval" = $2 and "autonomous_actions"."executed_at" >= $3) -- params: ["executed", false, "2026-01-27T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" in ($1, $2, $3) and "autonomous_actions"."created_at" >= $4) order by "autonomous_actions"."created_at" desc limit $5 -- params: ["executed", "failed", "pending", "2026-01-27T15:09:03.933Z", 10]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."requires_approval" = $1 and "autonomous_actions"."approved_at" >= $2) -- params: [true, "2026-01-27T04:00:00.000Z"]
+[AI COO API] Activity feed counts: { happeningNow: 0, upcoming: 1, recent: 0 }
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."created_at" >= $1 and "autonomous_actions"."action_type" LIKE '%invoice%') -- params: ["2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" >= $2) -- params: ["failed", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."requires_approval" = $2 and "autonomous_actions"."executed_at" >= $3) -- params: ["executed", false, "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-21T04:00:00.000Z", "2026-01-22T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."requires_approval" = $1 and "autonomous_actions"."approved_at" >= $2) -- params: [true, "2026-01-27T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" <= $2) order by "autonomous_actions"."created_at" limit $3 -- params: ["approved", "2026-01-27T19:09:03.951Z", 10]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-22T04:00:00.000Z", "2026-01-23T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."created_at" >= $1 and "autonomous_actions"."action_type" LIKE '%invoice%') -- params: ["2026-01-27T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" in ($1, $2, $3) and "autonomous_actions"."created_at" >= $4) order by "autonomous_actions"."created_at" desc limit $5 -- params: ["executed", "failed", "pending", "2026-01-27T15:09:03.951Z", 10]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-23T04:00:00.000Z", "2026-01-24T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" >= $2) -- params: ["failed", "2026-01-27T04:00:00.000Z"]
+[AI COO API] Activity feed counts: { happeningNow: 0, upcoming: 1, recent: 0 }
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-24T04:00:00.000Z", "2026-01-25T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-21T04:00:00.000Z", "2026-01-22T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-25T04:00:00.000Z", "2026-01-26T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-22T04:00:00.000Z", "2026-01-23T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-26T04:00:00.000Z", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-23T04:00:00.000Z", "2026-01-24T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-27T04:00:00.000Z", "2026-01-28T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-24T04:00:00.000Z", "2026-01-25T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-26T04:00:00.000Z", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-25T04:00:00.000Z", "2026-01-26T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."requires_approval" = $1 and "autonomous_actions"."approved_at" >= $2) -- params: [true, "2026-01-20T17:09:03.992Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-26T04:00:00.000Z", "2026-01-27T04:00:00.000Z"]
+[AI COO API] Daily metrics calculated: { actionsCompleted: '0', insightsGenerated: 2 }
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-27T04:00:00.000Z", "2026-01-28T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-26T04:00:00.000Z", "2026-01-27T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."requires_approval" = $1 and "autonomous_actions"."approved_at" >= $2) -- params: [true, "2026-01-20T17:09:04.000Z"]
+[AI COO API] Daily metrics calculated: { actionsCompleted: '0', insightsGenerated: 2 }
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+[AI COO API] Fetching daily metrics
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) -- params: ["executed", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."requires_approval" = $2 and "autonomous_actions"."executed_at" >= $3) -- params: ["executed", false, "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."requires_approval" = $1 and "autonomous_actions"."approved_at" >= $2) -- params: [true, "2026-01-27T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."created_at" >= $1 and "autonomous_actions"."action_type" LIKE '%invoice%') -- params: ["2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" >= $2) -- params: ["failed", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-21T04:00:00.000Z", "2026-01-22T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-22T04:00:00.000Z", "2026-01-23T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-23T04:00:00.000Z", "2026-01-24T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-24T04:00:00.000Z", "2026-01-25T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-25T04:00:00.000Z", "2026-01-26T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-26T04:00:00.000Z", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-27T04:00:00.000Z", "2026-01-28T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-26T04:00:00.000Z", "2026-01-27T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."requires_approval" = $1 and "autonomous_actions"."approved_at" >= $2) -- params: [true, "2026-01-20T17:09:07.253Z"]
+[AI COO API] Daily metrics calculated: { actionsCompleted: '0', insightsGenerated: 2 }
+[AI COO API] Fetching action recommendations: { status: 'pending_approval', limit: 10 }
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where "autonomous_actions"."status" = $1 order by "autonomous_actions"."created_at" desc limit $2 -- params: ["pending_approval", 10]
+[AI COO API] Fetching activity feed
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) order by "autonomous_actions"."executed_at" desc limit $3 -- params: ["executing", "2026-01-27T15:09:07.518Z", 10]
+[AI COO API] Found 4 action recommendations
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" <= $2) order by "autonomous_actions"."created_at" limit $3 -- params: ["approved", "2026-01-27T19:09:07.518Z", 10]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" in ($1, $2, $3) and "autonomous_actions"."created_at" >= $4) order by "autonomous_actions"."created_at" desc limit $5 -- params: ["executed", "failed", "pending", "2026-01-27T15:09:07.518Z", 10]
+[AI COO API] Activity feed counts: { happeningNow: 0, upcoming: 1, recent: 0 }
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+[AI COO API] Fetching action recommendations: { status: 'pending_approval', limit: 10 }
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where "autonomous_actions"."status" = $1 order by "autonomous_actions"."created_at" desc limit $2 -- params: ["pending_approval", 10]
+[AI COO API] Found 4 action recommendations
+[AI COO API] Fetching activity feed
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) order by "autonomous_actions"."executed_at" desc limit $3 -- params: ["executing", "2026-01-27T15:09:08.676Z", 10]
+[AI COO API] Fetching daily metrics
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) -- params: ["executed", "2026-01-27T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" <= $2) order by "autonomous_actions"."created_at" limit $3 -- params: ["approved", "2026-01-27T19:09:08.676Z", 10]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" in ($1, $2, $3) and "autonomous_actions"."created_at" >= $4) order by "autonomous_actions"."created_at" desc limit $5 -- params: ["executed", "failed", "pending", "2026-01-27T15:09:08.676Z", 10]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."requires_approval" = $2 and "autonomous_actions"."executed_at" >= $3) -- params: ["executed", false, "2026-01-27T04:00:00.000Z"]
+[AI COO API] Activity feed counts: { happeningNow: 0, upcoming: 1, recent: 0 }
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."requires_approval" = $1 and "autonomous_actions"."approved_at" >= $2) -- params: [true, "2026-01-27T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."created_at" >= $1 and "autonomous_actions"."action_type" LIKE '%invoice%') -- params: ["2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" >= $2) -- params: ["failed", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-21T04:00:00.000Z", "2026-01-22T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-22T04:00:00.000Z", "2026-01-23T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-23T04:00:00.000Z", "2026-01-24T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-24T04:00:00.000Z", "2026-01-25T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-25T04:00:00.000Z", "2026-01-26T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-26T04:00:00.000Z", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-27T04:00:00.000Z", "2026-01-28T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-26T04:00:00.000Z", "2026-01-27T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."requires_approval" = $1 and "autonomous_actions"."approved_at" >= $2) -- params: [true, "2026-01-20T17:09:08.717Z"]
+[AI COO API] Daily metrics calculated: { actionsCompleted: '0', insightsGenerated: 2 }
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Query: SELECT 1 as health_check
+[Health Check] Status: degraded, Response time: 2ms
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+[AI COO API] Fetching action recommendations: { status: 'pending_approval', limit: 10 }
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where "autonomous_actions"."status" = $1 order by "autonomous_actions"."created_at" desc limit $2 -- params: ["pending_approval", 10]
+[AI COO API] Fetching activity feed
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) order by "autonomous_actions"."executed_at" desc limit $3 -- params: ["executing", "2026-01-27T15:09:24.694Z", 10]
+[AI COO API] Found 4 action recommendations
+[AI COO API] Fetching daily metrics
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) -- params: ["executed", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."requires_approval" = $2 and "autonomous_actions"."executed_at" >= $3) -- params: ["executed", false, "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."requires_approval" = $1 and "autonomous_actions"."approved_at" >= $2) -- params: [true, "2026-01-27T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."created_at" >= $1 and "autonomous_actions"."action_type" LIKE '%invoice%') -- params: ["2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" >= $2) -- params: ["failed", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-21T04:00:00.000Z", "2026-01-22T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-22T04:00:00.000Z", "2026-01-23T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-23T04:00:00.000Z", "2026-01-24T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-24T04:00:00.000Z", "2026-01-25T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-25T04:00:00.000Z", "2026-01-26T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-26T04:00:00.000Z", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-27T04:00:00.000Z", "2026-01-28T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-26T04:00:00.000Z", "2026-01-27T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."requires_approval" = $1 and "autonomous_actions"."approved_at" >= $2) -- params: [true, "2026-01-20T17:09:24.781Z"]
+[AI COO API] Daily metrics calculated: { actionsCompleted: '0', insightsGenerated: 2 }
+Rate limiter: Redis not connected, using in-memory fallback
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" <= $2) order by "autonomous_actions"."created_at" limit $3 -- params: ["approved", "2026-01-27T19:09:24.694Z", 10]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" in ($1, $2, $3) and "autonomous_actions"."created_at" >= $4) order by "autonomous_actions"."created_at" desc limit $5 -- params: ["executed", "failed", "pending", "2026-01-27T15:09:24.694Z", 10]
+[AI COO API] Activity feed counts: { happeningNow: 0, upcoming: 1, recent: 0 }
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+[AI COO API] Fetching activity feed
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) order by "autonomous_actions"."executed_at" desc limit $3 -- params: ["executing", "2026-01-27T15:09:25.099Z", 10]
+[AI COO API] Fetching daily metrics
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) -- params: ["executed", "2026-01-27T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" <= $2) order by "autonomous_actions"."created_at" limit $3 -- params: ["approved", "2026-01-27T19:09:25.099Z", 10]
+[AI COO API] Fetching action recommendations: { status: 'pending_approval', limit: 10 }
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where "autonomous_actions"."status" = $1 order by "autonomous_actions"."created_at" desc limit $2 -- params: ["pending_approval", 10]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."requires_approval" = $2 and "autonomous_actions"."executed_at" >= $3) -- params: ["executed", false, "2026-01-27T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" in ($1, $2, $3) and "autonomous_actions"."created_at" >= $4) order by "autonomous_actions"."created_at" desc limit $5 -- params: ["executed", "failed", "pending", "2026-01-27T15:09:25.099Z", 10]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."requires_approval" = $1 and "autonomous_actions"."approved_at" >= $2) -- params: [true, "2026-01-27T04:00:00.000Z"]
+[AI COO API] Activity feed counts: { happeningNow: 0, upcoming: 1, recent: 0 }
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."created_at" >= $1 and "autonomous_actions"."action_type" LIKE '%invoice%') -- params: ["2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" >= $2) -- params: ["failed", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-21T04:00:00.000Z", "2026-01-22T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-22T04:00:00.000Z", "2026-01-23T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-23T04:00:00.000Z", "2026-01-24T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-24T04:00:00.000Z", "2026-01-25T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-25T04:00:00.000Z", "2026-01-26T04:00:00.000Z"]
+Rate limiter: Redis not connected, using in-memory fallback
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-26T04:00:00.000Z", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-27T04:00:00.000Z", "2026-01-28T04:00:00.000Z"]
+[AI COO API] Found 4 action recommendations
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-26T04:00:00.000Z", "2026-01-27T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."requires_approval" = $1 and "autonomous_actions"."approved_at" >= $2) -- params: [true, "2026-01-20T17:09:25.217Z"]
+[AI COO API] Daily metrics calculated: { actionsCompleted: '0', insightsGenerated: 2 }
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+[AI COO API] Fetching action recommendations: { status: 'pending_approval', limit: 10 }
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where "autonomous_actions"."status" = $1 order by "autonomous_actions"."created_at" desc limit $2 -- params: ["pending_approval", 10]
+[AI COO API] Fetching activity feed
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) order by "autonomous_actions"."executed_at" desc limit $3 -- params: ["executing", "2026-01-27T15:09:29.358Z", 10]
+[AI COO API] Fetching action recommendations: { status: 'pending_approval', limit: 10 }
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where "autonomous_actions"."status" = $1 order by "autonomous_actions"."created_at" desc limit $2 -- params: ["pending_approval", 10]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" <= $2) order by "autonomous_actions"."created_at" limit $3 -- params: ["approved", "2026-01-27T19:09:29.358Z", 10]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" in ($1, $2, $3) and "autonomous_actions"."created_at" >= $4) order by "autonomous_actions"."created_at" desc limit $5 -- params: ["executed", "failed", "pending", "2026-01-27T15:09:29.358Z", 10]
+[AI COO API] Activity feed counts: { happeningNow: 0, upcoming: 1, recent: 0 }
+[AI COO API] Found 4 action recommendations
+[AI COO API] Found 4 action recommendations
+[AI COO API] Fetching activity feed
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) order by "autonomous_actions"."executed_at" desc limit $3 -- params: ["executing", "2026-01-27T15:09:29.401Z", 10]
+[AI COO API] Fetching daily metrics
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) -- params: ["executed", "2026-01-27T04:00:00.000Z"]
+[AI COO API] Fetching daily metrics
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) -- params: ["executed", "2026-01-27T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" <= $2) order by "autonomous_actions"."created_at" limit $3 -- params: ["approved", "2026-01-27T19:09:29.401Z", 10]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."requires_approval" = $2 and "autonomous_actions"."executed_at" >= $3) -- params: ["executed", false, "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."requires_approval" = $2 and "autonomous_actions"."executed_at" >= $3) -- params: ["executed", false, "2026-01-27T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" in ($1, $2, $3) and "autonomous_actions"."created_at" >= $4) order by "autonomous_actions"."created_at" desc limit $5 -- params: ["executed", "failed", "pending", "2026-01-27T15:09:29.401Z", 10]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."requires_approval" = $1 and "autonomous_actions"."approved_at" >= $2) -- params: [true, "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."requires_approval" = $1 and "autonomous_actions"."approved_at" >= $2) -- params: [true, "2026-01-27T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."created_at" >= $1 and "autonomous_actions"."action_type" LIKE '%invoice%') -- params: ["2026-01-27T04:00:00.000Z"]
+[AI COO API] Activity feed counts: { happeningNow: 0, upcoming: 1, recent: 0 }
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."created_at" >= $1 and "autonomous_actions"."action_type" LIKE '%invoice%') -- params: ["2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" >= $2) -- params: ["failed", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" >= $2) -- params: ["failed", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-21T04:00:00.000Z", "2026-01-22T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-21T04:00:00.000Z", "2026-01-22T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-22T04:00:00.000Z", "2026-01-23T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-22T04:00:00.000Z", "2026-01-23T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-23T04:00:00.000Z", "2026-01-24T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-23T04:00:00.000Z", "2026-01-24T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-24T04:00:00.000Z", "2026-01-25T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-24T04:00:00.000Z", "2026-01-25T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-25T04:00:00.000Z", "2026-01-26T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-25T04:00:00.000Z", "2026-01-26T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-26T04:00:00.000Z", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-26T04:00:00.000Z", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-27T04:00:00.000Z", "2026-01-28T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-27T04:00:00.000Z", "2026-01-28T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-26T04:00:00.000Z", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-26T04:00:00.000Z", "2026-01-27T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."requires_approval" = $1 and "autonomous_actions"."approved_at" >= $2) -- params: [true, "2026-01-20T17:09:29.434Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."requires_approval" = $1 and "autonomous_actions"."approved_at" >= $2) -- params: [true, "2026-01-20T17:09:29.436Z"]
+[AI COO API] Daily metrics calculated: { actionsCompleted: '0', insightsGenerated: 2 }
+[AI COO API] Daily metrics calculated: { actionsCompleted: '0', insightsGenerated: 2 }
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+[AI COO API] Fetching action recommendations: { status: 'pending_approval', limit: 10 }
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where "autonomous_actions"."status" = $1 order by "autonomous_actions"."created_at" desc limit $2 -- params: ["pending_approval", 10]
+[AI COO API] Fetching activity feed
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) order by "autonomous_actions"."executed_at" desc limit $3 -- params: ["executing", "2026-01-27T15:09:30.501Z", 10]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" <= $2) order by "autonomous_actions"."created_at" limit $3 -- params: ["approved", "2026-01-27T19:09:30.501Z", 10]
+[AI COO API] Fetching daily metrics
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) -- params: ["executed", "2026-01-27T04:00:00.000Z"]
+[AI COO API] Found 4 action recommendations
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" in ($1, $2, $3) and "autonomous_actions"."created_at" >= $4) order by "autonomous_actions"."created_at" desc limit $5 -- params: ["executed", "failed", "pending", "2026-01-27T15:09:30.501Z", 10]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."requires_approval" = $2 and "autonomous_actions"."executed_at" >= $3) -- params: ["executed", false, "2026-01-27T04:00:00.000Z"]
+[AI COO API] Activity feed counts: { happeningNow: 0, upcoming: 1, recent: 0 }
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."requires_approval" = $1 and "autonomous_actions"."approved_at" >= $2) -- params: [true, "2026-01-27T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."created_at" >= $1 and "autonomous_actions"."action_type" LIKE '%invoice%') -- params: ["2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" >= $2) -- params: ["failed", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-21T04:00:00.000Z", "2026-01-22T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-22T04:00:00.000Z", "2026-01-23T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-23T04:00:00.000Z", "2026-01-24T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-24T04:00:00.000Z", "2026-01-25T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-25T04:00:00.000Z", "2026-01-26T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-26T04:00:00.000Z", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-27T04:00:00.000Z", "2026-01-28T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-26T04:00:00.000Z", "2026-01-27T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."requires_approval" = $1 and "autonomous_actions"."approved_at" >= $2) -- params: [true, "2026-01-20T17:09:30.548Z"]
+[AI COO API] Daily metrics calculated: { actionsCompleted: '0', insightsGenerated: 2 }
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Query: select "id", "name", "email", "email_verified", "image", "is_admin", "role", "stripe_customer_id", "subscription_id", "plan", "subscription_status", "subscription_expires_at", "created_at", "updated_at" from "user" where "user"."email" = $1 -- params: ["test@aiom.local"]
+Query: select "id", "account_id", "provider_id", "user_id", "access_token", "refresh_token", "id_token", "access_token_expires_at", "refresh_token_expires_at", "scope", "password", "created_at", "updated_at" from "account" where "account"."user_id" = $1 limit $2 -- params: ["t2iS7XpeskuU4dctRgItGbYqxz9Zchic", 100]
+Query: insert into "session" ("id", "expires_at", "token", "created_at", "updated_at", "ip_address", "user_agent", "user_id") values ($1, $2, $3, $4, $5, $6, $7, $8) returning "id", "expires_at", "token", "created_at", "updated_at", "ip_address", "user_agent", "user_id" -- params: ["aOjrvP2RVFlhLRy464mCcc09H6slAgBS", "2026-02-03T17:09:39.660Z", "m3Ewtzp8j51aAfamYXJISHjlP9v0MVrz", "2026-01-27T17:09:39.662Z", "2026-01-27T17:09:39.662Z", "127.0.0.1", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.7499.4 Safari/537.36", "t2iS7XpeskuU4dctRgItGbYqxz9Zchic"]
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Query: select "id", "name", "email", "email_verified", "image", "is_admin", "role", "stripe_customer_id", "subscription_id", "plan", "subscription_status", "subscription_expires_at", "created_at", "updated_at" from "user" where "user"."email" = $1 -- params: ["test@aiom.local"]
+Query: select "id", "account_id", "provider_id", "user_id", "access_token", "refresh_token", "id_token", "access_token_expires_at", "refresh_token_expires_at", "scope", "password", "created_at", "updated_at" from "account" where "account"."user_id" = $1 limit $2 -- params: ["t2iS7XpeskuU4dctRgItGbYqxz9Zchic", 100]
+Query: insert into "session" ("id", "expires_at", "token", "created_at", "updated_at", "ip_address", "user_agent", "user_id") values ($1, $2, $3, $4, $5, $6, $7, $8) returning "id", "expires_at", "token", "created_at", "updated_at", "ip_address", "user_agent", "user_id" -- params: ["1SX0hG3ZeUAAJcPTD8WzpiH2gvlCyvSK", "2026-02-03T17:09:41.496Z", "wCNjLnENWJB8TPyxgKTTj7mUzlmr6LYa", "2026-01-27T17:09:41.496Z", "2026-01-27T17:09:41.496Z", "127.0.0.1", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.7499.4 Safari/537.36", "t2iS7XpeskuU4dctRgItGbYqxz9Zchic"]
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Query: select "id", "name", "email", "email_verified", "image", "is_admin", "role", "stripe_customer_id", "subscription_id", "plan", "subscription_status", "subscription_expires_at", "created_at", "updated_at" from "user" where "user"."email" = $1 -- params: ["test@aiom.local"]
+Query: select "id", "account_id", "provider_id", "user_id", "access_token", "refresh_token", "id_token", "access_token_expires_at", "refresh_token_expires_at", "scope", "password", "created_at", "updated_at" from "account" where "account"."user_id" = $1 limit $2 -- params: ["t2iS7XpeskuU4dctRgItGbYqxz9Zchic", 100]
+Query: insert into "session" ("id", "expires_at", "token", "created_at", "updated_at", "ip_address", "user_agent", "user_id") values ($1, $2, $3, $4, $5, $6, $7, $8) returning "id", "expires_at", "token", "created_at", "updated_at", "ip_address", "user_agent", "user_id" -- params: ["TNszgn8lc18QsHZDnpo0PITTVixBh20S", "2026-02-03T17:09:42.269Z", "kUN5Qoy0M2skWK9VLjmuFUsg27lQvXoz", "2026-01-27T17:09:42.269Z", "2026-01-27T17:09:42.269Z", "127.0.0.1", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.7499.4 Safari/537.36", "t2iS7XpeskuU4dctRgItGbYqxz9Zchic"]
+Rate limiter: Redis not connected, using in-memory fallback
+Query: select "id", "expires_at", "token", "created_at", "updated_at", "ip_address", "user_agent", "user_id" from "session" where "session"."token" = $1 -- params: ["kUN5Qoy0M2skWK9VLjmuFUsg27lQvXoz"]
+Query: select "id", "name", "email", "email_verified", "image", "is_admin", "role", "stripe_customer_id", "subscription_id", "plan", "subscription_status", "subscription_expires_at", "created_at", "updated_at" from "user" where "user"."id" = $1 -- params: ["t2iS7XpeskuU4dctRgItGbYqxz9Zchic"]
+Query: select "id", "expires_at", "token", "created_at", "updated_at", "ip_address", "user_agent", "user_id" from "session" where "session"."token" = $1 -- params: ["kUN5Qoy0M2skWK9VLjmuFUsg27lQvXoz"]
+Query: select "id", "name", "email", "email_verified", "image", "is_admin", "role", "stripe_customer_id", "subscription_id", "plan", "subscription_status", "subscription_expires_at", "created_at", "updated_at" from "user" where "user"."id" = $1 -- params: ["t2iS7XpeskuU4dctRgItGbYqxz9Zchic"]
+Query: select "id", "email", "name", "stripe_customer_id", "subscription_id", "plan", "subscription_status", "subscription_expires_at" from "user" where "user"."id" = $1 -- params: ["t2iS7XpeskuU4dctRgItGbYqxz9Zchic"]
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Query: select "id", "expires_at", "token", "created_at", "updated_at", "ip_address", "user_agent", "user_id" from "session" where "session"."token" = $1 -- params: ["wCNjLnENWJB8TPyxgKTTj7mUzlmr6LYa"]
+Query: select "id", "name", "email", "email_verified", "image", "is_admin", "role", "stripe_customer_id", "subscription_id", "plan", "subscription_status", "subscription_expires_at", "created_at", "updated_at" from "user" where "user"."id" = $1 -- params: ["t2iS7XpeskuU4dctRgItGbYqxz9Zchic"]
+Query: select "id", "amount", "currency", "purpose", "description", "requester_id", "approver_id", "status", "created_at", "updated_at", "submitted_at", "approved_at", "rejected_at", "disbursed_at", "rejection_reason", "receipt_url" from "expense_request" where "expense_request"."requester_id" = $1 order by "expense_request"."created_at" desc limit $2 -- params: ["t2iS7XpeskuU4dctRgItGbYqxz9Zchic", 50]
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Query: select "id", "expires_at", "token", "created_at", "updated_at", "ip_address", "user_agent", "user_id" from "session" where "session"."token" = $1 -- params: ["m3Ewtzp8j51aAfamYXJISHjlP9v0MVrz"]
+Query: select "id", "name", "email", "email_verified", "image", "is_admin", "role", "stripe_customer_id", "subscription_id", "plan", "subscription_status", "subscription_expires_at", "created_at", "updated_at" from "user" where "user"."id" = $1 -- params: ["t2iS7XpeskuU4dctRgItGbYqxz9Zchic"]
+Query: select "id", "expires_at", "token", "created_at", "updated_at", "ip_address", "user_agent", "user_id" from "session" where "session"."token" = $1 -- params: ["m3Ewtzp8j51aAfamYXJISHjlP9v0MVrz"]
+Query: select "id", "name", "email", "email_verified", "image", "is_admin", "role", "stripe_customer_id", "subscription_id", "plan", "subscription_status", "subscription_expires_at", "created_at", "updated_at" from "user" where "user"."id" = $1 -- params: ["t2iS7XpeskuU4dctRgItGbYqxz9Zchic"]
+Query: select "id", "amount", "currency", "purpose", "description", "requester_id", "approver_id", "status", "created_at", "updated_at", "submitted_at", "approved_at", "rejected_at", "disbursed_at", "rejection_reason", "receipt_url" from "expense_request" where "expense_request"."requester_id" = $1 order by "expense_request"."created_at" desc limit $2 -- params: ["t2iS7XpeskuU4dctRgItGbYqxz9Zchic", 50]
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Query: select "id", "name", "email", "email_verified", "image", "is_admin", "role", "stripe_customer_id", "subscription_id", "plan", "subscription_status", "subscription_expires_at", "created_at", "updated_at" from "user" where "user"."email" = $1 -- params: ["test@aiom.local"]
+Query: select "id", "account_id", "provider_id", "user_id", "access_token", "refresh_token", "id_token", "access_token_expires_at", "refresh_token_expires_at", "scope", "password", "created_at", "updated_at" from "account" where "account"."user_id" = $1 limit $2 -- params: ["t2iS7XpeskuU4dctRgItGbYqxz9Zchic", 100]
+Query: insert into "session" ("id", "expires_at", "token", "created_at", "updated_at", "ip_address", "user_agent", "user_id") values ($1, $2, $3, $4, $5, $6, $7, $8) returning "id", "expires_at", "token", "created_at", "updated_at", "ip_address", "user_agent", "user_id" -- params: ["UoOuBZLN58RZN9prw9dQiLitWCeJ9Uw0", "2026-02-03T17:09:58.856Z", "TbTGHCDhcMHQE8Ar6MZYHfnJgguH6prs", "2026-01-27T17:09:58.856Z", "2026-01-27T17:09:58.856Z", "127.0.0.1", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.7499.4 Safari/537.36", "t2iS7XpeskuU4dctRgItGbYqxz9Zchic"]
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+Query: select "id", "expires_at", "token", "created_at", "updated_at", "ip_address", "user_agent", "user_id" from "session" where "session"."token" = $1 -- params: ["TbTGHCDhcMHQE8Ar6MZYHfnJgguH6prs"]
+Query: select "id", "name", "email", "email_verified", "image", "is_admin", "role", "stripe_customer_id", "subscription_id", "plan", "subscription_status", "subscription_expires_at", "created_at", "updated_at" from "user" where "user"."id" = $1 -- params: ["t2iS7XpeskuU4dctRgItGbYqxz9Zchic"]
+Query: select "id", "amount", "currency", "purpose", "description", "requester_id", "approver_id", "status", "created_at", "updated_at", "submitted_at", "approved_at", "rejected_at", "disbursed_at", "rejection_reason", "receipt_url" from "expense_request" where "expense_request"."status" = $1 order by "expense_request"."created_at" desc limit $2 -- params: ["pending", 50]
+Rate limiter: Redis not connected, using in-memory fallback
+Query: select "id", "expires_at", "token", "created_at", "updated_at", "ip_address", "user_agent", "user_id" from "session" where "session"."token" = $1 -- params: ["TbTGHCDhcMHQE8Ar6MZYHfnJgguH6prs"]
+Query: select "id", "name", "email", "email_verified", "image", "is_admin", "role", "stripe_customer_id", "subscription_id", "plan", "subscription_status", "subscription_expires_at", "created_at", "updated_at" from "user" where "user"."id" = $1 -- params: ["t2iS7XpeskuU4dctRgItGbYqxz9Zchic"]
+Rate limiter: Redis not connected, using in-memory fallback
+Query: select "id", "name", "email", "email_verified", "image", "is_admin", "role", "stripe_customer_id", "subscription_id", "plan", "subscription_status", "subscription_expires_at", "created_at", "updated_at" from "user" where "user"."email" = $1 -- params: ["test@aiom.local"]
+Query: select "id", "account_id", "provider_id", "user_id", "access_token", "refresh_token", "id_token", "access_token_expires_at", "refresh_token_expires_at", "scope", "password", "created_at", "updated_at" from "account" where "account"."user_id" = $1 limit $2 -- params: ["t2iS7XpeskuU4dctRgItGbYqxz9Zchic", 100]
+Query: insert into "session" ("id", "expires_at", "token", "created_at", "updated_at", "ip_address", "user_agent", "user_id") values ($1, $2, $3, $4, $5, $6, $7, $8) returning "id", "expires_at", "token", "created_at", "updated_at", "ip_address", "user_agent", "user_id" -- params: ["ZmmxYPTIuWvXdtHtMJOGQkqvhvPauvvx", "2026-02-03T17:10:03.998Z", "qdJnarvjqknQInbQhZ5JdslWULfdweer", "2026-01-27T17:10:03.999Z", "2026-01-27T17:10:03.999Z", "127.0.0.1", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.7499.4 Safari/537.36", "t2iS7XpeskuU4dctRgItGbYqxz9Zchic"]
+Rate limiter: Redis not connected, using in-memory fallback
+Query: SELECT 1 as health_check
+[Health Check] Status: degraded, Response time: 8ms
+[2m13:40:52[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles/app.css?direct, /src/routes/dashboard/index.tsx?tsr-split=component, /src/routes/mobile/topup/index.tsx?tsr-split=component, /src/routes/mobile/pay/index.tsx?tsr-split=component, /src/routes/mobile/topup/history.tsx?tsr-split=component[22m
+[2m13:40:52[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/db/schema.ts[22m
+[2m13:53:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles/app.css?direct, /src/routes/dashboard/index.tsx?tsr-split=component, /src/routes/mobile/topup/index.tsx?tsr-split=component, /src/routes/mobile/pay/index.tsx?tsr-split=component, /src/routes/mobile/topup/history.tsx?tsr-split=component[22m
+[2m13:53:54[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/db/schema.ts[22m
+Widget with id "task-list" is already registered. Overwriting...
+Widget with id "task-widget" is already registered. Overwriting...
+Widget with id "approval-queue" is already registered. Overwriting...
+Widget with id "financial-summary" is already registered. Overwriting...
+Widget with id "alerts" is already registered. Overwriting...
+Widget with id "chart" is already registered. Overwriting...
+Widget with id "system-health" is already registered. Overwriting...
+Widget with id "document-queue" is already registered. Overwriting...
+Widget with id "user-stats" is already registered. Overwriting...
+Widget with id "workflow-monitor" is already registered. Overwriting...
+Widget with id "work-order" is already registered. Overwriting...
+Widget with id "route-optimization" is already registered. Overwriting...
+Widget with id "inventory-check" is already registered. Overwriting...
+Widget with id "customer-site-history" is already registered. Overwriting...
+Widget with id "mobile-actions" is already registered. Overwriting...
+Widget with id "daily-briefing" is already registered. Overwriting...
+Widget with id "alert-feed" is already registered. Overwriting...
+Widget with id "cash-position-monitor" is already registered. Overwriting...
+Widget with id "team-capacity-monitor" is already registered. Overwriting...
+Widget with id "communication-analytics" is already registered. Overwriting...
+Widget with id "kpi" is already registered. Overwriting...
+Widget with id "report-chart" is already registered. Overwriting...
+Query: SELECT 1 as health_check
+[Health Check] Status: degraded, Response time: 24ms
+[2m14:11:11[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles/app.css?direct[22m
+Widget with id "task-list" is already registered. Overwriting...
+Widget with id "task-widget" is already registered. Overwriting...
+Widget with id "approval-queue" is already registered. Overwriting...
+Widget with id "financial-summary" is already registered. Overwriting...
+Widget with id "alerts" is already registered. Overwriting...
+Widget with id "chart" is already registered. Overwriting...
+Widget with id "system-health" is already registered. Overwriting...
+Widget with id "document-queue" is already registered. Overwriting...
+Widget with id "user-stats" is already registered. Overwriting...
+Widget with id "workflow-monitor" is already registered. Overwriting...
+Widget with id "work-order" is already registered. Overwriting...
+Widget with id "route-optimization" is already registered. Overwriting...
+Widget with id "inventory-check" is already registered. Overwriting...
+Widget with id "customer-site-history" is already registered. Overwriting...
+Widget with id "mobile-actions" is already registered. Overwriting...
+Widget with id "daily-briefing" is already registered. Overwriting...
+Widget with id "alert-feed" is already registered. Overwriting...
+Widget with id "cash-position-monitor" is already registered. Overwriting...
+Widget with id "team-capacity-monitor" is already registered. Overwriting...
+Widget with id "communication-analytics" is already registered. Overwriting...
+Widget with id "kpi" is already registered. Overwriting...
+Widget with id "report-chart" is already registered. Overwriting...
+Rate limiter: Redis not connected, using in-memory fallback
+Rate limiter: Redis not connected, using in-memory fallback
+[AI COO API] Fetching activity feed
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) order by "autonomous_actions"."executed_at" desc limit $3 -- params: ["executing", "2026-01-27T16:11:13.602Z", 10]
+[AI COO API] Fetching daily metrics
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2) -- params: ["executed", "2026-01-27T04:00:00.000Z"]
+[AI COO API] Fetching action recommendations: { status: 'pending_approval', limit: 10 }
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where "autonomous_actions"."status" = $1 order by "autonomous_actions"."created_at" desc limit $2 -- params: ["pending_approval", 10]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" <= $2) order by "autonomous_actions"."created_at" limit $3 -- params: ["approved", "2026-01-27T20:11:13.602Z", 10]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."requires_approval" = $2 and "autonomous_actions"."executed_at" >= $3) -- params: ["executed", false, "2026-01-27T04:00:00.000Z"]
+[AI COO API] Found 4 action recommendations
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."status" in ($1, $2, $3) and "autonomous_actions"."created_at" >= $4) order by "autonomous_actions"."created_at" desc limit $5 -- params: ["executed", "failed", "pending", "2026-01-27T16:11:13.602Z", 10]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."requires_approval" = $1 and "autonomous_actions"."approved_at" >= $2) -- params: [true, "2026-01-27T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."created_at" >= $1 and "autonomous_actions"."action_type" LIKE '%invoice%') -- params: ["2026-01-27T04:00:00.000Z"]
+[AI COO API] Activity feed counts: { happeningNow: 0, upcoming: 1, recent: 0 }
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."created_at" >= $2) -- params: ["failed", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-21T04:00:00.000Z", "2026-01-22T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-22T04:00:00.000Z", "2026-01-23T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-23T04:00:00.000Z", "2026-01-24T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-24T04:00:00.000Z", "2026-01-25T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-25T04:00:00.000Z", "2026-01-26T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-26T04:00:00.000Z", "2026-01-27T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-27T04:00:00.000Z", "2026-01-28T04:00:00.000Z"]
+Query: select count(*) from "autonomous_actions" where ("autonomous_actions"."status" = $1 and "autonomous_actions"."executed_at" >= $2 and $3 >= "autonomous_actions"."executed_at") -- params: ["executed", "2026-01-26T04:00:00.000Z", "2026-01-27T04:00:00.000Z"]
+Query: select "id", "action_type", "target_system", "target_id", "description", "parameters", "decision_reasoning", "requires_approval", "approved_by", "approved_at", "executed_at", "status", "result", "created_at", "action_protocol", "org_id", "idempotency_key", "expires_at", "risk_level", "safe_operation", "analysis_id" from "autonomous_actions" where ("autonomous_actions"."requires_approval" = $1 and "autonomous_actions"."approved_at" >= $2) -- params: [true, "2026-01-20T18:11:13.646Z"]
+[AI COO API] Daily metrics calculated: { actionsCompleted: '0', insightsGenerated: 2 }

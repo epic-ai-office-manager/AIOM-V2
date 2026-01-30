@@ -32,6 +32,7 @@ import {
   deleteQrPaymentRequestFn,
   processQrPaymentFn,
   refundQrPaymentFn,
+  QR_PAYMENT_CURRENCIES,
   type CreateQrPaymentRequestFormData,
   type UpdateQrPaymentRequestFormData,
 } from "~/fn/qr-payments";
@@ -236,7 +237,7 @@ export function useProcessQrPayment() {
       qrPaymentId: string;
       payerWalletId: string;
       paidAmount: string;
-      paidCurrency: string;
+      paidCurrency: typeof QR_PAYMENT_CURRENCIES[number];
       idempotencyKey: string;
     }) => processQrPaymentFn({ data }),
     onSuccess: (result, variables) => {

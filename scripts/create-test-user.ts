@@ -9,6 +9,7 @@ import { database } from '../src/db';
 import { user } from '../src/db/schema';
 import { eq } from 'drizzle-orm';
 import * as crypto from 'crypto';
+import { nanoid } from 'nanoid';
 
 const TEST_USER = {
   email: 'test@aiom.local',
@@ -46,6 +47,7 @@ async function createTestUser() {
     const [newUser] = await database
       .insert(user)
       .values({
+        id: nanoid(),
         email: TEST_USER.email,
         emailVerified: true, // Auto-verify for testing
         name: TEST_USER.name,

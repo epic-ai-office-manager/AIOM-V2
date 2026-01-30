@@ -233,7 +233,7 @@ function DemoLoginPage() {
 
           {/* Back to Main App */}
           <div className="text-center">
-            <Link to="/sign-in" search={{}} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+            <Link to="/sign-in" search={{ redirect: undefined }} className="text-sm text-muted-foreground hover:text-primary transition-colors">
               Looking for the production environment? <span className="underline">Sign in here</span>
             </Link>
           </div>

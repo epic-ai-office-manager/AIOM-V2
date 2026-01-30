@@ -39,6 +39,14 @@ import type {
 } from "~/db/schema";
 
 // =============================================================================
+// ServerFn Input Types (derived from Zod schemas)
+// =============================================================================
+
+type CreateWorkflowDefinitionInput = Parameters<typeof createWorkflowDefinitionFn>[0]["data"];
+type UpdateWorkflowDefinitionInput = Parameters<typeof updateWorkflowDefinitionFn>[0]["data"];
+type ValidateWorkflowDefinitionInput = Parameters<typeof validateWorkflowDefinitionFn>[0]["data"];
+
+// =============================================================================
 // Workflow Definition Query Hooks
 // =============================================================================
 
@@ -204,31 +212,7 @@ export function useCreateWorkflowDefinition() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (data: {
-      name: string;
-      description?: string;
-      category?: string;
-      version?: string;
-      triggerConfig: {
-        type: WorkflowTriggerType;
-        schedule?: string;
-        eventType?: string;
-        webhookSecret?: string;
-        conditions?: Array<{
-          field: string;
-          operator: string;
-          value: unknown;
-        }>;
-      };
-      steps: WorkflowStepDefinition[];
-      startStepId: string;
-      variables?: Record<string, unknown>;
-      settings?: {
-        maxConcurrentInstances?: number;
-        instanceTimeoutMs?: number;
-        retryFailedSteps?: boolean;
-      };
-    }) => createWorkflowDefinitionFn({ data }),
+    mutationFn: (data: CreateWorkflowDefinitionInput) => createWorkflowDefinitionFn({ data }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["workflow-definitions"] });
     },
@@ -242,32 +226,7 @@ export function useUpdateWorkflowDefinition() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (data: {
-      id: string;
-      name?: string;
-      description?: string | null;
-      category?: string | null;
-      version?: string;
-      triggerConfig?: {
-        type: WorkflowTriggerType;
-        schedule?: string;
-        eventType?: string;
-        webhookSecret?: string;
-        conditions?: Array<{
-          field: string;
-          operator: string;
-          value: unknown;
-        }>;
-      };
-      steps?: WorkflowStepDefinition[];
-      startStepId?: string;
-      variables?: Record<string, unknown> | null;
-      settings?: {
-        maxConcurrentInstances?: number;
-        instanceTimeoutMs?: number;
-        retryFailedSteps?: boolean;
-      } | null;
-    }) => updateWorkflowDefinitionFn({ data }),
+    mutationFn: (data: UpdateWorkflowDefinitionInput) => updateWorkflowDefinitionFn({ data }),
     onSuccess: (_, variables) => {
       queryClient.invalidateQueries({ queryKey: ["workflow-definitions"] });
       queryClient.invalidateQueries({
@@ -429,21 +388,7 @@ export function useRejectWorkflow() {
  */
 export function useValidateWorkflowDefinition() {
   return useMutation({
-    mutationFn: (data: {
-      steps: WorkflowStepDefinition[];
-      startStepId: string;
-      triggerConfig: {
-        type: WorkflowTriggerType;
-        schedule?: string;
-        eventType?: string;
-        webhookSecret?: string;
-        conditions?: Array<{
-          field: string;
-          operator: string;
-          value: unknown;
-        }>;
-      };
-    }) => validateWorkflowDefinitionFn({ data }),
+    mutationFn: (data: ValidateWorkflowDefinitionInput) => validateWorkflowDefinitionFn({ data }),
   });
 }
 

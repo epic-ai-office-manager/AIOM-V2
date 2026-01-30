@@ -50,7 +50,7 @@ export const getCallContextFn = createServerFn({
     })
   )
   .middleware([authenticatedMiddleware])
-  .handler(async ({ data }) => {
+  .handler(async ({ data }): Promise<GetCallContextResult> => {
     try {
       const context = await getCallContext(data.phoneOrUserId, data.filters);
 
@@ -78,7 +78,7 @@ export const getCustomerInfoFn = createServerFn({
     })
   )
   .middleware([authenticatedMiddleware])
-  .handler(async ({ data }) => {
+  .handler(async ({ data }): Promise<GetCustomerInfoResult> => {
     try {
       const customer = await findCustomerByPhone(data.phoneOrUserId);
 
@@ -115,7 +115,7 @@ export const getRecentInteractionsFn = createServerFn({
     })
   )
   .middleware([authenticatedMiddleware])
-  .handler(async ({ data }) => {
+  .handler(async ({ data }): Promise<GetRecentInteractionsResult> => {
     try {
       const interactions = await getRecentInteractions(data.userId, {
         limit: data.limit,
@@ -148,7 +148,7 @@ export const getOpenTicketsFn = createServerFn({
     })
   )
   .middleware([authenticatedMiddleware])
-  .handler(async ({ data }) => {
+  .handler(async ({ data }): Promise<GetOpenTicketsResult> => {
     try {
       const tickets = await getOpenTickets(data.userId, {
         limit: data.limit,
@@ -180,7 +180,7 @@ export const getCallHistoryFn = createServerFn({
     })
   )
   .middleware([authenticatedMiddleware])
-  .handler(async ({ data }) => {
+  .handler(async ({ data }): Promise<GetCallHistoryResult> => {
     try {
       const callHistory = await getCallHistory(data.userId, {
         limit: data.limit,
@@ -211,7 +211,7 @@ export const searchCustomersFn = createServerFn({
     })
   )
   .middleware([authenticatedMiddleware])
-  .handler(async ({ data }) => {
+  .handler(async ({ data }): Promise<SearchCustomersResult> => {
     try {
       const customers = await searchCustomers(data.query, data.limit);
 

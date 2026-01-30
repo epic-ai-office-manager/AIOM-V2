@@ -490,8 +490,8 @@ export const analyzeValueFn = createServerFn({
       });
 
       return {
-        isAnomaly: true,
-        result,
+        isAnomaly: true as const,
+        result: result as any,
         alertId: alert.id,
       };
     }

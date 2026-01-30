@@ -23,7 +23,7 @@ async function seedActions() {
       requiresApproval: true,
       status: 'pending_approval' as const,
       riskLevel: 'low' as const,
-      safeOperation: true,
+      safeOperation: null,
       createdAt: new Date(),
       actionProtocol: {
         action_type: 'send_invoice_reminder',
@@ -74,7 +74,7 @@ async function seedActions() {
       requiresApproval: true,
       status: 'pending_approval' as const,
       riskLevel: 'low' as const,
-      safeOperation: true,
+      safeOperation: null,
       createdAt: new Date(Date.now() - 30 * 60 * 1000), // 30 min ago
       actionProtocol: {
         action_type: 'create_collection_task',
@@ -128,7 +128,7 @@ async function seedActions() {
       status: 'approved' as const,
       approvedAt: new Date(),
       riskLevel: 'low' as const,
-      safeOperation: true,
+      safeOperation: null,
       createdAt: new Date(Date.now() - 60 * 60 * 1000), // 1 hour ago
       actionProtocol: {
         action_type: 'send_invoice_reminder',
@@ -180,7 +180,7 @@ async function seedActions() {
       status: 'executed' as const,
       executedAt: new Date(Date.now() - 15 * 60 * 1000), // 15 min ago
       riskLevel: 'low' as const,
-      safeOperation: true,
+      safeOperation: null,
       createdAt: new Date(Date.now() - 90 * 60 * 1000),
       result: { success: true, emailSent: true, messageId: 'msg_12345' },
       actionProtocol: {
@@ -227,7 +227,7 @@ async function seedActions() {
       status: 'executed' as const,
       executedAt: new Date(Date.now() - 45 * 60 * 1000), // 45 min ago
       riskLevel: 'low' as const,
-      safeOperation: true,
+      safeOperation: null,
       createdAt: new Date(Date.now() - 120 * 60 * 1000),
       result: { success: true, emailSent: true, messageId: 'msg_12346' },
       actionProtocol: {

@@ -110,7 +110,7 @@ export function useOcrProcessing(
         setState((prev) => ({
           ...prev,
           status: 'reviewing',
-          extractionResult: result.data,
+          extractionResult: result.data ?? null,
           extractionId: result.extractionId,
           processingTimeMs: result.processingTimeMs || null,
           error: null,

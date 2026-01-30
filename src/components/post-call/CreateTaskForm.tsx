@@ -39,7 +39,7 @@ const createTaskSchema = z.object({
   dueDate: z.string().optional().or(z.literal("")),
 });
 
-type CreateTaskFormValues = z.infer<typeof createTaskSchema>;
+type CreateTaskFormValues = z.input<typeof createTaskSchema>;
 
 interface CreateTaskFormProps {
   onSubmit: (data: CreateTaskFormValues) => void;

@@ -146,8 +146,8 @@ export class WorkflowEngine {
 
     // Get definition if not provided
     if (!definition) {
-      definition = await findWorkflowDefinitionById(instance.definitionId);
-      if (!definition) {
+      const foundDefinition = await findWorkflowDefinitionById(instance.definitionId);
+      if (!foundDefinition) {
         await failWorkflowInstance(instanceId, "Workflow definition not found");
         return {
           instanceId,
@@ -157,6 +157,7 @@ export class WorkflowEngine {
           executionTimeMs: Date.now() - startTime,
         };
       }
+      definition = foundDefinition;
     }
 
     // Start the instance if pending
@@ -179,7 +180,7 @@ export class WorkflowEngine {
     // Execute steps
     try {
       let currentStepIndex = instance.currentStepIndex;
-      let currentStepId = instance.currentStepId || steps[0]?.id;
+      let currentStepId: string | undefined = instance.currentStepId || steps[0]?.id;
 
       while (currentStepId) {
         // Check timeout
@@ -738,11 +739,12 @@ export class WorkflowEngine {
    * Parse variables from JSON string
    */
   private parseVariables(variablesJson: string | null): Record<string, unknown> {
-    if (!variablesJson) return {};
+    const emptyRecord: Record<string, unknown> = {};
+    if (!variablesJson) return emptyRecord;
     try {
       return JSON.parse(variablesJson) as Record<string, unknown>;
     } catch {
-      return {};
+      return emptyRecord;
     }
   }
 
@@ -754,10 +756,20 @@ export class WorkflowEngine {
     definition: WorkflowDefinition
   ): WorkflowContext {
     const savedContext = parseWorkflowContext(instance.context);
+    const emptyRecord: Record<string, unknown> = {};
+
+    // Ensure proper Record<string, unknown> typing for context fields
+    const variables: Record<string, unknown> =
+      (savedContext.variables as Record<string, unknown> | undefined) || this.parseVariables(definition.variables);
+    const triggerData: Record<string, unknown> =
+      (savedContext.triggerData as Record<string, unknown> | undefined) || (instance.triggerData ? JSON.parse(instance.triggerData) : emptyRecord);
+    const stepResults: Record<string, unknown> =
+      (savedContext.stepResults as Record<string, unknown> | undefined) || emptyRecord;
+
     return {
-      variables: savedContext.variables || this.parseVariables(definition.variables),
-      triggerData: savedContext.triggerData || (instance.triggerData ? JSON.parse(instance.triggerData) : {}),
-      stepResults: savedContext.stepResults || {},
+      variables,
+      triggerData,
+      stepResults,
       startedAt: instance.startedAt || new Date(),
       instanceId: instance.id,
       definitionId: definition.id,

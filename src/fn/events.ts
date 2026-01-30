@@ -43,12 +43,13 @@ export const createEventFn = createServerFn({
   .inputValidator(eventFormSchema)
   .middleware([assertAdminMiddleware])
   .handler(async ({ data, context }) => {
+    const startTime = new Date(data.startTime);
     const eventData = {
       id: crypto.randomUUID(),
       title: data.title,
       description: data.description || null,
-      startTime: new Date(data.startTime),
-      endTime: data.endTime ? new Date(data.endTime) : null,
+      startTime: startTime,
+      endTime: data.endTime ? new Date(data.endTime) : startTime,
       eventLink: data.eventLink || null,
       eventType: data.eventType,
       createdBy: context.userId,
@@ -130,11 +131,12 @@ export const updateEventFn = createServerFn({
       throw new Error("Event not found");
     }
 
+    const startTime = new Date(data.startTime);
     const eventData = {
       title: data.title,
       description: data.description || null,
-      startTime: new Date(data.startTime),
-      endTime: data.endTime ? new Date(data.endTime) : null,
+      startTime: startTime,
+      endTime: data.endTime ? new Date(data.endTime) : startTime,
       eventLink: data.eventLink || null,
       eventType: data.eventType,
     };

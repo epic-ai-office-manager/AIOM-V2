@@ -28,6 +28,8 @@ import { Route as DashboardSettingsRouteImport } from './routes/dashboard/settin
 import { Route as DashboardSearchRouteImport } from './routes/dashboard/search'
 import { Route as DashboardQueryRouteImport } from './routes/dashboard/query'
 import { Route as DashboardInboxRouteImport } from './routes/dashboard/inbox'
+import { Route as DashboardCompanyViewRouteImport } from './routes/dashboard/company-view'
+import { Route as ApiCompanyViewRouteImport } from './routes/api/company-view'
 import { Route as AdminClaudeUsageRouteImport } from './routes/admin/claude-usage'
 import { Route as ProfileUserIdIndexRouteImport } from './routes/profile/$userId/index'
 import { Route as MobileVouchersIndexRouteImport } from './routes/mobile/vouchers/index'
@@ -72,6 +74,7 @@ import { Route as ApiWorkflowsWebhookRouteImport } from './routes/api/workflows/
 import { Route as ApiWorkflowsProcessRouteImport } from './routes/api/workflows/process'
 import { Route as ApiWorkflowsEventRouteImport } from './routes/api/workflows/event'
 import { Route as ApiVoucherAlertsMonitorRouteImport } from './routes/api/voucher-alerts/monitor'
+import { Route as ApiTelegramWebhookRouteImport } from './routes/api/telegram/webhook'
 import { Route as ApiTeamCapacityMonitorRouteImport } from './routes/api/team-capacity/monitor'
 import { Route as ApiTasksRemindersRouteImport } from './routes/api/tasks/reminders'
 import { Route as ApiStripeWebhookRouteImport } from './routes/api/stripe/webhook'
@@ -108,6 +111,10 @@ import { Route as ApiCustomerIssuesRisksRouteImport } from './routes/api/custome
 import { Route as ApiCustomerIssuesMonitorRouteImport } from './routes/api/customer-issues/monitor'
 import { Route as ApiBriefingScheduleRouteImport } from './routes/api/briefing/schedule'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
+import { Route as ApiAssistantRejectRouteImport } from './routes/api/assistant/reject'
+import { Route as ApiAssistantProposeRouteImport } from './routes/api/assistant/propose'
+import { Route as ApiAssistantExecuteRouteImport } from './routes/api/assistant/execute'
+import { Route as ApiAssistantApproveRouteImport } from './routes/api/assistant/approve'
 import { Route as ApiAnomalyDetectionAnalyzeRouteImport } from './routes/api/anomaly-detection/analyze'
 import { Route as ApiAnomalyDetectionAlertsRouteImport } from './routes/api/anomaly-detection/alerts'
 import { Route as ApiAnalyticsClaudeUsageExportRouteImport } from './routes/api/analytics/claude-usage-export'
@@ -214,6 +221,16 @@ const DashboardInboxRoute = DashboardInboxRouteImport.update({
   id: '/inbox',
   path: '/inbox',
   getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardCompanyViewRoute = DashboardCompanyViewRouteImport.update({
+  id: '/company-view',
+  path: '/company-view',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const ApiCompanyViewRoute = ApiCompanyViewRouteImport.update({
+  id: '/api/company-view',
+  path: '/api/company-view',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const AdminClaudeUsageRoute = AdminClaudeUsageRouteImport.update({
   id: '/admin/claude-usage',
@@ -442,6 +459,11 @@ const ApiVoucherAlertsMonitorRoute = ApiVoucherAlertsMonitorRouteImport.update({
   path: '/api/voucher-alerts/monitor',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiTelegramWebhookRoute = ApiTelegramWebhookRouteImport.update({
+  id: '/api/telegram/webhook',
+  path: '/api/telegram/webhook',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiTeamCapacityMonitorRoute = ApiTeamCapacityMonitorRouteImport.update({
   id: '/api/team-capacity/monitor',
   path: '/api/team-capacity/monitor',
@@ -628,6 +650,26 @@ const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
   path: '/api/auth/$',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAssistantRejectRoute = ApiAssistantRejectRouteImport.update({
+  id: '/api/assistant/reject',
+  path: '/api/assistant/reject',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAssistantProposeRoute = ApiAssistantProposeRouteImport.update({
+  id: '/api/assistant/propose',
+  path: '/api/assistant/propose',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAssistantExecuteRoute = ApiAssistantExecuteRouteImport.update({
+  id: '/api/assistant/execute',
+  path: '/api/assistant/execute',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAssistantApproveRoute = ApiAssistantApproveRouteImport.update({
+  id: '/api/assistant/approve',
+  path: '/api/assistant/approve',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiAnomalyDetectionAnalyzeRoute =
   ApiAnomalyDetectionAnalyzeRouteImport.update({
     id: '/api/anomaly-detection/analyze',
@@ -696,6 +738,8 @@ export interface FileRoutesByFullPath {
   '/sign-up': typeof SignUpRoute
   '/unauthenticated': typeof UnauthenticatedRoute
   '/admin/claude-usage': typeof AdminClaudeUsageRoute
+  '/api/company-view': typeof ApiCompanyViewRoute
+  '/dashboard/company-view': typeof DashboardCompanyViewRoute
   '/dashboard/inbox': typeof DashboardInboxRoute
   '/dashboard/query': typeof DashboardQueryRoute
   '/dashboard/search': typeof DashboardSearchRoute
@@ -720,6 +764,10 @@ export interface FileRoutesByFullPath {
   '/api/analytics/claude-usage-export': typeof ApiAnalyticsClaudeUsageExportRoute
   '/api/anomaly-detection/alerts': typeof ApiAnomalyDetectionAlertsRoute
   '/api/anomaly-detection/analyze': typeof ApiAnomalyDetectionAnalyzeRoute
+  '/api/assistant/approve': typeof ApiAssistantApproveRoute
+  '/api/assistant/execute': typeof ApiAssistantExecuteRoute
+  '/api/assistant/propose': typeof ApiAssistantProposeRoute
+  '/api/assistant/reject': typeof ApiAssistantRejectRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/briefing/schedule': typeof ApiBriefingScheduleRoute
   '/api/customer-issues/monitor': typeof ApiCustomerIssuesMonitorRoute
@@ -756,6 +804,7 @@ export interface FileRoutesByFullPath {
   '/api/stripe/webhook': typeof ApiStripeWebhookRoute
   '/api/tasks/reminders': typeof ApiTasksRemindersRoute
   '/api/team-capacity/monitor': typeof ApiTeamCapacityMonitorRoute
+  '/api/telegram/webhook': typeof ApiTelegramWebhookRoute
   '/api/voucher-alerts/monitor': typeof ApiVoucherAlertsMonitorRoute
   '/api/workflows/event': typeof ApiWorkflowsEventRoute
   '/api/workflows/process': typeof ApiWorkflowsProcessRoute
@@ -807,6 +856,8 @@ export interface FileRoutesByTo {
   '/sign-up': typeof SignUpRoute
   '/unauthenticated': typeof UnauthenticatedRoute
   '/admin/claude-usage': typeof AdminClaudeUsageRoute
+  '/api/company-view': typeof ApiCompanyViewRoute
+  '/dashboard/company-view': typeof DashboardCompanyViewRoute
   '/dashboard/inbox': typeof DashboardInboxRoute
   '/dashboard/query': typeof DashboardQueryRoute
   '/dashboard/search': typeof DashboardSearchRoute
@@ -831,6 +882,10 @@ export interface FileRoutesByTo {
   '/api/analytics/claude-usage-export': typeof ApiAnalyticsClaudeUsageExportRoute
   '/api/anomaly-detection/alerts': typeof ApiAnomalyDetectionAlertsRoute
   '/api/anomaly-detection/analyze': typeof ApiAnomalyDetectionAnalyzeRoute
+  '/api/assistant/approve': typeof ApiAssistantApproveRoute
+  '/api/assistant/execute': typeof ApiAssistantExecuteRoute
+  '/api/assistant/propose': typeof ApiAssistantProposeRoute
+  '/api/assistant/reject': typeof ApiAssistantRejectRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/briefing/schedule': typeof ApiBriefingScheduleRoute
   '/api/customer-issues/monitor': typeof ApiCustomerIssuesMonitorRoute
@@ -867,6 +922,7 @@ export interface FileRoutesByTo {
   '/api/stripe/webhook': typeof ApiStripeWebhookRoute
   '/api/tasks/reminders': typeof ApiTasksRemindersRoute
   '/api/team-capacity/monitor': typeof ApiTeamCapacityMonitorRoute
+  '/api/telegram/webhook': typeof ApiTelegramWebhookRoute
   '/api/voucher-alerts/monitor': typeof ApiVoucherAlertsMonitorRoute
   '/api/workflows/event': typeof ApiWorkflowsEventRoute
   '/api/workflows/process': typeof ApiWorkflowsProcessRoute
@@ -920,6 +976,8 @@ export interface FileRoutesById {
   '/sign-up': typeof SignUpRoute
   '/unauthenticated': typeof UnauthenticatedRoute
   '/admin/claude-usage': typeof AdminClaudeUsageRoute
+  '/api/company-view': typeof ApiCompanyViewRoute
+  '/dashboard/company-view': typeof DashboardCompanyViewRoute
   '/dashboard/inbox': typeof DashboardInboxRoute
   '/dashboard/query': typeof DashboardQueryRoute
   '/dashboard/search': typeof DashboardSearchRoute
@@ -944,6 +1002,10 @@ export interface FileRoutesById {
   '/api/analytics/claude-usage-export': typeof ApiAnalyticsClaudeUsageExportRoute
   '/api/anomaly-detection/alerts': typeof ApiAnomalyDetectionAlertsRoute
   '/api/anomaly-detection/analyze': typeof ApiAnomalyDetectionAnalyzeRoute
+  '/api/assistant/approve': typeof ApiAssistantApproveRoute
+  '/api/assistant/execute': typeof ApiAssistantExecuteRoute
+  '/api/assistant/propose': typeof ApiAssistantProposeRoute
+  '/api/assistant/reject': typeof ApiAssistantRejectRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/briefing/schedule': typeof ApiBriefingScheduleRoute
   '/api/customer-issues/monitor': typeof ApiCustomerIssuesMonitorRoute
@@ -980,6 +1042,7 @@ export interface FileRoutesById {
   '/api/stripe/webhook': typeof ApiStripeWebhookRoute
   '/api/tasks/reminders': typeof ApiTasksRemindersRoute
   '/api/team-capacity/monitor': typeof ApiTeamCapacityMonitorRoute
+  '/api/telegram/webhook': typeof ApiTelegramWebhookRoute
   '/api/voucher-alerts/monitor': typeof ApiVoucherAlertsMonitorRoute
   '/api/workflows/event': typeof ApiWorkflowsEventRoute
   '/api/workflows/process': typeof ApiWorkflowsProcessRoute
@@ -1034,6 +1097,8 @@ export interface FileRouteTypes {
     | '/sign-up'
     | '/unauthenticated'
     | '/admin/claude-usage'
+    | '/api/company-view'
+    | '/dashboard/company-view'
     | '/dashboard/inbox'
     | '/dashboard/query'
     | '/dashboard/search'
@@ -1058,6 +1123,10 @@ export interface FileRouteTypes {
     | '/api/analytics/claude-usage-export'
     | '/api/anomaly-detection/alerts'
     | '/api/anomaly-detection/analyze'
+    | '/api/assistant/approve'
+    | '/api/assistant/execute'
+    | '/api/assistant/propose'
+    | '/api/assistant/reject'
     | '/api/auth/$'
     | '/api/briefing/schedule'
     | '/api/customer-issues/monitor'
@@ -1094,6 +1163,7 @@ export interface FileRouteTypes {
     | '/api/stripe/webhook'
     | '/api/tasks/reminders'
     | '/api/team-capacity/monitor'
+    | '/api/telegram/webhook'
     | '/api/voucher-alerts/monitor'
     | '/api/workflows/event'
     | '/api/workflows/process'
@@ -1145,6 +1215,8 @@ export interface FileRouteTypes {
     | '/sign-up'
     | '/unauthenticated'
     | '/admin/claude-usage'
+    | '/api/company-view'
+    | '/dashboard/company-view'
     | '/dashboard/inbox'
     | '/dashboard/query'
     | '/dashboard/search'
@@ -1169,6 +1241,10 @@ export interface FileRouteTypes {
     | '/api/analytics/claude-usage-export'
     | '/api/anomaly-detection/alerts'
     | '/api/anomaly-detection/analyze'
+    | '/api/assistant/approve'
+    | '/api/assistant/execute'
+    | '/api/assistant/propose'
+    | '/api/assistant/reject'
     | '/api/auth/$'
     | '/api/briefing/schedule'
     | '/api/customer-issues/monitor'
@@ -1205,6 +1281,7 @@ export interface FileRouteTypes {
     | '/api/stripe/webhook'
     | '/api/tasks/reminders'
     | '/api/team-capacity/monitor'
+    | '/api/telegram/webhook'
     | '/api/voucher-alerts/monitor'
     | '/api/workflows/event'
     | '/api/workflows/process'
@@ -1257,6 +1334,8 @@ export interface FileRouteTypes {
     | '/sign-up'
     | '/unauthenticated'
     | '/admin/claude-usage'
+    | '/api/company-view'
+    | '/dashboard/company-view'
     | '/dashboard/inbox'
     | '/dashboard/query'
     | '/dashboard/search'
@@ -1281,6 +1360,10 @@ export interface FileRouteTypes {
     | '/api/analytics/claude-usage-export'
     | '/api/anomaly-detection/alerts'
     | '/api/anomaly-detection/analyze'
+    | '/api/assistant/approve'
+    | '/api/assistant/execute'
+    | '/api/assistant/propose'
+    | '/api/assistant/reject'
     | '/api/auth/$'
     | '/api/briefing/schedule'
     | '/api/customer-issues/monitor'
@@ -1317,6 +1400,7 @@ export interface FileRouteTypes {
     | '/api/stripe/webhook'
     | '/api/tasks/reminders'
     | '/api/team-capacity/monitor'
+    | '/api/telegram/webhook'
     | '/api/voucher-alerts/monitor'
     | '/api/workflows/event'
     | '/api/workflows/process'
@@ -1370,6 +1454,7 @@ export interface RootRouteChildren {
   SignUpRoute: typeof SignUpRoute
   UnauthenticatedRoute: typeof UnauthenticatedRoute
   AdminClaudeUsageRoute: typeof AdminClaudeUsageRoute
+  ApiCompanyViewRoute: typeof ApiCompanyViewRoute
   DemoDashboardRoute: typeof DemoDashboardRoute
   DemoOcrReceiptRoute: typeof DemoOcrReceiptRoute
   DemoReceiptCaptureRoute: typeof DemoReceiptCaptureRoute
@@ -1387,6 +1472,10 @@ export interface RootRouteChildren {
   ApiAnalyticsClaudeUsageExportRoute: typeof ApiAnalyticsClaudeUsageExportRoute
   ApiAnomalyDetectionAlertsRoute: typeof ApiAnomalyDetectionAlertsRoute
   ApiAnomalyDetectionAnalyzeRoute: typeof ApiAnomalyDetectionAnalyzeRoute
+  ApiAssistantApproveRoute: typeof ApiAssistantApproveRoute
+  ApiAssistantExecuteRoute: typeof ApiAssistantExecuteRoute
+  ApiAssistantProposeRoute: typeof ApiAssistantProposeRoute
+  ApiAssistantRejectRoute: typeof ApiAssistantRejectRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
   ApiBriefingScheduleRoute: typeof ApiBriefingScheduleRoute
   ApiCustomerIssuesMonitorRoute: typeof ApiCustomerIssuesMonitorRoute
@@ -1423,6 +1512,7 @@ export interface RootRouteChildren {
   ApiStripeWebhookRoute: typeof ApiStripeWebhookRoute
   ApiTasksRemindersRoute: typeof ApiTasksRemindersRoute
   ApiTeamCapacityMonitorRoute: typeof ApiTeamCapacityMonitorRoute
+  ApiTelegramWebhookRoute: typeof ApiTelegramWebhookRoute
   ApiVoucherAlertsMonitorRoute: typeof ApiVoucherAlertsMonitorRoute
   ApiWorkflowsEventRoute: typeof ApiWorkflowsEventRoute
   ApiWorkflowsProcessRoute: typeof ApiWorkflowsProcessRoute
@@ -1588,6 +1678,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/dashboard/inbox'
       preLoaderRoute: typeof DashboardInboxRouteImport
       parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/company-view': {
+      id: '/dashboard/company-view'
+      path: '/company-view'
+      fullPath: '/dashboard/company-view'
+      preLoaderRoute: typeof DashboardCompanyViewRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/api/company-view': {
+      id: '/api/company-view'
+      path: '/api/company-view'
+      fullPath: '/api/company-view'
+      preLoaderRoute: typeof ApiCompanyViewRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/admin/claude-usage': {
       id: '/admin/claude-usage'
@@ -1897,6 +2001,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiVoucherAlertsMonitorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/telegram/webhook': {
+      id: '/api/telegram/webhook'
+      path: '/api/telegram/webhook'
+      fullPath: '/api/telegram/webhook'
+      preLoaderRoute: typeof ApiTelegramWebhookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/team-capacity/monitor': {
       id: '/api/team-capacity/monitor'
       path: '/api/team-capacity/monitor'
@@ -2149,6 +2260,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAuthSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/assistant/reject': {
+      id: '/api/assistant/reject'
+      path: '/api/assistant/reject'
+      fullPath: '/api/assistant/reject'
+      preLoaderRoute: typeof ApiAssistantRejectRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/assistant/propose': {
+      id: '/api/assistant/propose'
+      path: '/api/assistant/propose'
+      fullPath: '/api/assistant/propose'
+      preLoaderRoute: typeof ApiAssistantProposeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/assistant/execute': {
+      id: '/api/assistant/execute'
+      path: '/api/assistant/execute'
+      fullPath: '/api/assistant/execute'
+      preLoaderRoute: typeof ApiAssistantExecuteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/assistant/approve': {
+      id: '/api/assistant/approve'
+      path: '/api/assistant/approve'
+      fullPath: '/api/assistant/approve'
+      preLoaderRoute: typeof ApiAssistantApproveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/anomaly-detection/analyze': {
       id: '/api/anomaly-detection/analyze'
       path: '/api/anomaly-detection/analyze'
@@ -2230,6 +2369,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface DashboardRouteChildren {
+  DashboardCompanyViewRoute: typeof DashboardCompanyViewRoute
   DashboardInboxRoute: typeof DashboardInboxRoute
   DashboardQueryRoute: typeof DashboardQueryRoute
   DashboardSearchRoute: typeof DashboardSearchRoute
@@ -2254,6 +2394,7 @@ interface DashboardRouteChildren {
 }
 
 const DashboardRouteChildren: DashboardRouteChildren = {
+  DashboardCompanyViewRoute: DashboardCompanyViewRoute,
   DashboardInboxRoute: DashboardInboxRoute,
   DashboardQueryRoute: DashboardQueryRoute,
   DashboardSearchRoute: DashboardSearchRoute,
@@ -2289,6 +2430,7 @@ const rootRouteChildren: RootRouteChildren = {
   SignUpRoute: SignUpRoute,
   UnauthenticatedRoute: UnauthenticatedRoute,
   AdminClaudeUsageRoute: AdminClaudeUsageRoute,
+  ApiCompanyViewRoute: ApiCompanyViewRoute,
   DemoDashboardRoute: DemoDashboardRoute,
   DemoOcrReceiptRoute: DemoOcrReceiptRoute,
   DemoReceiptCaptureRoute: DemoReceiptCaptureRoute,
@@ -2306,6 +2448,10 @@ const rootRouteChildren: RootRouteChildren = {
   ApiAnalyticsClaudeUsageExportRoute: ApiAnalyticsClaudeUsageExportRoute,
   ApiAnomalyDetectionAlertsRoute: ApiAnomalyDetectionAlertsRoute,
   ApiAnomalyDetectionAnalyzeRoute: ApiAnomalyDetectionAnalyzeRoute,
+  ApiAssistantApproveRoute: ApiAssistantApproveRoute,
+  ApiAssistantExecuteRoute: ApiAssistantExecuteRoute,
+  ApiAssistantProposeRoute: ApiAssistantProposeRoute,
+  ApiAssistantRejectRoute: ApiAssistantRejectRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
   ApiBriefingScheduleRoute: ApiBriefingScheduleRoute,
   ApiCustomerIssuesMonitorRoute: ApiCustomerIssuesMonitorRoute,
@@ -2342,6 +2488,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiStripeWebhookRoute: ApiStripeWebhookRoute,
   ApiTasksRemindersRoute: ApiTasksRemindersRoute,
   ApiTeamCapacityMonitorRoute: ApiTeamCapacityMonitorRoute,
+  ApiTelegramWebhookRoute: ApiTelegramWebhookRoute,
   ApiVoucherAlertsMonitorRoute: ApiVoucherAlertsMonitorRoute,
   ApiWorkflowsEventRoute: ApiWorkflowsEventRoute,
   ApiWorkflowsProcessRoute: ApiWorkflowsProcessRoute,

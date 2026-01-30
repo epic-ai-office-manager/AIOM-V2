@@ -288,7 +288,7 @@ export function useOdooRealtimePolling(options?: {
   const { enabled = true, pollingInterval = 5000, onNotification } = options || {};
   const queryClient = useQueryClient();
   const isPollingRef = useRef(false);
-  const timeoutRef = useRef<NodeJS.Timeout>();
+  const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
 
   const poll = useCallback(async () => {
     if (!isPollingRef.current) return;
@@ -349,7 +349,7 @@ export function useOdooRealtimePolling(options?: {
  * Hook to send typing indicator
  */
 export function useSendOdooTypingIndicator() {
-  const debounceRef = useRef<NodeJS.Timeout>();
+  const debounceRef = useRef<NodeJS.Timeout | undefined>(undefined);
 
   return useMutation({
     mutationFn: ({ channelId, isTyping }: { channelId: string; isTyping: boolean }) => {

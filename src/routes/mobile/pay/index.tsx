@@ -50,6 +50,7 @@ import {
   useScanQrCode,
   usePaymentIdempotencyKey,
 } from "~/hooks/useQrPayments";
+import { QR_PAYMENT_CURRENCIES } from "~/fn/qr-payments";
 import { useMyWalletBalance } from "~/hooks/useWalletBalance";
 
 export const Route = createFileRoute("/mobile/pay/")({
@@ -281,7 +282,7 @@ function QrScannerPage() {
         qrPaymentId: paymentData.id,
         payerWalletId: walletBalance.data.walletId,
         paidAmount: finalAmount,
-        paidCurrency: paymentData.currency,
+        paidCurrency: paymentData.currency as typeof QR_PAYMENT_CURRENCIES[number],
         idempotencyKey: generateKey(),
       });
 

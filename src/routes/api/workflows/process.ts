@@ -62,7 +62,7 @@ export const Route = createFileRoute("/api/workflows/process")({
             .where(
               and(
                 eq(workflowInstance.status, "paused"),
-                lte(workflowInstance.waitingUntil, now)
+                lte(workflowInstance.dueAt, now)
               )
             )
             .limit(limit);
@@ -93,7 +93,7 @@ export const Route = createFileRoute("/api/workflows/process")({
             )
             .where(
               and(
-                eq(workflowScheduledRun.status, "pending"),
+                eq(workflowScheduledRun.isActive, true),
                 lte(workflowScheduledRun.scheduledFor, now),
                 eq(workflowDefinition.status, "active")
               )
@@ -102,38 +102,31 @@ export const Route = createFileRoute("/api/workflows/process")({
 
           for (const { run, definition } of scheduledRuns) {
             try {
-              // Mark as processing
-              await database
-                .update(workflowScheduledRun)
-                .set({ status: "processing" })
-                .where(eq(workflowScheduledRun.id, run.id));
-
               // Trigger the workflow
-              const result = await workflowEngine.triggerWorkflow({
-                type: "schedule",
-                definitionId: definition.id,
-                data: (run.triggerData as Record<string, unknown>) || {},
+              const result = await workflowEngine.triggerWorkflow(definition.id, {
+                triggerData: run.triggerData ? JSON.parse(run.triggerData) : {},
               });
 
-              // Mark as completed
+              // Mark as completed - deactivate one-time runs, update recurring runs
               await database
                 .update(workflowScheduledRun)
                 .set({
-                  status: "completed",
-                  instanceId: result.instanceId,
-                  executedAt: now,
+                  lastRunInstanceId: result.instanceId,
+                  lastRunAt: now,
+                  // Deactivate if no cron expression (one-time run)
+                  isActive: run.cronExpression ? true : false,
                 })
                 .where(eq(workflowScheduledRun.id, run.id));
 
               results.scheduledTriggered++;
               console.log(`[WorkflowProcess] Triggered scheduled workflow: ${definition.id}`);
             } catch (error) {
-              // Mark as failed
+              // Mark as failed - deactivate to prevent retry loop
               await database
                 .update(workflowScheduledRun)
                 .set({
-                  status: "failed",
-                  error: error instanceof Error ? error.message : "Unknown error",
+                  isActive: false,
+                  lastRunAt: now,
                 })
                 .where(eq(workflowScheduledRun.id, run.id));
 
@@ -183,7 +176,7 @@ export const Route = createFileRoute("/api/workflows/process")({
             .where(
               and(
                 eq(workflowInstance.status, "paused"),
-                lte(workflowInstance.waitingUntil, now)
+                lte(workflowInstance.dueAt, now)
               )
             );
 
@@ -193,7 +186,7 @@ export const Route = createFileRoute("/api/workflows/process")({
             .from(workflowScheduledRun)
             .where(
               and(
-                eq(workflowScheduledRun.status, "pending"),
+                eq(workflowScheduledRun.isActive, true),
                 lte(workflowScheduledRun.scheduledFor, now)
               )
             );

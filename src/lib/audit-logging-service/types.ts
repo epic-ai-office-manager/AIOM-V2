@@ -58,6 +58,9 @@ export type AuditEventType =
   | "financial.transfer_initiated"
   | "financial.transfer_completed"
   | "financial.transfer_failed"
+  | "expense.gl_posted"
+  | "expense.gl_posting_failed"
+  | "expense.gl_reversed"
 
   // Configuration Events
   | "config.settings_updated"

@@ -70,11 +70,9 @@ export const Route = createFileRoute("/api/workflows/event")({
             .where(eq(workflowDefinition.status, "active"));
 
           const matchingWorkflows = activeWorkflows.filter((wf) => {
-            const triggerConfig = wf.triggerConfig as {
-              type: string;
-              eventType?: string;
-              conditions?: Condition[];
-            };
+            const triggerConfig = wf.triggerConfig
+              ? JSON.parse(wf.triggerConfig)
+              : { type: "" };
             return (
               triggerConfig.type === "event" && triggerConfig.eventType === eventType
             );
@@ -89,11 +87,9 @@ export const Route = createFileRoute("/api/workflows/event")({
 
           for (const workflow of matchingWorkflows) {
             try {
-              const triggerConfig = workflow.triggerConfig as {
-                type: string;
-                eventType?: string;
-                conditions?: Condition[];
-              };
+              const triggerConfig = workflow.triggerConfig
+                ? JSON.parse(workflow.triggerConfig)
+                : { type: "" };
 
               // Check if trigger conditions are met
               if (triggerConfig.conditions && triggerConfig.conditions.length > 0) {
@@ -124,11 +120,9 @@ export const Route = createFileRoute("/api/workflows/event")({
               }
 
               // Trigger the workflow
-              const result = await workflowEngine.triggerWorkflow({
-                type: "event",
-                definitionId: workflow.id,
+              const result = await workflowEngine.triggerWorkflow(workflow.id, {
                 triggeredBy: userId,
-                data,
+                triggerData: data,
               });
 
               results.push({
@@ -185,14 +179,17 @@ export const Route = createFileRoute("/api/workflows/event")({
 
           const eventWorkflows = activeWorkflows
             .filter((wf) => {
-              const config = wf.triggerConfig as { type: string };
+              const config = wf.triggerConfig ? JSON.parse(wf.triggerConfig) : { type: "" };
               return config.type === "event";
             })
-            .map((wf) => ({
-              id: wf.id,
-              name: wf.name,
-              eventType: (wf.triggerConfig as { eventType?: string }).eventType,
-            }));
+            .map((wf) => {
+              const config = wf.triggerConfig ? JSON.parse(wf.triggerConfig) : {};
+              return {
+                id: wf.id,
+                name: wf.name,
+                eventType: config.eventType,
+              };
+            });
 
           // Group by event type
           const eventTypes = eventWorkflows.reduce(

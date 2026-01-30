@@ -1,0 +1,50 @@
+src/lib/ai-coo/scheduler/index.ts(12,36): error TS2503: Cannot find namespace 'cron'.
+src/lib/claude/__tests__/sdk-client.test.ts(5,54): error TS2307: Cannot find module 'vitest' or its corresponding type declarations.
+src/lib/claude/__tests__/sdk-client.test.ts(45,19): error TS2322: Type '{ type: "text"; text: string; }' is not assignable to type 'ContentBlock'.
+  Property 'citations' is missing in type '{ type: "text"; text: string; }' but required in type 'TextBlock'.
+src/lib/claude/__tests__/sdk-client.test.ts(49,9): error TS2739: Type '{ input_tokens: number; output_tokens: number; cache_creation_input_tokens: number; cache_read_input_tokens: number; }' is missing the following properties from type 'Usage': cache_creation, server_tool_use, service_tier
+src/lib/claude/__tests__/sdk-client.test.ts(91,19): error TS2322: Type '{ type: "text"; text: string; }' is not assignable to type 'ContentBlock'.
+  Property 'citations' is missing in type '{ type: "text"; text: string; }' but required in type 'TextBlock'.
+src/lib/claude/__tests__/sdk-client.test.ts(95,9): error TS2739: Type '{ input_tokens: number; output_tokens: number; cache_creation_input_tokens: number; cache_read_input_tokens: number; }' is missing the following properties from type 'Usage': cache_creation, server_tool_use, service_tier
+src/lib/claude/__tests__/sdk-client.test.ts(121,19): error TS2322: Type '{ type: "text"; text: string; }' is not assignable to type 'ContentBlock'.
+  Property 'citations' is missing in type '{ type: "text"; text: string; }' but required in type 'TextBlock'.
+src/lib/claude/__tests__/sdk-client.test.ts(125,9): error TS2739: Type '{ input_tokens: number; output_tokens: number; cache_creation_input_tokens: number; cache_read_input_tokens: number; }' is missing the following properties from type 'Usage': cache_creation, server_tool_use, service_tier
+src/lib/claude/__tests__/sdk-client.test.ts(159,19): error TS2322: Type '{ type: "text"; text: string; }' is not assignable to type 'ContentBlock'.
+  Property 'citations' is missing in type '{ type: "text"; text: string; }' but required in type 'TextBlock'.
+src/lib/claude/__tests__/sdk-client.test.ts(163,9): error TS2739: Type '{ input_tokens: number; output_tokens: number; cache_creation_input_tokens: number; cache_read_input_tokens: number; }' is missing the following properties from type 'Usage': cache_creation, server_tool_use, service_tier
+src/lib/claude/__tests__/sdk-client.test.ts(194,11): error TS2322: Type '{ type: "text"; text: string; }' is not assignable to type 'ContentBlock'.
+  Property 'citations' is missing in type '{ type: "text"; text: string; }' but required in type 'TextBlock'.
+src/lib/claude/__tests__/sdk-client.test.ts(195,11): error TS2322: Type '{ type: "text"; text: string; }' is not assignable to type 'ContentBlock'.
+  Property 'citations' is missing in type '{ type: "text"; text: string; }' but required in type 'TextBlock'.
+src/lib/claude/__tests__/sdk-client.test.ts(200,9): error TS2739: Type '{ input_tokens: number; output_tokens: number; cache_creation_input_tokens: number; cache_read_input_tokens: number; }' is missing the following properties from type 'Usage': cache_creation, server_tool_use, service_tier
+src/lib/claude/__tests__/sdk-client.test.ts(219,19): error TS2322: Type '{ type: "text"; text: string; }' is not assignable to type 'ContentBlock'.
+  Property 'citations' is missing in type '{ type: "text"; text: string; }' but required in type 'TextBlock'.
+src/lib/claude/__tests__/sdk-client.test.ts(223,9): error TS2739: Type '{ input_tokens: number; output_tokens: number; cache_creation_input_tokens: number; cache_read_input_tokens: number; }' is missing the following properties from type 'Usage': cache_creation, server_tool_use, service_tier
+src/lib/claude/__tests__/sdk-client.test.ts(252,19): error TS2322: Type '{ type: "text"; text: string; }' is not assignable to type 'ContentBlock'.
+  Property 'citations' is missing in type '{ type: "text"; text: string; }' but required in type 'TextBlock'.
+src/lib/claude/__tests__/sdk-client.test.ts(256,9): error TS2739: Type '{ input_tokens: number; output_tokens: number; cache_creation_input_tokens: number; cache_read_input_tokens: number; }' is missing the following properties from type 'Usage': cache_creation, server_tool_use, service_tier
+src/lib/demo-environment/service.ts(180,17): error TS2769: No overload matches this call.
+  Overload 1 of 3, '(left: Column<ColumnBaseConfig<ColumnDataType, string>, object, object>, right: unknown): SQL<unknown>', gave the following error.
+    Argument of type 'Date' is not assignable to parameter of type 'Column<ColumnBaseConfig<ColumnDataType, string>, object, object>'.
+      Type 'Date' is missing the following properties from type 'Column<ColumnBaseConfig<ColumnDataType, string>, object, object>': table, _, name, keyAsName, and 19 more.
+  Overload 2 of 3, '(left: Aliased<PgColumn<{ name: "expires_at"; tableName: "demo_session"; dataType: "date"; columnType: "PgTimestamp"; data: Date; driverParam: string; notNull: true; hasDefault: false; isPrimaryKey: false; ... 5 more ...; generated: undefined; }, {}, {}>>, right: SQLWrapper | PgColumn<...>): SQL<...>', gave the following error.
+    Argument of type 'Date' is not assignable to parameter of type 'Aliased<PgColumn<{ name: "expires_at"; tableName: "demo_session"; dataType: "date"; columnType: "PgTimestamp"; data: Date; driverParam: string; notNull: true; hasDefault: false; isPrimaryKey: false; ... 5 more ...; generated: undefined; }, {}, {}>>'.
+      Type 'Date' is missing the following properties from type 'Aliased<PgColumn<{ name: "expires_at"; tableName: "demo_session"; dataType: "date"; columnType: "PgTimestamp"; data: Date; driverParam: string; notNull: true; hasDefault: false; isPrimaryKey: false; ... 5 more ...; generated: undefined; }, {}, {}>>': sql, fieldAlias, _, getSQL
+  Overload 3 of 3, '(left: SQLWrapper, right: unknown): SQL<unknown>', gave the following error.
+    Argument of type 'Date' is not assignable to parameter of type 'SQLWrapper'.
+      Property 'getSQL' is missing in type 'Date' but required in type 'SQLWrapper'.
+src/lib/demo-environment/service.ts(215,32): error TS2339: Property 'raw' does not exist on type 'NodePgDatabase<typeof import("C:/repos/AIOM-V2/src/db/schema")> & { $client: Pool; }'.
+src/lib/odoo/gl-posting.ts(9,3): error TS2305: Module '"./types"' has no exported member 'OdooClient'.
+src/lib/odoo/gl-posting.ts(182,28): error TS7006: Parameter 'account' implicitly has an 'any' type.
+src/lib/offline-sync/conflict-resolver.ts(161,9): error TS2322: Type 'ConflictResolutionResult<unknown>' is not assignable to type 'ConflictResolutionResult<T>'.
+  Type 'unknown' is not assignable to type 'T'.
+    'T' could be instantiated with an arbitrary type which could be unrelated to 'unknown'.
+src/lib/stripe.ts(5,3): error TS2322: Type '"2025-11-17.clover"' is not assignable to type '"2025-12-15.clover"'.
+src/use-cases/message-priority.ts(325,61): error TS2345: Argument of type 'MessageResponse | Message' is not assignable to parameter of type 'MessageResponse & Message'.
+  Type 'MessageResponse' is not assignable to type 'MessageResponse & Message'.
+    Type 'MessageResponse' is not assignable to type 'Message'.
+      Types of property 'content' are incompatible.
+        Type 'import("C:/repos/AIOM-V2/src/lib/claude/types").ContentBlock[]' is not assignable to type 'import("C:/repos/AIOM-V2/node_modules/@anthropic-ai/sdk/resources/messages/messages").ContentBlock[]'.
+          Type 'import("C:/repos/AIOM-V2/src/lib/claude/types").ContentBlock' is not assignable to type 'import("C:/repos/AIOM-V2/node_modules/@anthropic-ai/sdk/resources/messages/messages").ContentBlock'.
+            Type 'TextContent' is not assignable to type 'ContentBlock'.
+              Property 'citations' is missing in type 'TextContent' but required in type 'TextBlock'.

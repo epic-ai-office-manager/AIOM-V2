@@ -92,7 +92,7 @@ function formatCurrency(amount: string, currency: string = "USD"): string {
  * Expense Request Card Component (Mobile-optimized)
  */
 function ExpenseRequestCard({ request }: { request: ExpenseRequest }) {
-  const statusConfig = STATUS_CONFIG[request.status];
+  const statusConfig = STATUS_CONFIG[request.status as ExpenseRequestStatus];
   const StatusIcon = statusConfig.icon;
   const createdDate = new Date(request.createdAt);
 

@@ -168,9 +168,9 @@ export function KYCSubmissionForm({
       const result = results[0];
       await onAddDocument({
         documentType: selectedDocumentType,
-        fileName: result.originalFilename || "document.jpg",
-        fileUrl: result.url,
-        fileSize: result.size,
+        fileName: result.fileName || "document.jpg",
+        fileUrl: result.fileKey,
+        fileSize: result.fileSize,
         mimeType: result.mimeType,
       });
     }

@@ -39,7 +39,7 @@ function NewMobileExpensePage() {
   const handleSubmit = async (data: ExpenseRequestSubmitData) => {
     // Use captured receipt URL if available
     const receiptUrl = capturedReceipts.length > 0
-      ? capturedReceipts[0].url
+      ? capturedReceipts[0].fileKey
       : data.receiptUrl;
 
     await createExpenseRequest.mutateAsync({
@@ -107,11 +107,11 @@ function NewMobileExpensePage() {
             <div className="flex gap-2 overflow-x-auto pb-2">
               {capturedReceipts.map((receipt, index) => (
                 <div
-                  key={receipt.key}
+                  key={receipt.fileKey}
                   className="relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border"
                 >
                   <img
-                    src={receipt.url}
+                    src={receipt.previewUrl ?? ""}
                     alt={`Receipt ${index + 1}`}
                     className="w-full h-full object-cover"
                   />
@@ -144,7 +144,7 @@ function NewMobileExpensePage() {
           cancelLabel="Cancel"
           defaultValues={
             capturedReceipts.length > 0
-              ? { receiptUrl: capturedReceipts[0].url }
+              ? { receiptUrl: capturedReceipts[0].fileKey }
               : undefined
           }
         />

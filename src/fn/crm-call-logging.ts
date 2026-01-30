@@ -404,7 +404,7 @@ export const logCallToCrmFn = createServerFn({
       throw new Error(result.error || "Failed to log call to CRM");
     }
 
-    return result;
+    return result as any;
   });
 
 /**
@@ -444,7 +444,7 @@ export const retryCrmCallLogSyncFn = createServerFn({
       throw new Error(result.error || "Failed to retry CRM sync");
     }
 
-    return result;
+    return result as any;
   });
 
 /**
@@ -492,7 +492,7 @@ export const bulkLogCallsToCrmFn = createServerFn({
     }
 
     return {
-      results,
+      results: results as any,
       successCount,
       failureCount,
       totalProcessed: data.callRecordIds.length,
@@ -547,7 +547,7 @@ export const processPendingCrmSyncsFn = createServerFn({
     }
 
     return {
-      results,
+      results: results as any,
       successCount,
       failureCount,
       totalProcessed: pendingSyncs.length,

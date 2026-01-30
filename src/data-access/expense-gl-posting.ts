@@ -192,17 +192,18 @@ export async function postExpenseVoucherToOdooGL(
     });
 
     // 8. Log the posting to audit trail
-    await auditLog.log(
-      "expense.gl_posted",
-      {
+    await auditLog.log({
+      eventType: "expense.gl_posted",
+      category: "financial",
+      actor: {
         actorId: options.postedById || "system",
         actorType: options.postedById ? "user" : "system",
       },
-      {
+      resource: {
         resourceType: "expense_voucher",
         resourceId: voucherId,
       },
-      {
+      change: {
         previousState: { postingStatus: "not_posted" },
         newState: {
           postingStatus: "posted",
@@ -212,18 +213,16 @@ export async function postExpenseVoucherToOdooGL(
         changedFields: ["postingStatus", "glJournalEntryId", "glPostingReference", "postedAt"],
         description: `Expense voucher ${voucher.voucherNumber} posted to GL as ${glResult.journalEntryName}`,
       },
-      {
-        metadata: {
-          voucherNumber: voucher.voucherNumber,
-          amount: voucher.amount,
-          currency: voucher.currency,
-          journalEntryId: glResult.journalEntryId,
-          journalEntryName: glResult.journalEntryName,
-          postingReference: glResult.postingReference,
-        },
-        tags: ["financial", "gl_posting", "expense"],
-      }
-    );
+      metadata: {
+        voucherNumber: voucher.voucherNumber,
+        amount: voucher.amount,
+        currency: voucher.currency,
+        journalEntryId: glResult.journalEntryId,
+        journalEntryName: glResult.journalEntryName,
+        postingReference: glResult.postingReference,
+      },
+      tags: ["financial", "gl_posting", "expense"],
+    });
 
     return {
       success: true,
@@ -239,31 +238,30 @@ export async function postExpenseVoucherToOdooGL(
     await markExpenseVoucherPostingFailed(voucherId, errorMessage);
 
     // Log the failure
-    await auditLog.log(
-      "expense.gl_posting_failed",
-      {
+    await auditLog.log({
+      eventType: "expense.gl_posting_failed",
+      category: "financial",
+      severity: "warning",
+      actor: {
         actorId: options.postedById || "system",
         actorType: options.postedById ? "user" : "system",
       },
-      {
+      resource: {
         resourceType: "expense_voucher",
         resourceId: voucherId,
       },
-      {
+      change: {
         previousState: { postingStatus: "pending" },
         newState: { postingStatus: "failed", glPostingError: errorMessage },
         changedFields: ["postingStatus", "glPostingError"],
         description: `GL posting failed for voucher ${voucher.voucherNumber}: ${errorMessage}`,
       },
-      {
-        metadata: {
-          voucherNumber: voucher.voucherNumber,
-          error: errorMessage,
-        },
-        tags: ["financial", "gl_posting", "expense", "error"],
-        severity: "warning",
-      }
-    );
+      metadata: {
+        voucherNumber: voucher.voucherNumber,
+        error: errorMessage,
+      },
+      tags: ["financial", "gl_posting", "expense", "error"],
+    });
 
     return {
       success: false,
@@ -392,32 +390,31 @@ export async function reverseExpenseGLPosting(
     });
 
     // Log the reversal
-    await auditLog.log(
-      "expense.gl_reversed",
-      {
+    await auditLog.log({
+      eventType: "expense.gl_reversed",
+      category: "financial",
+      actor: {
         actorId: reversedById,
         actorType: "user",
       },
-      {
+      resource: {
         resourceType: "expense_voucher",
         resourceId: voucherId,
       },
-      {
+      change: {
         previousState: { postingStatus: "posted" },
         newState: { postingStatus: "reversed" },
         changedFields: ["postingStatus"],
         description: `GL posting reversed for voucher ${voucher.voucherNumber}. Reason: ${reason}`,
       },
-      {
-        metadata: {
-          voucherNumber: voucher.voucherNumber,
-          originalJournalEntryId: journalEntryId,
-          reversalJournalEntryId: reversalResult.journalEntryId,
-          reversalReason: reason,
-        },
-        tags: ["financial", "gl_posting", "expense", "reversal"],
-      }
-    );
+      metadata: {
+        voucherNumber: voucher.voucherNumber,
+        originalJournalEntryId: journalEntryId,
+        reversalJournalEntryId: reversalResult.journalEntryId,
+        reversalReason: reason,
+      },
+      tags: ["financial", "gl_posting", "expense", "reversal"],
+    });
 
     return {
       success: true,
@@ -493,9 +490,9 @@ function buildGLPostingRequest(
     debit: parseFloat(item.amount),
     credit: 0,
     accountCode: item.glAccountCode || voucher.glAccountCode || "6000", // Default to generic expense
-    costCenter: item.costCenter || voucher.costCenter,
-    department: item.department || voucher.department,
-    projectCode: item.projectCode || voucher.projectCode,
+    costCenter: item.costCenter || voucher.costCenter || undefined,
+    department: item.department || voucher.department || undefined,
+    projectCode: item.projectCode || voucher.projectCode || undefined,
     partnerId: voucher.vendorId ? parseInt(voucher.vendorId, 10) : undefined,
     taxCode: item.taxCode || undefined,
     taxAmount: item.taxAmount ? parseFloat(item.taxAmount) : undefined,
@@ -512,6 +509,8 @@ function buildGLPostingRequest(
       department: voucher.department || undefined,
       projectCode: voucher.projectCode || undefined,
       partnerId: voucher.vendorId ? parseInt(voucher.vendorId, 10) : undefined,
+      taxCode: undefined,
+      taxAmount: undefined,
     });
   }
 

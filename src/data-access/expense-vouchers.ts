@@ -1,4 +1,4 @@
-import { eq, desc, count, and, or, ilike, sql } from "drizzle-orm";
+import { eq, desc, asc, count, and, or, ilike, sql } from "drizzle-orm";
 import { database } from "~/db";
 import {
   expenseVoucher,
@@ -228,7 +228,7 @@ export async function findExpenseVoucherByIdWithDetails(
             },
           },
         },
-        orderBy: (history, { asc }) => [asc(history.actionAt)],
+        orderBy: (history: typeof expenseVoucherApprovalHistory, helpers: { asc: typeof asc; desc: typeof desc }) => [helpers.asc(history.actionAt)],
       },
     },
   });

@@ -320,7 +320,7 @@ export const testRuleConditionsFn = createServerFn({ method: "POST" })
   .middleware([authenticatedMiddleware])
   .handler(async ({ data }) => {
     const result = await testRuleConditions(data.id, data.sampleData);
-    return { result };
+    return { result: result as any };
   });
 
 /**

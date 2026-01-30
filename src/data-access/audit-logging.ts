@@ -726,20 +726,20 @@ export async function logSystemEvent(
  * Parse JSON fields from audit log
  */
 export function parseAuditLogFields(log: AuditLog): {
-  previousState: unknown | null;
-  newState: unknown | null;
+  previousState: {} | null;
+  newState: {} | null;
   changedFields: string[] | null;
-  metadata: Record<string, unknown> | null;
+  metadata: Record<string, {}> | null;
   tags: string[] | null;
-  errorDetails: Record<string, unknown> | null;
+  errorDetails: Record<string, {}> | null;
 } {
   return {
-    previousState: log.previousState ? JSON.parse(log.previousState) : null,
-    newState: log.newState ? JSON.parse(log.newState) : null,
+    previousState: log.previousState ? (JSON.parse(log.previousState) as {}) : null,
+    newState: log.newState ? (JSON.parse(log.newState) as {}) : null,
     changedFields: log.changedFields ? JSON.parse(log.changedFields) : null,
-    metadata: log.metadata ? JSON.parse(log.metadata) : null,
+    metadata: log.metadata ? (JSON.parse(log.metadata) as Record<string, {}>) : null,
     tags: log.tags ? JSON.parse(log.tags) : null,
-    errorDetails: log.errorDetails ? JSON.parse(log.errorDetails) : null,
+    errorDetails: log.errorDetails ? (JSON.parse(log.errorDetails) as Record<string, {}>) : null,
   };
 }
 

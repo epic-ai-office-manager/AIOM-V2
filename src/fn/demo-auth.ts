@@ -30,7 +30,7 @@ import {
  * Returns a token that the client should store and send with subsequent requests
  */
 export const demoLoginFn = createServerFn({ method: "POST" })
-  .validator(
+  .inputValidator(
     z.object({
       email: z.string().email(),
       password: z.string().min(1),
@@ -59,7 +59,7 @@ export const demoLoginFn = createServerFn({ method: "POST" })
  * Logout from demo environment
  */
 export const demoLogoutFn = createServerFn({ method: "POST" })
-  .validator(
+  .inputValidator(
     z.object({
       token: z.string(),
     })
@@ -78,7 +78,7 @@ export const demoLogoutFn = createServerFn({ method: "POST" })
  * Validate demo session and get session info
  */
 export const validateDemoSessionFn = createServerFn({ method: "POST" })
-  .validator(
+  .inputValidator(
     z.object({
       token: z.string(),
     })
@@ -131,7 +131,7 @@ export const getDemoRolesFn = createServerFn({ method: "GET" }).handler(
  * Get demo dashboard data
  */
 export const getDemoDashboardDataFn = createServerFn({ method: "POST" })
-  .validator(
+  .inputValidator(
     z.object({
       token: z.string(),
     })
@@ -167,7 +167,7 @@ export const getDemoDashboardDataFn = createServerFn({ method: "POST" })
  * Get demo expenses data
  */
 export const getDemoExpensesFn = createServerFn({ method: "POST" })
-  .validator(
+  .inputValidator(
     z.object({
       token: z.string(),
     })
@@ -191,7 +191,7 @@ export const getDemoExpensesFn = createServerFn({ method: "POST" })
  * Get demo work orders data
  */
 export const getDemoWorkOrdersFn = createServerFn({ method: "POST" })
-  .validator(
+  .inputValidator(
     z.object({
       token: z.string(),
     })
@@ -215,7 +215,7 @@ export const getDemoWorkOrdersFn = createServerFn({ method: "POST" })
  * Get demo customers data
  */
 export const getDemoCustomersFn = createServerFn({ method: "POST" })
-  .validator(
+  .inputValidator(
     z.object({
       token: z.string(),
     })
@@ -239,7 +239,7 @@ export const getDemoCustomersFn = createServerFn({ method: "POST" })
  * Get demo transactions data
  */
 export const getDemoTransactionsFn = createServerFn({ method: "POST" })
-  .validator(
+  .inputValidator(
     z.object({
       token: z.string(),
     })
@@ -263,13 +263,13 @@ export const getDemoTransactionsFn = createServerFn({ method: "POST" })
  * Log demo activity
  */
 export const logDemoActivityFn = createServerFn({ method: "POST" })
-  .validator(
+  .inputValidator(
     z.object({
       token: z.string(),
       action: z.string(),
       resourceType: z.string().optional(),
       resourceId: z.string().optional(),
-      metadata: z.record(z.unknown()).optional(),
+      metadata: z.record(z.string(), z.unknown()).optional(),
     })
   )
   .handler(async ({ data }) => {
@@ -282,7 +282,7 @@ export const logDemoActivityFn = createServerFn({ method: "POST" })
       action: data.action,
       resourceType: data.resourceType,
       resourceId: data.resourceId,
-      metadata: data.metadata,
+      metadata: data.metadata as Record<string, {}> | undefined,
     });
 
     return { success: true };
@@ -292,12 +292,13 @@ export const logDemoActivityFn = createServerFn({ method: "POST" })
  * Get demo activity history
  */
 export const getDemoActivityHistoryFn = createServerFn({ method: "POST" })
-  .validator(
+  .inputValidator(
     z.object({
       token: z.string(),
     })
   )
-  .handler(async ({ data }) => {
+  .handler(async (ctx) => {
+    const { data } = ctx;
     const validation = await validateDemoSession(data.token);
     if (!validation.isValid || !validation.session) {
       throw new Error("Invalid demo session");

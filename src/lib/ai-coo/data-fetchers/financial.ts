@@ -33,6 +33,7 @@ export interface ARAgingData {
   days30: number;       // 31-60 days
   days60: number;       // 61-90 days
   days90plus: number;   // 90+ days
+  daysToPayAvg?: number; // Average days to payment (optional metric)
   invoices: Array<{
     id: number;
     name: string;

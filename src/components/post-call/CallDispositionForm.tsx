@@ -41,9 +41,7 @@ import {
 } from "~/fn/call-dispositions";
 
 const dispositionFormSchema = z.object({
-  disposition: z.enum(DISPOSITION_TYPES, {
-    required_error: "Please select a disposition",
-  }),
+  disposition: z.enum(DISPOSITION_TYPES),
   notes: z
     .string()
     .max(5000, "Notes must be less than 5000 characters")

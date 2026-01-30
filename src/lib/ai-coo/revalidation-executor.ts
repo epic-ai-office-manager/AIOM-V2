@@ -10,8 +10,8 @@
  * 5. quiet_hours_ok - Business hours check
  */
 
-import { getOdooClient } from '~/lib/odoo/client';
-import { db } from '~/db/client';
+import { getOdooClient } from '~/data-access/odoo';
+import { database as db } from '~/db';
 import { outreachState } from '~/db/ai-coo-schema';
 import { and, eq, gte } from 'drizzle-orm';
 import type {
@@ -154,7 +154,7 @@ async function executeCheck(
 async function checkOdooRecordExists(model: string, id: number): Promise<boolean> {
   try {
     const odooClient = await getOdooClient();
-    const records = await odooClient.read(model, [id], ['id']);
+    const records = await odooClient.read(model, [id], { fields: ['id'] });
     return records.length > 0;
   } catch (error) {
     console.error(`[Revalidation] Failed to check Odoo record exists:`, error);
@@ -173,7 +173,7 @@ async function checkOdooFieldEquals(
 ): Promise<boolean> {
   try {
     const odooClient = await getOdooClient();
-    const records = await odooClient.read(model, [id], [field]);
+    const records = await odooClient.read(model, [id], { fields: [field] });
 
     if (records.length === 0) {
       return false; // Record doesn't exist
@@ -204,7 +204,7 @@ async function checkOdooFieldIn(
 ): Promise<boolean> {
   try {
     const odooClient = await getOdooClient();
-    const records = await odooClient.read(model, [id], [field]);
+    const records = await odooClient.read(model, [id], { fields: [field] });
 
     if (records.length === 0) {
       return false; // Record doesn't exist

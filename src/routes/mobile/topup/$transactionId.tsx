@@ -340,9 +340,9 @@ function TransactionDetailPage() {
             </CardHeader>
             <CardContent className="space-y-3">
               <div className="bg-muted rounded-lg p-4 text-sm font-mono space-y-2">
-                <p>Amount: {receipt.requestedAmount} {receipt.requestedAmountCurrency}</p>
-                {receipt.deliveredAmount && (
-                  <p>Delivered: {receipt.deliveredAmount} {receipt.deliveredAmountCurrency}</p>
+                <p>Amount: {receipt.amountCharged} {receipt.amountChargedCurrency}</p>
+                {receipt.amountDelivered && (
+                  <p>Delivered: {receipt.amountDelivered} {receipt.amountDeliveredCurrency}</p>
                 )}
                 <p>Recipient: +{receipt.recipientCountryCode} {receipt.recipientPhone}</p>
                 <p>Operator: {receipt.operatorName}</p>

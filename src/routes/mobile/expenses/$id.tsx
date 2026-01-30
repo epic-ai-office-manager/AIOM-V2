@@ -152,7 +152,7 @@ function MobileExpenseDetailPage() {
     );
   }
 
-  const statusConfig = STATUS_CONFIG[expense.status];
+  const statusConfig = STATUS_CONFIG[expense.status as ExpenseRequestStatus];
   const StatusIcon = statusConfig.icon;
   const canEdit = expense.status === "pending" && expense.requesterId === session?.user?.id;
   const canDelete = expense.status === "pending" && expense.requesterId === session?.user?.id;
@@ -175,7 +175,7 @@ function MobileExpenseDetailPage() {
           {(canEdit || canDelete) && (
             <div className="flex items-center gap-2">
               {canEdit && (
-                <Link to="/mobile/expenses/$id/edit" params={{ id }}>
+                <Link to="/mobile/expenses/$id" params={{ id }}>
                   <Button variant="ghost" size="icon" className="h-9 w-9">
                     <Edit className="h-5 w-5" />
                   </Button>

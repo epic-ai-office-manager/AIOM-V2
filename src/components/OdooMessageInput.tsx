@@ -25,7 +25,7 @@ export function OdooMessageInput({
   placeholder = "Type a message...",
 }: OdooMessageInputProps) {
   const [content, setContent] = useState("");
-  const typingTimeoutRef = useRef<NodeJS.Timeout>();
+  const typingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const wasTypingRef = useRef(false);
 
   const handleContentChange = useCallback(

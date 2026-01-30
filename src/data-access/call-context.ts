@@ -48,7 +48,7 @@ export interface RecentInteraction {
   title: string;
   summary: string | null;
   timestamp: Date;
-  metadata?: Record<string, unknown>;
+  metadata?: Record<string, {}>;
 }
 
 export interface OpenTicket {

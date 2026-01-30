@@ -232,6 +232,17 @@ function formatKey(key: string): string {
     .trim();
 }
 
+function getValueAtPath(obj: unknown, path: string): unknown {
+  if (!path) return undefined;
+
+  return path.split(".").reduce<unknown>((acc, part) => {
+    if (acc && typeof acc === "object") {
+      return (acc as Record<string, unknown>)[part];
+    }
+    return undefined;
+  }, obj);
+}
+
 // ============================================================================
 // Specialized Formatters
 // ============================================================================
@@ -239,8 +250,8 @@ function formatKey(key: string): string {
 /**
  * Create a table formatter for array data
  */
-export function createTableFormatter<T extends Record<string, unknown>>(
-  columns: Array<{ key: keyof T; label: string; width?: number }>
+export function createTableFormatter<T extends object>(
+  columns: Array<{ key: string; label: string; width?: number }>
 ): ResponseFormatter<T[]> {
   return (result: ToolResult<T[]>, _context: ToolContext): FormattedResponse => {
     if (!result.success || !result.data) {
@@ -262,7 +273,9 @@ export function createTableFormatter<T extends Record<string, unknown>>(
 
     // Build rows
     const rows = data.slice(0, 50).map((item) =>
-      columns.map((col) => String(item[col.key] ?? "")).join(" | ")
+      columns
+        .map((col) => String(getValueAtPath(item, String(col.key)) ?? ""))
+        .join(" | ")
     );
 
     let content = `${header}\n${separator}\n${rows.join("\n")}`;
@@ -302,8 +315,8 @@ export function createJsonFormatter<T>(): ResponseFormatter<T> {
 /**
  * Create a summary formatter that shows key metrics
  */
-export function createSummaryFormatter<T extends Record<string, unknown>>(
-  summaryKeys: Array<{ key: keyof T; label: string }>
+export function createSummaryFormatter<T extends object>(
+  summaryKeys: Array<{ key: string; label: string }>
 ): ResponseFormatter<T> {
   return (result: ToolResult<T>, _context: ToolContext): FormattedResponse => {
     if (!result.success || !result.data) {
@@ -312,7 +325,7 @@ export function createSummaryFormatter<T extends Record<string, unknown>>(
 
     const data = result.data;
     const lines = summaryKeys
-      .map(({ key, label }) => `${label}: ${data[key] ?? "N/A"}`)
+      .map(({ key, label }) => `${label}: ${getValueAtPath(data, String(key)) ?? "N/A"}`)
       .filter(Boolean);
 
     return {

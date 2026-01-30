@@ -178,7 +178,7 @@ export const OperationWithInputsSchema = z.discriminatedUnion('type', [
       body_text: z.string().min(1),
       body_html: z.string().optional(),
       template_id: z.string().optional(),
-      template_vars: z.record(z.unknown()).optional(),
+      template_vars: z.record(z.string(), z.unknown()).optional(),
     }),
   }),
 
@@ -251,7 +251,7 @@ export const OperationWithInputsSchema = z.discriminatedUnion('type', [
       scheduled_for: z.coerce.date(),
       action_type: z.enum(['email', 'sms', 'call', 'task']),
       template_id: z.string().optional(),
-      parameters: z.record(z.unknown()).optional(),
+      parameters: z.record(z.string(), z.unknown()).optional(),
     }),
   }),
 ]);
@@ -329,7 +329,7 @@ export const ActionProtocolV11Schema = z.object({
   }).optional(),
 
   // Extensibility
-  metadata: z.record(z.unknown()).optional(),
+  metadata: z.record(z.string(), z.unknown()).optional(),
 });
 
 export type ActionProtocolV11 = z.infer<typeof ActionProtocolV11Schema>;

@@ -138,6 +138,39 @@ export async function findAIConversationsForUser(
 }
 
 /**
+ * Get or create a dedicated "Assistant Proposals" conversation for a user
+ * Reuses existing conversation if found, otherwise creates new one
+ */
+export async function getOrCreateAssistantProposalConversation(
+  userId: string
+): Promise<AIConversation> {
+  // Try to find existing "Assistant Proposals" conversation
+  const [existing] = await database
+    .select()
+    .from(aiConversation)
+    .where(
+      and(
+        eq(aiConversation.userId, userId),
+        eq(aiConversation.title, "Assistant Proposals"),
+        isNull(aiConversation.deletedAt)
+      )
+    )
+    .limit(1);
+
+  if (existing) {
+    return existing;
+  }
+
+  // Create new conversation
+  return createAIConversation({
+    id: crypto.randomUUID(),
+    userId,
+    title: "Assistant Proposals",
+    status: "active",
+  });
+}
+
+/**
  * Get AI conversation with messages
  */
 export async function getAIConversationWithMessages(
@@ -461,6 +494,36 @@ export async function createAIToolCall(
     .returning();
 
   return result;
+}
+
+/**
+ * Find a tool call by toolCallId (idempotency key)
+ */
+export async function findAIToolCallByToolCallId(
+  toolCallId: string
+): Promise<AIToolCall | null> {
+  const [result] = await database
+    .select()
+    .from(aiToolCall)
+    .where(eq(aiToolCall.toolCallId, toolCallId))
+    .limit(1);
+
+  return result || null;
+}
+
+/**
+ * Find a tool call by ID (primary key)
+ */
+export async function findAIToolCallById(
+  id: string
+): Promise<AIToolCall | null> {
+  const [result] = await database
+    .select()
+    .from(aiToolCall)
+    .where(eq(aiToolCall.id, id))
+    .limit(1);
+
+  return result || null;
 }
 
 /**

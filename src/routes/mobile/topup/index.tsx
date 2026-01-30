@@ -141,7 +141,8 @@ function MobileTopupPage() {
         countryCode: selectedCountry.code,
       }).then((result) => {
         if (result.success && result.operator) {
-          setSelectedOperator(result.operator);
+          // Operator detection returns a different shape than ReloadlyOperator.
+          // Keep selectedOperator unchanged; user can pick from the operator list.
         }
       }).catch(() => {
         // Ignore detection errors
@@ -414,8 +415,8 @@ function MobileTopupPage() {
                       match ?? {
                         code: country.isoName,
                         name: country.name,
-                        flag: country.flag?.emoji ?? "🏳️",
-                        callingCode: country.callingCode,
+                        flag: country.flag ?? "🏳️",
+                        callingCode: country.callingCodes?.[0] ?? "",
                       }
                     );
                     setSelectedOperator(null);
@@ -423,11 +424,11 @@ function MobileTopupPage() {
                     setCountrySearch("");
                   }}
                 >
-                  <span className="text-xl">{country.flag?.emoji ?? "🏳️"}</span>
+                  <span className="text-xl">{country.flag ?? "🏳️"}</span>
                   <div className="flex-1">
                     <p className="font-medium">{country.name}</p>
                     <p className="text-xs text-muted-foreground">
-                      {country.callingCode}
+                      {country.callingCodes?.[0] ?? ""}
                     </p>
                   </div>
                 </button>

@@ -97,7 +97,7 @@ export interface DemoActivity {
   action: string;
   resourceType?: string;
   resourceId?: string;
-  metadata?: Record<string, unknown>;
+  metadata?: Record<string, {}>;
   timestamp: Date;
 }
 

@@ -6,7 +6,7 @@
 
 import { database } from "~/db";
 import { demoSession, demoActivityLog, type DemoSession } from "~/db/schema";
-import { eq, and, gt, desc } from "drizzle-orm";
+import { eq, and, gt, lt, desc, sql } from "drizzle-orm";
 import { DEMO_CREDENTIALS, DEMO_CONFIG } from "~/config/demoEnv";
 import type {
   DemoSessionContext,
@@ -177,7 +177,7 @@ export async function cleanupExpiredSessions(): Promise<number> {
   try {
     const result = await database
       .delete(demoSession)
-      .where(gt(new Date(), demoSession.expiresAt));
+      .where(lt(demoSession.expiresAt, new Date()));
 
     return 0; // Drizzle doesn't return count easily, but cleanup was attempted
   } catch (error) {
@@ -212,7 +212,7 @@ export async function logDemoActivity(
     await database
       .update(demoSession)
       .set({
-        actionsCount: database.raw`actions_count + 1`,
+        actionsCount: sql`actions_count + 1`,
         lastAccessedAt: new Date(),
       })
       .where(eq(demoSession.id, sessionId));
@@ -240,7 +240,7 @@ export async function getDemoActivities(
       action: a.action,
       resourceType: a.resourceType || undefined,
       resourceId: a.resourceId || undefined,
-      metadata: (a.metadata as Record<string, unknown>) || undefined,
+      metadata: (a.metadata as Record<string, {}>) || undefined,
       timestamp: a.createdAt,
     }));
   } catch (error) {

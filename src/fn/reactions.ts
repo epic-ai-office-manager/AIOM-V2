@@ -40,7 +40,7 @@ export const togglePostReactionFn = createServerFn({
         id: crypto.randomUUID(),
         userId,
         postId,
-        type: "like",
+        reactionType: "like",
       });
       const reactionCount = await getPostReactionCount(postId);
       return { isLiked: true, likeCount: reactionCount };
@@ -106,7 +106,7 @@ export const toggleCommentReactionFn = createServerFn({
         id: crypto.randomUUID(),
         userId,
         commentId,
-        type: "like",
+        reactionType: "like",
       });
       const reactionCount = await getCommentReactionCount(commentId);
       return { isLiked: true, likeCount: reactionCount };

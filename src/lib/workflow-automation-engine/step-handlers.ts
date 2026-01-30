@@ -22,6 +22,82 @@ import {
   replaceTemplatePlaceholders,
   resolveValue,
 } from "./condition-evaluator";
+import type { XmlRpcValue, OdooDomainElement } from "~/lib/odoo/types";
+import { privateEnv } from "~/config/privateEnv";
+
+// =============================================================================
+// Type Conversion Helpers for Odoo XML-RPC
+// =============================================================================
+
+/**
+ * Convert unknown value to XmlRpcValue for Odoo XML-RPC compatibility
+ * Handles primitives, arrays, and objects recursively
+ */
+function toXmlRpcValue(value: unknown): XmlRpcValue {
+  if (value === null || value === undefined) {
+    return null;
+  }
+
+  if (typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean') {
+    return value;
+  }
+
+  if (Array.isArray(value)) {
+    return value.map(toXmlRpcValue);
+  }
+
+  if (typeof value === 'object') {
+    const result: { [key: string]: XmlRpcValue } = {};
+    for (const [key, val] of Object.entries(value)) {
+      result[key] = toXmlRpcValue(val);
+    }
+    return result;
+  }
+
+  // Fallback: convert to string for non-serializable types
+  return String(value);
+}
+
+/**
+ * Convert Record<string, unknown> to Record<string, XmlRpcValue> for Odoo operations
+ */
+function toXmlRpcRecord(input: Record<string, unknown>): Record<string, XmlRpcValue> {
+  const result: Record<string, XmlRpcValue> = {};
+  for (const [key, value] of Object.entries(input)) {
+    result[key] = toXmlRpcValue(value);
+  }
+  return result;
+}
+
+/**
+ * Convert unknown array to OdooDomainElement[] for Odoo search operations
+ * Validates domain structure: each element is either [field, operator, value] or '&'|'|'|'!'
+ */
+function toOdooDomain(input: unknown[]): OdooDomainElement[] {
+  const result: OdooDomainElement[] = [];
+
+  for (const element of input) {
+    // Check for domain operators
+    if (element === '&' || element === '|' || element === '!') {
+      result.push(element);
+      continue;
+    }
+
+    // Check for domain condition [field, operator, value]
+    if (Array.isArray(element) && element.length === 3) {
+      const [field, operator, value] = element;
+      if (typeof field === 'string' && typeof operator === 'string') {
+        result.push([field, operator as any, toXmlRpcValue(value)]);
+        continue;
+      }
+    }
+
+    // Invalid domain element - log warning and skip
+    console.warn(`[Workflow] Invalid domain element, skipping:`, element);
+  }
+
+  return result;
+}
 
 // =============================================================================
 // Action Step Handler
@@ -111,7 +187,7 @@ export const actionStepHandler: StepHandler = {
           const { model, values } = resolvedParams as { model: string; values: Record<string, unknown> };
           const { getOdooClient } = await import('~/data-access/odoo');
           const odooClient = await getOdooClient();
-          const recordId = await odooClient.create(model, values);
+          const recordId = await odooClient.create(model, toXmlRpcRecord(values));
           console.log(`[Workflow] Created Odoo ${model} record: ${recordId}`);
           result = { recordId, model, success: true };
           break;
@@ -126,7 +202,7 @@ export const actionStepHandler: StepHandler = {
           };
           const { getOdooClient } = await import('~/data-access/odoo');
           const odooClient = await getOdooClient();
-          await odooClient.write(model, ids, values);
+          await odooClient.write(model, ids, toXmlRpcRecord(values));
           console.log(`[Workflow] Updated ${ids.length} Odoo ${model} record(s)`);
           result = { updated: ids.length, model, success: true };
           break;
@@ -153,7 +229,7 @@ export const actionStepHandler: StepHandler = {
           };
           const { getOdooClient } = await import('~/data-access/odoo');
           const odooClient = await getOdooClient();
-          const records = await odooClient.searchRead(model, domain, { fields, limit });
+          const records = await odooClient.searchRead(model, toOdooDomain(domain), { fields, limit });
           console.log(`[Workflow] Found ${records.length} Odoo ${model} record(s)`);
           result = { count: records.length, records, model, success: true };
           break;
@@ -403,19 +479,91 @@ export const notificationStepHandler: StepHandler = {
 
     // Send notification based on channel
     try {
+      let result: Record<string, unknown> = {};
+
       switch (config.channel) {
-        case "email":
-          console.log(`[Workflow] Email notification to ${recipientId}: ${processedTemplate}`);
+        case "email": {
+          // Get user email (in real implementation, query user table)
+          const userEmail = context.variables.recipientEmail as string || recipientId;
+
+          const { sendEmail } = await import('~/lib/email/service');
+          const emailResult = await sendEmail({
+            to: userEmail,
+            subject: 'Notification',
+            body: processedTemplate,
+          });
+
+          result = { ...emailResult, to: userEmail };
+          console.log(`[Workflow] Email notification sent to ${userEmail}`);
           break;
-        case "push":
-          console.log(`[Workflow] Push notification to ${recipientId}: ${processedTemplate}`);
+        }
+
+        case "push": {
+          const { PushNotificationService } = await import('~/lib/push-notification/service');
+          const pushService = new PushNotificationService({
+            fcm:
+              privateEnv.FIREBASE_PROJECT_ID &&
+              privateEnv.FIREBASE_CLIENT_EMAIL &&
+              privateEnv.FIREBASE_PRIVATE_KEY
+                ? {
+                    projectId: privateEnv.FIREBASE_PROJECT_ID,
+                    clientEmail: privateEnv.FIREBASE_CLIENT_EMAIL,
+                    privateKey: privateEnv.FIREBASE_PRIVATE_KEY,
+                  }
+                : undefined,
+          });
+
+          const pushResult = await pushService.sendToUser(recipientId, {
+            title: 'Notification',
+            body: processedTemplate,
+          });
+
+          result = { sent: pushResult.successCount > 0, ...pushResult };
+          console.log(`[Workflow] Push notification sent to ${recipientId}`);
           break;
-        case "in_app":
-          console.log(`[Workflow] In-app notification to ${recipientId}: ${processedTemplate}`);
+        }
+
+        case "in_app": {
+          // Create in-app notification in database
+          const { database } = await import('~/db');
+          const { notification } = await import('~/db/schema');
+          const { nanoid } = await import('nanoid');
+
+          await database.insert(notification).values({
+            id: nanoid(),
+            userId: recipientId,
+            type: 'system',
+            title: 'Notification',
+            content: processedTemplate,
+            isRead: false,
+          });
+
+          result = { created: true, userId: recipientId };
+          console.log(`[Workflow] In-app notification created for ${recipientId}`);
           break;
-        case "sms":
-          console.log(`[Workflow] SMS notification to ${recipientId}: ${processedTemplate}`);
+        }
+
+        case "sms": {
+          // Get user phone (in real implementation, query user table)
+          const userPhone = context.variables.recipientPhone as string || recipientId;
+
+          const { sendSMS } = await import('~/lib/sms/service');
+          const smsResult = await sendSMS({
+            to: userPhone,
+            body: processedTemplate,
+          });
+
+          result = { ...smsResult, to: userPhone };
+          console.log(`[Workflow] SMS notification sent to ${userPhone}`);
           break;
+        }
+
+        default:
+          return {
+            success: false,
+            error: `Unknown notification channel: ${config.channel}`,
+            nextStepId: step.onFailure,
+          };
       }
 
       return {
@@ -424,11 +572,13 @@ export const notificationStepHandler: StepHandler = {
           channel: config.channel,
           recipientId,
           message: processedTemplate,
+          ...result,
         },
         nextStepId: step.onSuccess,
       };
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : "Notification failed";
+      console.error(`[Workflow] Notification failed:`, error);
       return {
         success: false,
         error: errorMessage,

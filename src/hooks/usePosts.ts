@@ -92,7 +92,7 @@ export function useCreatePost() {
         description: "Your post has been published to the community.",
       });
       queryClient.invalidateQueries({ queryKey: ["community-posts"] });
-      navigate({ to: "/dashboard/community", search: { category: undefined } });
+      navigate({ to: "/dashboard" });
     },
     onError: (error) => {
       toast.error("Failed to create post", {
@@ -166,7 +166,7 @@ export function useDeletePost() {
       queryClient.invalidateQueries({ queryKey: ["community-posts"] });
       queryClient.invalidateQueries({ queryKey: ["community-post"] });
       // Navigate back to community page if on post detail page
-      navigate({ to: "/dashboard/community", search: { category: undefined } });
+      navigate({ to: "/dashboard" });
     },
     onError: (error) => {
       toast.error("Failed to delete post", {

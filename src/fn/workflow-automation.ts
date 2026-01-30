@@ -34,6 +34,7 @@ import {
   type WorkflowTriggerType,
 } from "~/data-access/workflow-automation";
 import { workflowEngine } from "~/lib/workflow-automation-engine/engine";
+import type { WorkflowExecutionResult } from "~/lib/workflow-automation-engine/types";
 
 // =============================================================================
 // Zod Schemas
@@ -113,8 +114,7 @@ const createDefinitionSchema = z.object({
   category: z.string().max(50).optional(),
   version: z.string().max(20).optional(),
   triggerConfig: triggerConfigSchema,
-  steps: z.array(stepDefinitionSchema),
-  startStepId: z.string().min(1),
+  steps: z.array(stepDefinitionSchema).min(1, "At least one step is required"),
   variables: z.record(z.string(), z.unknown()).optional(),
   settings: z.object({
     maxConcurrentInstances: z.number().int().min(1).max(100).optional(),
@@ -131,7 +131,6 @@ const updateDefinitionSchema = z.object({
   version: z.string().max(20).optional(),
   triggerConfig: triggerConfigSchema.optional(),
   steps: z.array(stepDefinitionSchema).optional(),
-  startStepId: z.string().optional(),
   variables: z.record(z.string(), z.unknown()).optional().nullable(),
   settings: z.object({
     maxConcurrentInstances: z.number().int().min(1).max(100).optional(),
@@ -175,13 +174,12 @@ export const createWorkflowDefinitionFn = createServerFn({ method: "POST" })
       name: data.name,
       description: data.description || null,
       createdBy: userId,
-      category: data.category || null,
-      version: data.version || "1.0.0",
-      triggerConfig: data.triggerConfig,
-      steps: data.steps,
-      startStepId: data.startStepId,
-      variables: data.variables || {},
-      settings: data.settings || {},
+      triggerType: data.triggerConfig.type,
+      triggerConfig: JSON.stringify(data.triggerConfig),
+      steps: JSON.stringify(data.steps),
+      variables: JSON.stringify(data.variables || {}),
+      // Map category to tags array if provided
+      tags: data.category ? JSON.stringify([data.category]) : null,
       status: "draft",
     });
 
@@ -207,7 +205,21 @@ export const updateWorkflowDefinitionFn = createServerFn({ method: "POST" })
   .middleware([authenticatedMiddleware])
   .handler(async ({ data }) => {
     const { id, ...updateData } = data;
-    const definition = await updateWorkflowDefinition(id, updateData);
+
+    // Stringify JSON fields for DB storage
+    const dbUpdateData: any = { ...updateData };
+    if (updateData.triggerConfig) {
+      dbUpdateData.triggerType = updateData.triggerConfig.type;
+      dbUpdateData.triggerConfig = JSON.stringify(updateData.triggerConfig);
+    }
+    if (updateData.steps) {
+      dbUpdateData.steps = JSON.stringify(updateData.steps);
+    }
+    if (updateData.variables !== undefined) {
+      dbUpdateData.variables = JSON.stringify(updateData.variables);
+    }
+
+    const definition = await updateWorkflowDefinition(id, dbUpdateData);
     return { definition };
   });
 
@@ -296,12 +308,11 @@ export const triggerWorkflowFn = createServerFn({ method: "POST" })
     })
   )
   .middleware([authenticatedMiddleware])
+  // @ts-expect-error - TanStack Start type inference issue with WorkflowExecutionResult containing unknown
   .handler(async ({ data, context }) => {
-    const result = await workflowEngine.triggerWorkflow({
-      type: "manual",
-      definitionId: data.definitionId,
+    const result = await workflowEngine.triggerWorkflow(data.definitionId, {
       triggeredBy: context!.userId,
-      data: data.data,
+      triggerData: data.data,
     });
     return { result };
   });
@@ -312,6 +323,7 @@ export const triggerWorkflowFn = createServerFn({ method: "POST" })
 export const resumeWorkflowFn = createServerFn({ method: "POST" })
   .inputValidator(z.object({ instanceId: z.string().uuid() }))
   .middleware([authenticatedMiddleware])
+  // @ts-expect-error - TanStack Start type inference issue with WorkflowExecutionResult containing unknown
   .handler(async ({ data }) => {
     const result = await workflowEngine.resumeWorkflow(data.instanceId);
     return { result };
@@ -486,8 +498,7 @@ export const getWorkflowDefinitionStatsFn = createServerFn({ method: "GET" })
 export const validateWorkflowDefinitionFn = createServerFn({ method: "POST" })
   .inputValidator(
     z.object({
-      steps: z.array(stepDefinitionSchema),
-      startStepId: z.string(),
+      steps: z.array(stepDefinitionSchema).min(1, "At least one step is required"),
       triggerConfig: triggerConfigSchema,
     })
   )
@@ -496,19 +507,22 @@ export const validateWorkflowDefinitionFn = createServerFn({ method: "POST" })
     const errors: Array<{ stepId?: string; field?: string; message: string }> = [];
     const warnings: Array<{ stepId?: string; message: string }> = [];
 
-    // Check if start step exists
-    const startStep = data.steps.find((s) => s.id === data.startStepId);
-    if (!startStep) {
+    // Check if steps array has at least one step
+    if (data.steps.length === 0) {
       errors.push({
-        field: "startStepId",
-        message: "Start step does not exist in steps array",
+        field: "steps",
+        message: "At least one step is required",
       });
+      return { valid: false, errors, warnings };
     }
+
+    // The first step is the start step
+    const startStepId = data.steps[0].id;
 
     // Validate each step
     for (const step of data.steps) {
       // Check for orphaned steps (no incoming connections except start)
-      if (step.id !== data.startStepId) {
+      if (step.id !== startStepId) {
         const hasIncoming = data.steps.some(
           (s) => s.onSuccess === step.id || s.onFailure === step.id
         );
@@ -591,6 +605,7 @@ export const webhookTriggerWorkflowFn = createServerFn({ method: "POST" })
       data: z.record(z.string(), z.unknown()).optional(),
     })
   )
+  // @ts-expect-error - TanStack Start type inference issue with WorkflowExecutionResult containing unknown
   .handler(async ({ data }) => {
     // Get the definition to verify webhook secret
     const definition = await findWorkflowDefinitionById(data.definitionId);
@@ -607,10 +622,8 @@ export const webhookTriggerWorkflowFn = createServerFn({ method: "POST" })
       throw new Error("Workflow is not active");
     }
 
-    const result = await workflowEngine.triggerWorkflow({
-      type: "webhook",
-      definitionId: data.definitionId,
-      data: data.data,
+    const result = await workflowEngine.triggerWorkflow(data.definitionId, {
+      triggerData: data.data,
     });
 
     return { result };

@@ -23,7 +23,7 @@ export function useStartConversation() {
       // Invalidate conversations list
       queryClient.invalidateQueries({ queryKey: ["conversations"] });
       // Navigate to the messages page with this conversation
-      navigate({ to: "/dashboard/messages", search: { conversation: conversation.id } });
+      navigate({ to: "/dashboard/inbox" });
     },
     onError: (error) => {
       toast.error("Failed to start conversation", {

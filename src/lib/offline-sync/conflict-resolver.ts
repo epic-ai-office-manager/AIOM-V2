@@ -75,13 +75,13 @@ function getConflictingFields<T extends Record<string, unknown>>(
 export class ConflictResolverService {
   private defaultStrategy: ConflictResolutionStrategy;
   private entityStrategies: Partial<Record<OfflineEntityType, ConflictResolutionStrategy>>;
-  private customResolvers: Partial<Record<OfflineEntityType, ConflictResolver>>;
+  private customResolvers: Partial<Record<OfflineEntityType, ConflictResolver<any>>>;
   private debug: boolean;
 
   constructor(options: {
     defaultStrategy?: ConflictResolutionStrategy;
     entityStrategies?: Partial<Record<OfflineEntityType, ConflictResolutionStrategy>>;
-    customResolvers?: Partial<Record<OfflineEntityType, ConflictResolver>>;
+    customResolvers?: Partial<Record<OfflineEntityType, ConflictResolver<any>>>;
     debug?: boolean;
   } = {}) {
     this.defaultStrategy = options.defaultStrategy ?? "client_wins";
@@ -109,8 +109,8 @@ export class ConflictResolverService {
   /**
    * Set a custom resolver for an entity type
    */
-  setCustomResolver(entityType: OfflineEntityType, resolver: ConflictResolver): void {
-    this.customResolvers[entityType] = resolver;
+  setCustomResolver<T = unknown>(entityType: OfflineEntityType, resolver: ConflictResolver<T>): void {
+    this.customResolvers[entityType] = resolver as ConflictResolver<any>;
   }
 
   /**
@@ -156,7 +156,7 @@ export class ConflictResolverService {
 
     // Check for custom resolver first
     if (strategy === "custom" || this.customResolvers[conflict.entityType]) {
-      const customResolver = this.customResolvers[conflict.entityType];
+      const customResolver = this.customResolvers[conflict.entityType] as ConflictResolver<T> | undefined;
       if (customResolver) {
         return await customResolver(conflict);
       }

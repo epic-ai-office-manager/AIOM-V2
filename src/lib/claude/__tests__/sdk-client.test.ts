@@ -42,7 +42,7 @@ describe('ClaudeSDKClient', () => {
         id: 'msg_123',
         type: 'message',
         role: 'assistant',
-        content: [{ type: 'text', text: 'Hello!' }],
+        content: [{ type: 'text', text: 'Hello!', citations: null }],
         model: 'claude-sonnet-4-20250514',
         stop_reason: 'end_turn',
         stop_sequence: null,
@@ -51,6 +51,9 @@ describe('ClaudeSDKClient', () => {
           output_tokens: 50,
           cache_creation_input_tokens: 0,
           cache_read_input_tokens: 0,
+          cache_creation: null,
+          server_tool_use: null,
+          service_tier: null,
         },
       };
 
@@ -88,7 +91,7 @@ describe('ClaudeSDKClient', () => {
         id: 'msg_123',
         type: 'message',
         role: 'assistant',
-        content: [{ type: 'text', text: 'Hello!' }],
+        content: [{ type: 'text', text: 'Hello!', citations: null }],
         model: 'claude-sonnet-4-20250514',
         stop_reason: 'end_turn',
         stop_sequence: null,
@@ -97,6 +100,9 @@ describe('ClaudeSDKClient', () => {
           output_tokens: 50,
           cache_creation_input_tokens: 1000,
           cache_read_input_tokens: 500,
+          cache_creation: null,
+          server_tool_use: null,
+          service_tier: null,
         },
       };
 
@@ -118,7 +124,7 @@ describe('ClaudeSDKClient', () => {
         id: 'msg_123',
         type: 'message',
         role: 'assistant',
-        content: [{ type: 'text', text: 'Hello!' }],
+        content: [{ type: 'text', text: 'Hello!', citations: null }],
         model: 'claude-sonnet-4-20250514',
         stop_reason: 'end_turn',
         stop_sequence: null,
@@ -127,6 +133,9 @@ describe('ClaudeSDKClient', () => {
           output_tokens: 50,
           cache_creation_input_tokens: 0,
           cache_read_input_tokens: 0,
+          cache_creation: null,
+          server_tool_use: null,
+          service_tier: null,
         },
       };
 
@@ -156,7 +165,7 @@ describe('ClaudeSDKClient', () => {
         id: 'msg_123',
         type: 'message',
         role: 'assistant',
-        content: [{ type: 'text', text: 'Hello!' }],
+        content: [{ type: 'text', text: 'Hello!', citations: null }],
         model: 'claude-sonnet-4-20250514',
         stop_reason: 'end_turn',
         stop_sequence: null,
@@ -165,6 +174,9 @@ describe('ClaudeSDKClient', () => {
           output_tokens: 50,
           cache_creation_input_tokens: 0,
           cache_read_input_tokens: 0,
+          cache_creation: null,
+          server_tool_use: null,
+          service_tier: null,
         },
       };
 
@@ -191,8 +203,8 @@ describe('ClaudeSDKClient', () => {
         type: 'message',
         role: 'assistant',
         content: [
-          { type: 'text', text: 'Hello ' },
-          { type: 'text', text: 'World!' },
+          { type: 'text', text: 'Hello ', citations: null },
+          { type: 'text', text: 'World!', citations: null },
         ],
         model: 'claude-sonnet-4-20250514',
         stop_reason: 'end_turn',
@@ -202,6 +214,9 @@ describe('ClaudeSDKClient', () => {
           output_tokens: 50,
           cache_creation_input_tokens: 0,
           cache_read_input_tokens: 0,
+          cache_creation: null,
+          server_tool_use: null,
+          service_tier: null,
         },
       };
 
@@ -216,7 +231,7 @@ describe('ClaudeSDKClient', () => {
         id: 'msg_123',
         type: 'message',
         role: 'assistant',
-        content: [{ type: 'text', text: 'Completion result' }],
+        content: [{ type: 'text', text: 'Completion result', citations: null }],
         model: 'claude-sonnet-4-20250514',
         stop_reason: 'end_turn',
         stop_sequence: null,
@@ -225,6 +240,9 @@ describe('ClaudeSDKClient', () => {
           output_tokens: 50,
           cache_creation_input_tokens: 0,
           cache_read_input_tokens: 0,
+          cache_creation: null,
+          server_tool_use: null,
+          service_tier: null,
         },
       };
 
@@ -249,7 +267,7 @@ describe('ClaudeSDKClient', () => {
         id: 'msg_123',
         type: 'message',
         role: 'assistant',
-        content: [{ type: 'text', text: 'Hello!' }],
+        content: [{ type: 'text', text: 'Hello!', citations: null }],
         model: 'claude-sonnet-4-20250514',
         stop_reason: 'end_turn',
         stop_sequence: null,
@@ -258,6 +276,9 @@ describe('ClaudeSDKClient', () => {
           output_tokens: 50,
           cache_creation_input_tokens: 0,
           cache_read_input_tokens: 0,
+          cache_creation: null,
+          server_tool_use: null,
+          service_tier: null,
         },
       };
 

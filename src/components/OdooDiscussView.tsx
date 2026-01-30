@@ -11,11 +11,10 @@ import { OdooChannelList } from "./OdooChannelList";
 import { OdooMessageList } from "./OdooMessageList";
 import { OdooMessageInput } from "./OdooMessageInput";
 import {
-  useOdooChannels,
-  useSyncOdooChannels,
   useOdooChannelView,
   useOdooRealtimePolling,
 } from "~/hooks/useOdooDiscuss";
+import type { OdooChannel } from "~/db/schema";
 
 interface OdooDiscussViewProps {
   enableRealtime?: boolean;
@@ -28,10 +27,6 @@ export function OdooDiscussView({
 }: OdooDiscussViewProps) {
   const [selectedChannelId, setSelectedChannelId] = useState<string | null>(null);
 
-  // Channels
-  const channelsQuery = useOdooChannels();
-  const syncChannels = useSyncOdooChannels();
-
   // Selected channel view
   const channelView = useOdooChannelView(selectedChannelId || "");
 
@@ -41,41 +36,17 @@ export function OdooDiscussView({
     pollingInterval,
   });
 
-  const handleChannelSelect = (channelId: string) => {
-    setSelectedChannelId(channelId);
+  const handleChannelSelect = (channel: OdooChannel) => {
+    setSelectedChannelId(channel.id);
   };
-
-  const handleSyncChannels = () => {
-    syncChannels.mutate();
-  };
-
-  if (channelsQuery.isLoading) {
-    return (
-      <div className="flex h-full items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
-      </div>
-    );
-  }
-
-  if (channelsQuery.isError) {
-    return (
-      <div className="flex h-full flex-col items-center justify-center p-8 text-muted-foreground">
-        <p>Failed to load channels</p>
-        <p className="text-sm">{channelsQuery.error?.message || "Unknown error"}</p>
-      </div>
-    );
-  }
 
   return (
     <div className="flex h-full" data-testid="odoo-discuss-view">
       {/* Channels Sidebar */}
       <div className="w-80 border-r flex flex-col">
         <OdooChannelList
-          channels={channelsQuery.data?.channels || []}
           selectedChannelId={selectedChannelId || undefined}
           onSelectChannel={handleChannelSelect}
-          onSync={handleSyncChannels}
-          isSyncing={syncChannels.isPending}
         />
       </div>
 

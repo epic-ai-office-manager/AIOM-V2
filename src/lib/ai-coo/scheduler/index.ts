@@ -6,10 +6,11 @@
  */
 
 import cron from 'node-cron';
+import type { ScheduledTask } from 'node-cron';
 import { getMonitoringJobs, updateJobLastRun } from '~/data-access/ai-coo';
 import { runFinancialAnalysis } from '../analyzers/financial';
 
-const activeJobs = new Map<string, cron.ScheduledTask>();
+const activeJobs = new Map<string, ScheduledTask>();
 
 // ============================================================================
 // Scheduler Control
