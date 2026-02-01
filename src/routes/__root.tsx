@@ -38,11 +38,9 @@ export const Route = createRootRouteWithContext<{
         content: "width=device-width, initial-scale=1",
       },
       ...seo({
-        title:
-          "Become a Full Stack Engineer | Full Stack Developer Training & Community",
-        description: `Join our online community and learn how to become a full stack engineer. Master frontend and backend development, build real projects, and launch your software engineering career. Average full stack engineer salary: $115k-$150k.`,
-        keywords:
-          "full stack engineer, full stack developer, software engineer, web developer, full stack developer training, learn full stack development, full stack engineer salary, how to become a full stack engineer, full stack developer career path, software engineering bootcamp, web development courses",
+        title: "AIOM — AI Operations Manager | EPIC Communications",
+        description: "AI-powered operations control center for EPIC Communications. Real-time business intelligence, automated monitoring, and executive decision support.",
+        keywords: "AIOM, AI operations, business intelligence, EPIC Communications, operations dashboard",
       }),
     ],
     links: [

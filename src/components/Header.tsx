@@ -8,7 +8,7 @@ import {
   User,
   Menu,
   Settings,
-  Code,
+  Zap,
   LayoutDashboard,
 } from "lucide-react";
 import { UserAvatar } from "./UserAvatar";
@@ -83,13 +83,13 @@ export function Header() {
     <header className="sticky top-0 z-40 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="max-w-screen-2xl mx-auto px-8 flex h-14 items-center">
         <div className="mr-4 flex gap-16">
-          <Link to="/" className="mr-6 flex items-center space-x-2 group">
+          <Link to="/dashboard" className="mr-6 flex items-center space-x-2 group">
             <div className="relative shrink-0">
-              <Code className="h-5 w-5 text-primary transition-transform group-hover:scale-110" />
+              <Zap className="h-5 w-5 text-primary transition-transform group-hover:scale-110" />
               <div className="absolute inset-0 bg-primary/20 rounded-full blur-sm opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
-            <span className="hidden font-semibold text-sm sm:inline-block bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent whitespace-nowrap leading-none">
-              Full Stack Campus
+            <span className="hidden font-semibold text-sm sm:inline-block bg-gradient-to-r from-primary to-cyan-600 bg-clip-text text-transparent whitespace-nowrap leading-none">
+              AIOM
             </span>
           </Link>
 
@@ -164,9 +164,9 @@ export function Header() {
                   className="flex items-center space-x-2 mb-8"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <Code className="h-6 w-6 text-primary shrink-0" />
-                  <span className="font-semibold text-base bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent whitespace-nowrap leading-none">
-                    Full Stack Campus
+                  <Zap className="h-6 w-6 text-primary shrink-0" />
+                  <span className="font-semibold text-base bg-gradient-to-r from-primary to-cyan-600 bg-clip-text text-transparent whitespace-nowrap leading-none">
+                    AIOM
                   </span>
                 </Link>
                 <nav className="flex flex-col gap-2">
