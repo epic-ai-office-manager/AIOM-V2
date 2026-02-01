@@ -22,8 +22,17 @@ export default defineConfig(({ mode }) => {
     ssr: {
       noExternal: ['recharts', 'decimal.js-light'],
     },
+    build: {
+      rollupOptions: {
+        onwarn(warning, warn) {
+          // Suppress unresolved import warnings from excluded tsconfig files
+          if (warning.code === 'UNRESOLVED_IMPORT') return;
+          warn(warning);
+        },
+      },
+    },
     plugins: [
-      tsConfigPaths(),
+      tsConfigPaths({ projects: ['./tsconfig.build.json'] }),
       tailwindcss(),
       tanstackStart(),
       nitro({

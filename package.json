@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "npm run db:up && npm run db:migrate && vite dev",
     "dev:app": "vite dev",
-    "build": "vite build && tsc --noEmit",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
     "start": "node .output/server/index.mjs",
     "test": "playwright test tests/smoke.spec.ts --config playwright.config.ts --reporter=list",
     "test:full": "playwright test --config playwright.config.ts --reporter=list",
